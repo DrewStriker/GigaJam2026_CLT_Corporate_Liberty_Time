@@ -108,9 +108,9 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\AssetEditor\InputActionAssetManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\AssetImporter\IInputActionAssetEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\MiscHelpers.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Controls\Processors\ScaleVector2Processor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\XR\Devices\Oculus.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Controls\DoubleControl.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Controls\Processors\ScaleVector2Processor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\InputManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\UITKAssetEditor\Views\IViewStateCollection.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Devices\Remote\RemoteInputPlayerConnection.cs" />
@@ -960,24 +960,24 @@
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\log4netPlastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
       <HintPath>Library\PackageCache\com.unity.visualscripting\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">

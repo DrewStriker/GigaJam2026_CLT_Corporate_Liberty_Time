@@ -97,8 +97,8 @@
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\Utils\AssemblyProvider\AssemblyLoadProxy.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Attributes\UnityCombinatorialStrategy.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\UnityTestProtocol\MessageForRetryRepeat.cs" />
-    <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\ActionDelegator.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Attributes\ParametrizedIgnoreAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\ActionDelegator.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Filters\EditorOnlyFilter.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\TestRunner\RuntimeTestRunnerFilter.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\TestRunner\PlaymodeTestsControllerSettings.cs" />
@@ -171,8 +171,8 @@
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\Assertions\Is.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\Utils\AssemblyProvider\IAssemblyLoadProxy.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\TestRunner\TestEnumeratorWrapper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\Utils\QuaternionEqualityComparer.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Commands\ImmediateEnumerableCommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\Utils\QuaternionEqualityComparer.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Commands\EnumerableApplyChangesToContextCommand.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\IStateSerializer.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework\UnityEngine.TestRunner\TestRunner\RemoteHelpers\PlayerConnectionMessageIds.cs" />
