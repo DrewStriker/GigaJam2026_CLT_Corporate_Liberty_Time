@@ -12,7 +12,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _CLIPPED_ON
+  - _SEGMENTED_ON
+  - _SHNOVERLAP_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -61,22 +64,40 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AmbientCol: 0
     - _BumpScale: 1
+    - _Clipped: 1
+    - _ColBright: 0
+    - _ColIntense: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Glossiness: 0.5
+    - _Lumin: 0.751
+    - _MaxLight: 0.873
     - _Metallic: 0
+    - _MinLight: 0.217
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Offset: 0
+    - _OtlWidth: 3.76
     - _Parallax: 0.02
+    - _Segmented: 1
     - _Shininess: 1
+    - _ShnIntense: 0
+    - _ShnOverlap: 1
+    - _ShnRange: 0.073
+    - _ShnSmooth: 0
     - _SrcBlend: 1
+    - _Steps: 2.2
+    - _StpSmooth: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShnColor: {r: 0.9924528, g: 0.9924528, b: 0.9924528, a: 1}
     - _SpecColor: {r: 0.02773573, g: 0.120788865, b: 0.19852942, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
