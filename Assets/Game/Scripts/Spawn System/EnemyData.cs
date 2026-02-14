@@ -5,7 +5,7 @@ namespace Game.SpawnSystem
     [Serializable]
     public class EnemyData 
     {
-        [field:SerializeField] public GameObject Prefab { get; private set; }
+        [field:SerializeField] public EnemyCatalog EnemyCatalog { get; private set; }
         [Range(0f, 1f)]
         [field:SerializeField] public float SpawnPercentage { get; private set; }
     }
