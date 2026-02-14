@@ -37,7 +37,7 @@ namespace Game.Characters
         {
             ExecuteIfValidState(callingState, () =>
             {
-                if (playerInputController.Movement.IsPressed())
+                if (playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
                 {
                     SwitchState(stateFactory.MovementState);
                 }
@@ -48,7 +48,7 @@ namespace Game.Characters
         {
             ExecuteIfValidState(callingState, () =>
             {
-                if(!playerInputController.Movement.IsPressed())
+                if(!playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
                 {
                     SwitchState(stateFactory.IdleState);
                 }
@@ -59,7 +59,7 @@ namespace Game.Characters
         {
             ExecuteIfValidState(callingState, () =>
             {
-                if (playerInputController.Jump.WasPressedThisFrame())
+                if (playerInputController.Jump.WasPressedThisFrame() && PlayerMovementController.IsGrounded())
                 {
                     SwitchState(stateFactory.JumpState);
                 }
@@ -70,7 +70,7 @@ namespace Game.Characters
         {
             ExecuteIfValidState(callingState, () =>
             {
-                if (playerInputController.Attack.WasPressedThisFrame())
+                if (playerInputController.Attack.WasPressedThisFrame() && PlayerMovementController.IsGrounded())
                 {
                     SwitchState(stateFactory.AttackState);
                 }

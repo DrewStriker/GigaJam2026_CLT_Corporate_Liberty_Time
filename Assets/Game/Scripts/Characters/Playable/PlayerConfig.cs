@@ -7,6 +7,8 @@ namespace Game.Characters
     {
         [field: SerializeField] public float BaseVelocity { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; }
+        [field: SerializeField] public float GroundCheckDistance { get; private set; }
+        [field: SerializeField] public float GroundCheckSphereRadius { get; private set; }
     }
 }
 

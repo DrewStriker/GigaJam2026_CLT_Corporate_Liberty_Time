@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88377fd97f190c540983aface66079f9, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: f620a9b693a52354aba6408b49fb69d4, type: 3}
+  m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  <BaseVelocity>k__BackingField: 80
-  <JumpForce>k__BackingField: 5
-  <GroundCheckDistance>k__BackingField: 0.3
-  <GroundCheckSphereRadius>k__BackingField: 1
+  <BaseSpeed>k__BackingField: 10
+  <AttackRange>k__BackingField: 1
