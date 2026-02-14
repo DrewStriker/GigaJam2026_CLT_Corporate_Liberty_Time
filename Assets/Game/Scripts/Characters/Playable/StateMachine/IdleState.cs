@@ -7,6 +7,7 @@ namespace Game.Characters
 
         public override void OnStateEnter()
         {
+            character.MovementController.ZeroLinearVelocity();
             AnimationController.Play(Animation.Idle);
         }
 

@@ -1,4 +1,6 @@
 
+using System.Diagnostics;
+
 namespace Game.Characters
 {
     public class MovementState : PlayerBaseState
@@ -9,6 +11,7 @@ namespace Game.Characters
 
         public override void OnStateEnter()
         {
+            UnityEngine.Debug.Log("Movement State AAAAAA");
             AnimationController.Play(Animation.Run);
         }
 

@@ -1,6 +1,6 @@
 ﻿using System;
+using Game.Core;
 using UnityEngine;
-using Transform = log4net.Util.Transform;
 
 namespace DamageSystem
 {
@@ -37,7 +37,7 @@ namespace DamageSystem
                 bounds.size * 0.5f,
                 hits,
                 transform.rotation,
-                IDamager.TargetLayer,
+                Layers.Character,
                 QueryTriggerInteraction.Ignore);
             print(hitCount + " Hits");
             if (hitCount == 0) return;

@@ -1,14 +1,16 @@
-using System;
 using UnityEngine;
 
 namespace Game.Characters
 {
+    using Game.Core;
     public class PlayableCharacterMovementController
     {
         private Rigidbody rigidbody;
         private IMovementInfo movementInfo;
         private float jumpForce;
         private float baseVelocity;
+        private Collider[] groundHits = new Collider[1];
+
         public PlayableCharacterMovementController(Rigidbody rigidbody, PlayerConfig playerConfig, IMovementInfo movementInfo)
         {
             this.rigidbody = rigidbody;
@@ -49,6 +51,23 @@ namespace Game.Characters
         public void Jump()
         {
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        public bool IsGrounded()
+        {
+            CapsuleCollider collider = rigidbody.GetComponent<CapsuleCollider>();
+            int hitCount = Physics.OverlapSphereNonAlloc(
+                rigidbody.position + collider.center + Vector3.down * collider.height / 2f,
+                collider.radius,
+                groundHits,
+                Layers.Ground,
+                QueryTriggerInteraction.Ignore);
+            return hitCount > 0 && rigidbody.linearVelocity.y <= 0;
+        }
+
+        public void ZeroLinearVelocity()
+        {
+            rigidbody.linearVelocity = Vector3.zero;
         }
     }
 }

@@ -1,7 +1,6 @@
 
 namespace Game.Characters
 {
-    using System;
     using Game.Input;
     public class PlayerStateMachine : StateMachine
     {
@@ -26,66 +25,54 @@ namespace Game.Characters
             base.Update();
         }
 
-        private void ExecuteIfValidState(BaseState callingState, Action action)
+        private bool IsValidState(BaseState callingState)
         {
-            if (callingState != CurrentState) return;
-
-            action?.Invoke();
+            return callingState == CurrentState;
         }
 
         public void TryMovementState(BaseState callingState)
         {
-            ExecuteIfValidState(callingState, () =>
+            if (!IsValidState(callingState)) return;
+            if (playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
             {
-                if (playerInputController.Movement.IsPressed())
-                {
-                    SwitchState(stateFactory.MovementState);
-                }
-            });
+                SwitchState(stateFactory.MovementState);
+            }
         }
 
         public void TryIdleState(BaseState callingState)
         {
-            ExecuteIfValidState(callingState, () =>
+            if (!IsValidState(callingState)) return;
+            if (!playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
             {
-                if(!playerInputController.Movement.IsPressed())
-                {
-                    SwitchState(stateFactory.IdleState);
-                }
-            });
+                SwitchState(stateFactory.IdleState);
+            }
         }
 
         public void TryJumpState(BaseState callingState)
         {
-            ExecuteIfValidState(callingState, () =>
+            if (!IsValidState(callingState)) return;
+            if (playerInputController.Jump.WasPressedThisFrame() && PlayerMovementController.IsGrounded())
             {
-                if (playerInputController.Jump.WasPressedThisFrame())
-                {
-                    SwitchState(stateFactory.JumpState);
-                }
-            });
+                SwitchState(stateFactory.JumpState);
+            }
         }
 
         public void TryAttackState(BaseState callingState)
         {
-            ExecuteIfValidState(callingState, () =>
+            if (!IsValidState(callingState)) return;
+            if (playerInputController.Attack.WasPressedThisFrame())
             {
-                if (playerInputController.Attack.WasPressedThisFrame())
-                {
-                    SwitchState(stateFactory.AttackState);
-                }
-            });
+                SwitchState(stateFactory.AttackState);
+            }
         }
 
         public void TryInteractState(BaseState callingState)
         {
-            ExecuteIfValidState(callingState, () =>
+            if (!IsValidState(callingState)) return;
+            if (playerInputController.Interact.WasPressedThisFrame())
             {
-                if (playerInputController.Interact.WasPressedThisFrame())
-                {
-                    SwitchState(stateFactory.InteractState);
-                }
-            });
+                SwitchState(stateFactory.InteractState);
+            }
         }
 
         private void SwitchState(BaseState state)
