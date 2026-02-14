@@ -11,6 +11,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88377fd97f190c540983aface66079f9, type: 3}
   m_Name: PlayerConfig
-  m_EditorClassIdentifier: 
-  <BaseVelocity>k__BackingField: 80
-  <JumpForce>k__BackingField: 5
+  m_EditorClassIdentifier: Characters::Game.Characters.PlayerConfig
+  <BaseVelocity>k__BackingField: 200
+  <JumpForce>k__BackingField: 8
