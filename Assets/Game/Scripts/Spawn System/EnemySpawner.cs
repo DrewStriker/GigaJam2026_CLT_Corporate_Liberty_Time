@@ -11,7 +11,8 @@ namespace Game.SpawnSystem
 
         private void Start()
         {
-            enemyFactory.Create(EnemyType.Basic);
+            var instance =  enemyFactory.Create(EnemyType.Basic);
+            instance.gameObject.transform.position = transform.position;
         }
     }
 }
