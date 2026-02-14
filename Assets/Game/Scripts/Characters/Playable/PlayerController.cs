@@ -9,13 +9,16 @@ namespace Game.Characters
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
 
+        public AnimationController AnimationController { get; private set; }
+
         [SerializeField] private PlayerConfig playerConfig;
 
         private void Awake()
         {
+            AnimationController = new AnimationController(GetComponentInChildren<Animator>());
             InputController = new PlayerInputController();
-            MovementController = new PlayableCharacterMovementController(GetComponent<Rigidbody>(), playerConfig, () => InputController.MovementDirection);
-            StateMachine = new PlayerStateMachine(InputController, MovementController);
+            MovementController = new PlayableCharacterMovementController(GetComponent<Rigidbody>(), playerConfig, InputController);
+            StateMachine = new PlayerStateMachine(this);
         }
 
         private void FixedUpdate()

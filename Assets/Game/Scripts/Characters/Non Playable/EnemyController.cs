@@ -9,6 +9,9 @@ namespace Game.Characters
         [SerializeField] private EnemyConfig enemyConfig;
         private Transform playerTransform;
         private NavMeshAgent navMeshAgent;
+
+        public AnimationController AnimationController => throw new NotImplementedException();
+
         public event Action OnAttackRange;
         private void Awake()
         {

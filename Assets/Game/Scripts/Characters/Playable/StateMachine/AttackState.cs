@@ -1,12 +1,11 @@
 
 namespace Game.Characters
 {
-    public class AttackState : BaseState
+    public class AttackState : PlayerBaseState
     {
-        public AttackState(StateMachine stateMachine) : base(stateMachine)
+        public AttackState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
         {
         }
-
 
         public override void OnStateEnter()
         {
@@ -23,8 +22,8 @@ namespace Game.Characters
 
         public override void Update()
         {
-            (stateMachine as PlayerStateMachine).TryIdleState(this);
-            (stateMachine as PlayerStateMachine).TryMovementState(this);
+            stateMachine.TryIdleState(this);
+            stateMachine.TryMovementState(this);
         }
     }
 }

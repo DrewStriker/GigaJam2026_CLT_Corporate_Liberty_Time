@@ -1,16 +1,15 @@
 
 namespace Game.Characters
 {
-    public class MovementState : BaseState
+    public class MovementState : PlayerBaseState
     {
-        public MovementState(StateMachine stateMachine) : base(stateMachine)
+        public MovementState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
         {
         }
 
-
         public override void OnStateEnter()
         {
-            UnityEngine.Debug.Log("Movement State");
+            AnimationController.Play(Animation.Run);
         }
 
         public override void OnStateExit()
@@ -18,15 +17,15 @@ namespace Game.Characters
         }
         public override void FixedUpdate()
         {
-            (stateMachine as PlayerStateMachine).PlayerMovementController.UpdateMovement();
+            character.MovementController.UpdateMovement();
         }
 
         public override void Update()
         {
-            (stateMachine as PlayerStateMachine).TryAttackState(this);
-            (stateMachine as PlayerStateMachine).TryIdleState(this);
-            (stateMachine as PlayerStateMachine).TryJumpState(this);
-            (stateMachine as PlayerStateMachine).TryInteractState(this);
+            stateMachine.TryAttackState(this);
+            stateMachine.TryIdleState(this);
+            stateMachine.TryJumpState(this);
+            stateMachine.TryInteractState(this);
         }
     }
 }

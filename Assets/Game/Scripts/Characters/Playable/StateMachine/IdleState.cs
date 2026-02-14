@@ -1,15 +1,13 @@
 
-using System.Diagnostics;
-
 namespace Game.Characters
 {
-    public class IdleState : BaseState
+    public class IdleState : PlayerBaseState
     {
-        public IdleState(StateMachine stateMachine) : base(stateMachine) { }
+        public IdleState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character) { }
 
         public override void OnStateEnter()
         {
-            UnityEngine.Debug.Log("Idle State");
+            AnimationController.Play(Animation.Idle);
         }
 
         public override void OnStateExit()
@@ -21,10 +19,10 @@ namespace Game.Characters
 
         public override void Update()
         {
-            (stateMachine as PlayerStateMachine).TryAttackState(this);
-            (stateMachine as PlayerStateMachine).TryInteractState(this);
-            (stateMachine as PlayerStateMachine).TryMovementState(this);
-            (stateMachine as PlayerStateMachine).TryJumpState(this);
+            stateMachine.TryAttackState(this);
+            stateMachine.TryInteractState(this);
+            stateMachine.TryMovementState(this);
+            stateMachine.TryJumpState(this);
         }
     }
 }

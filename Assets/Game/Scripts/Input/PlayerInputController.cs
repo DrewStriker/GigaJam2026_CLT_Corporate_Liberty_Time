@@ -5,13 +5,15 @@ namespace Game.Input
 {
     public enum InputType { InGame, UI }
    
-    public class PlayerInputController 
+    public class PlayerInputController : IMovementInfo
     {
         public InputAction Jump { get; private set; }
         public InputAction Movement { get; private set; }
         public InputAction Attack { get; private set; }
         public InputAction Interact { get; private set; }
-        public Vector3 MovementDirection => GetMovementDirection();
+
+        public Vector2 Direction { get; private set; }
+
 
         private PlayerInput playerInput;
         private Vector2 movementValue;
@@ -35,16 +37,16 @@ namespace Game.Input
 
         private void AssignInputEvents()
         {
-            Movement.performed += context => movementValue = context.ReadValue<Vector2>();
+            Movement.performed += OnMovementPerformed;
         }
         private void UnassignInputEvents()
         {
-            Movement.performed += context => movementValue = context.ReadValue<Vector2>();
+            Movement.performed -= OnMovementPerformed;
         }
 
-        private Vector3 GetMovementDirection()
+        private void OnMovementPerformed(InputAction.CallbackContext context)
         {
-            return new Vector3(movementValue.x, 0, movementValue.y);
+            Direction = context.ReadValue<Vector2>();
         }
 
         public void EnableInput(InputType inputType)

@@ -1,15 +1,14 @@
 namespace Game.Characters
 {
-    public class JumpState : BaseState
+    public class JumpState : PlayerBaseState
     {
-        public JumpState(StateMachine stateMachine) : base(stateMachine)
+        public JumpState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
         {
         }
 
-
         public override void OnStateEnter()
         {
-            (stateMachine as PlayerStateMachine).PlayerMovementController.Jump();
+            stateMachine.PlayerMovementController.Jump();
             UnityEngine.Debug.Log("Jump State");
         }
 
@@ -18,13 +17,13 @@ namespace Game.Characters
         }
         public override void FixedUpdate()
         {
-            (stateMachine as PlayerStateMachine).PlayerMovementController.UpdateMovement();
+            character.MovementController.UpdateMovement();
         }
 
         public override void Update()
         {
-            (stateMachine as PlayerStateMachine).TryIdleState(this);
-            (stateMachine as PlayerStateMachine).TryMovementState(this);
+            stateMachine.TryIdleState(this);
+            stateMachine.TryMovementState(this);
         }
     }
 }

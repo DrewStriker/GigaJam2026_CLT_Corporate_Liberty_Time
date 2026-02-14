@@ -3,19 +3,19 @@ namespace Game.Characters
 {
     public class PlayerStateFactory
     {
-        public BaseState IdleState { get; private set; }
-        public BaseState MovementState { get; private set; }
-        public BaseState JumpState { get; private set; }
-        public BaseState AttackState { get; private set; }
-        public BaseState InteractState { get; private set; }
+        public PlayerBaseState IdleState { get; private set; }
+        public PlayerBaseState MovementState { get; private set; }
+        public PlayerBaseState JumpState { get; private set; }
+        public PlayerBaseState AttackState { get; private set; }
+        public PlayerBaseState InteractState { get; private set; }
 
-        public PlayerStateFactory(StateMachine stateMachine)
+        public PlayerStateFactory(PlayerStateMachine stateMachine, IPlayableCharacter character)
         {
-            IdleState = new IdleState(stateMachine);
-            MovementState = new MovementState(stateMachine);
-            JumpState = new JumpState(stateMachine);
-            AttackState = new AttackState(stateMachine);
-            InteractState = new InteractState(stateMachine);
+            IdleState = new IdleState(stateMachine, character);
+            MovementState = new MovementState(stateMachine, character);
+            JumpState = new JumpState(stateMachine, character);
+            AttackState = new AttackState(stateMachine, character);
+            InteractState = new InteractState(stateMachine, character);
         }
     }
 }

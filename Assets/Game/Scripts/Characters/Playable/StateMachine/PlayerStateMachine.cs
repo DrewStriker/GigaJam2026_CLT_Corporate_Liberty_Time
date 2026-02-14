@@ -8,12 +8,12 @@ namespace Game.Characters
         private PlayerStateFactory stateFactory;
         private PlayerInputController playerInputController;
         public PlayableCharacterMovementController PlayerMovementController { get; private set; }
-        public PlayerStateMachine(PlayerInputController playerInputController, PlayableCharacterMovementController movementController)
+        public PlayerStateMachine(IPlayableCharacter character)
         {
-            this.playerInputController = playerInputController;
-            PlayerMovementController = movementController;
+            playerInputController = character.InputController;
+            PlayerMovementController = character.MovementController;
 
-            stateFactory = new PlayerStateFactory(this);
+            stateFactory = new PlayerStateFactory(this, character);
             CurrentState = stateFactory.IdleState;
         }
         public override void FixedUpdate()

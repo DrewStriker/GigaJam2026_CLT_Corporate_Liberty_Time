@@ -1,12 +1,11 @@
 
 namespace Game.Characters
 {
-    public class InteractState : BaseState
+    public class InteractState : PlayerBaseState
     {
-        public InteractState(StateMachine stateMachine) : base((PlayerStateMachine)stateMachine)
+        public InteractState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
         {
         }
-
 
         public override void OnStateEnter()
         {
@@ -22,10 +21,10 @@ namespace Game.Characters
 
         public override void Update()
         {
-            (stateMachine as PlayerStateMachine).TryIdleState(this);
-            (stateMachine as PlayerStateMachine).TryMovementState(this);
-            (stateMachine as PlayerStateMachine).TryJumpState(this);
-            (stateMachine as PlayerStateMachine).TryAttackState(this);
+            stateMachine.TryIdleState(this);
+            stateMachine.TryMovementState(this);
+            stateMachine.TryJumpState(this);
+            stateMachine.TryAttackState(this);
         }
     }
 
