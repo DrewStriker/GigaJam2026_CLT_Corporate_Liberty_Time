@@ -1,20 +1,24 @@
 using System;
+using Game.StatsSystem;
 using UnityEngine;
 
 namespace Game.Characters
 {
     public class PlayableCharacterMovementController
     {
+        CharacterStats characterStats;
         private Rigidbody rigidbody;
         private IMovementInfo movementInfo;
         private float jumpForce;
         private float baseVelocity;
-        public PlayableCharacterMovementController(Rigidbody rigidbody, PlayerConfig playerConfig, IMovementInfo movementInfo)
+        
+        public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats, IMovementInfo movementInfo)
         {
+            this.characterStats = characterStats;
             this.rigidbody = rigidbody;
             this.movementInfo = movementInfo;
-            jumpForce = playerConfig.JumpForce;
-            baseVelocity = playerConfig.BaseVelocity;
+            jumpForce = characterStats.JumpForce;
+            baseVelocity = characterStats.MoveSpeed;
         }
 
         public void UpdateMovement()

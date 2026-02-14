@@ -1,3 +1,4 @@
+using Game.StatsSystem;
 using UnityEngine;
 
 namespace Game.Characters
@@ -10,15 +11,18 @@ namespace Game.Characters
         public PlayerStateMachine StateMachine { get; private set; }
 
         public AnimationController AnimationController { get; private set; }
+        public CharacterStats characterStats { get; private set; }
+        [SerializeField] private CharacterStatsSO config;
 
-        [SerializeField] private PlayerConfig playerConfig;
 
         private void Awake()
         {
+            characterStats = new(config);
             AnimationController = new AnimationController(GetComponentInChildren<Animator>());
             InputController = new PlayerInputController();
-            MovementController = new PlayableCharacterMovementController(GetComponent<Rigidbody>(), playerConfig, InputController);
+            MovementController = new PlayableCharacterMovementController(GetComponent<Rigidbody>(), characterStats, InputController);
             StateMachine = new PlayerStateMachine(this);
+
         }
 
         private void FixedUpdate()
