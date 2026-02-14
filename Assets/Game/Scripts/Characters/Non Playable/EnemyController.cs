@@ -1,4 +1,5 @@
 using System;
+using Game.StatsSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,17 +7,19 @@ namespace Game.Characters
 {
     public class EnemyController : MonoBehaviour, ICharacter
     {
-        [SerializeField] private EnemyConfig enemyConfig;
+        [SerializeField] private CharacterStatsSO config;
         private Transform playerTransform;
         private NavMeshAgent navMeshAgent;
 
         public AnimationController AnimationController => throw new NotImplementedException();
+        public CharacterStats characterStats { get; private set; }
 
         public event Action OnAttackRange;
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             playerTransform = FindAnyObjectByType<PlayerController>().transform;
+            characterStats = new CharacterStats(config);
         }
 
         private void Start()
@@ -26,7 +29,7 @@ namespace Game.Characters
 
         private void Initialize()
         {
-            navMeshAgent.speed = enemyConfig.BaseSpeed;
+            navMeshAgent.speed = config.Speed;
         }
 
         private void Update()
@@ -36,7 +39,7 @@ namespace Game.Characters
 
         private void ChasePlayer()
         {
-            if (Vector3.Distance(transform.position, playerTransform.position) > enemyConfig.AttackRange)
+            if (Vector3.Distance(transform.position, playerTransform.position) > 1)
             {
                 navMeshAgent.SetDestination(playerTransform.position);
                 navMeshAgent.isStopped = false;

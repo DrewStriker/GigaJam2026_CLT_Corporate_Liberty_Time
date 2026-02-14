@@ -1,3 +1,4 @@
+using Game.StatsSystem;
 using UnityEngine;
 
 namespace Game.Characters
@@ -5,18 +6,20 @@ namespace Game.Characters
     using Game.Core;
     public class PlayableCharacterMovementController
     {
+        CharacterStats characterStats;
         private Rigidbody rigidbody;
         private IMovementInfo movementInfo;
-        private float jumpForce;
-        private float baseVelocity;
         private Collider[] groundHits = new Collider[1];
 
-        public PlayableCharacterMovementController(Rigidbody rigidbody, PlayerConfig playerConfig, IMovementInfo movementInfo)
+        private float jumpForce => characterStats.JumpForce;
+        private float baseVelocity => characterStats.MoveSpeed;
+        
+        public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats, IMovementInfo movementInfo)
         {
+            this.characterStats = characterStats;
             this.rigidbody = rigidbody;
             this.movementInfo = movementInfo;
-            jumpForce = playerConfig.JumpForce;
-            baseVelocity = playerConfig.BaseVelocity;
+           
         }
 
         public void UpdateMovement()

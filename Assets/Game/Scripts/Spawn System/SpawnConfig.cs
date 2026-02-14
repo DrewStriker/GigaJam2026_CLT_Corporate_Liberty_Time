@@ -1,5 +1,4 @@
-﻿using Assets.Game.Scripts.Spawn_System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.SpawnSystem
 {
