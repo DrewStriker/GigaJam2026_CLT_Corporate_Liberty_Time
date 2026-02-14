@@ -9,16 +9,15 @@ namespace Game.Characters
         CharacterStats characterStats;
         private Rigidbody rigidbody;
         private IMovementInfo movementInfo;
-        private float jumpForce;
-        private float baseVelocity;
+        private float jumpForce => characterStats.JumpForce;
+        private float baseVelocity => characterStats.MoveSpeed;
         
         public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats, IMovementInfo movementInfo)
         {
             this.characterStats = characterStats;
             this.rigidbody = rigidbody;
             this.movementInfo = movementInfo;
-            jumpForce = characterStats.JumpForce;
-            baseVelocity = characterStats.MoveSpeed;
+           
         }
 
         public void UpdateMovement()

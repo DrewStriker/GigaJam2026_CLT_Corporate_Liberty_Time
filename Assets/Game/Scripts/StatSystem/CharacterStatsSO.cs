@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.StatsSystem
 {
-    [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Game/PlayerConfig")]
+    [CreateAssetMenu(fileName = "Character Stats", menuName = "Character/CharacterStats")]
     public class CharacterStatsSO : ScriptableObject
     {
         [field: SerializeField] public int Heatlh { get; private set; } = 1;
