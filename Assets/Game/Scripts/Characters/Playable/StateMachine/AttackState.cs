@@ -10,6 +10,7 @@ namespace Game.Characters
         public override void OnStateEnter()
         {
             UnityEngine.Debug.Log("Attack State");
+            stateMachine.TryIdleState(this);
         }
 
         public override void OnStateExit()
