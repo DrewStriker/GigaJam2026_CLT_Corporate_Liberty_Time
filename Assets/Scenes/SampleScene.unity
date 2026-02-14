@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
+    m_Bits: 119
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -735,7 +735,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.88, y: 0.37, z: -0.82}
-  m_LocalScale: {x: 4.480589, y: 4.480589, z: 4.480589}
+  m_LocalScale: {x: 1.37572, y: 1.37572, z: 1.37572}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
