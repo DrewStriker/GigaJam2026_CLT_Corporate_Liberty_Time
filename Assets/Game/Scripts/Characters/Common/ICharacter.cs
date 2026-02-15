@@ -1,5 +1,6 @@
 
 using Game.StatsSystem;
+using log4net.Util;
 
 namespace Game.Characters
 {
@@ -7,6 +8,7 @@ namespace Game.Characters
     {
         public AnimationController  AnimationController {get;}
         public CharacterStats characterStats {get;}
+
     }
 }
 

@@ -2,6 +2,7 @@ using System;
 using Game.StatsSystem;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Game.Characters
 {
@@ -14,12 +15,19 @@ namespace Game.Characters
         public AnimationController AnimationController => throw new NotImplementedException();
         public CharacterStats characterStats { get; private set; }
 
+        public log4net.Util.Transform Transform => throw new NotImplementedException();
+
         public event Action OnAttackRange;
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
-            playerTransform = FindAnyObjectByType<PlayerController>().transform;
             characterStats = new CharacterStats(config);
+        }
+
+        [Inject]
+        public void Construct(IPlayableCharacter playableCharacter)
+        {
+            playerTransform = playableCharacter.Transform;
         }
 
         private void Start()

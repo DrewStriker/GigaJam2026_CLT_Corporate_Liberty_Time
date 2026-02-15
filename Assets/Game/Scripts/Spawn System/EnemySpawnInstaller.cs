@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.Characters;
 using UnityEngine;
 using Zenject;
@@ -13,16 +12,6 @@ namespace Game.SpawnSystem
         {
             Container.BindInstance(enemyCatalogRegistry.GenerateDictionary());
             Container.BindFactory<EnemyType, EnemyController, EnemyFactory>().FromMethod(CreateEnemy);
-            //CreateEnemyFunc += CreateEnemy;
-        }
-
-        private void OnEnable()
-        {
-           
-        }
-        private void OnDisable()
-        {
-            //CreateEnemyFunc -= CreateEnemy;
         }
 
         private EnemyController CreateEnemy(DiContainer container, EnemyType type)

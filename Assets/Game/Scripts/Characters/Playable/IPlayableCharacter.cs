@@ -1,4 +1,5 @@
 using Game.Input;
+using UnityEngine;
 
 namespace Game.Characters
 {
@@ -7,6 +8,7 @@ namespace Game.Characters
         public PlayerInputController InputController { get; }
         public PlayableCharacterMovementController MovementController { get; }
         public PlayerStateMachine StateMachine { get; }
+        public Transform Transform { get; }
     }
 }
 

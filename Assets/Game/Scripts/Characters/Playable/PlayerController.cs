@@ -12,11 +12,15 @@ namespace Game.Characters
 
         public AnimationController AnimationController { get; private set; }
         public CharacterStats characterStats { get; private set; }
+
+        public Transform Transform { get; private set; }
+
         [SerializeField] private CharacterStatsSO config;
 
 
         private void Awake()
         {
+            Transform = transform;
             characterStats = new(config);
             AnimationController = new AnimationController(GetComponentInChildren<Animator>());
             InputController = new PlayerInputController();
