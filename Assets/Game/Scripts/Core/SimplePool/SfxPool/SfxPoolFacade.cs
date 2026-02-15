@@ -29,10 +29,10 @@ namespace Game.Core.SimplePool.SfxPool
             return poolObj;
         }
 
-        public void Play(SfxType type, Vector3 pos)
+        public void Play(SfxType type, Vector3 pos, float volume = 1, bool pitchVariation = false)
         {
             var obj = pool.Spawn(runtimePrefab, pos, Quaternion.identity);
-            obj.Play(clips[type]);
+            obj.Play(clips[type], volume, pitchVariation);
         }
     }
 }

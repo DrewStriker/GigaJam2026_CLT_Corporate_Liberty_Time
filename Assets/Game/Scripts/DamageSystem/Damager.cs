@@ -47,7 +47,7 @@ namespace DamageSystem
                 if (!hits[i].TryGetComponent(out IDamageable damageable)) continue;
                 ConfiguraDamageData(hits[i], damage);
                 vfxPoolFacade.Spawn(VfxType.Hit, damageData.AttackerPosition);
-                sfxPoolFacade.Play(SfxType.Hit, damageData.AttackerPosition);
+                sfxPoolFacade.Play(SfxType.Hit, damageData.AttackerPosition, 1, true);
                 damageable.TakeDamage(damageData);
                 OnHit.Invoke(hits[i]);
             }

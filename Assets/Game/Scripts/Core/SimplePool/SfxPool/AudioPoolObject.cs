@@ -27,10 +27,12 @@ namespace Game.Core.SimplePool.SfxPool
             }
         }
 
-        public void Play(AudioClip clip, float volume = 1f)
+        public void Play(AudioClip clip, float volume = 1f, bool pitchVariation = false)
         {
             source.clip = clip;
             source.volume = volume;
+            source.pitch = 1f;
+            source.pitch += pitchVariation ? Random.Range(-0.1f, 0.15f) : 0f;
             source.Play();
 
             endTime = (float)(AudioSettings.dspTime + clip.length);
