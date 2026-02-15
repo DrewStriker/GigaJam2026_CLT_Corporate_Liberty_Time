@@ -10,7 +10,7 @@ namespace Game.CollectableSystem
         public Transform Transform => transform;
 
         public T Type => Type;
-        public void Collect(ICollector<T> collector)
+        public virtual void Collect(ICollector<T> collector)
         {
             collector.Attach(this);
         }
