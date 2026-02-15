@@ -25,7 +25,7 @@ namespace Game.StatsSystem
         {
             MaxHealth = characterStatSo.Heatlh;
             CurrentHealth = MaxHealth;
-            MoveSpeed = characterStatSo.Heatlh;
+            MoveSpeed = characterStatSo.Speed;
             JumpForce = characterStatSo.JumpForce;
         }
 

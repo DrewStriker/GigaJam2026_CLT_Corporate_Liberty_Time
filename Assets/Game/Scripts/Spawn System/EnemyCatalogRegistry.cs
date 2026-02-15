@@ -7,12 +7,11 @@ namespace Game.SpawnSystem
     [Serializable]
     public class EnemyCatalogRegistry
     {
-        public Dictionary<EnemyType, EnemyController> dictionary = new Dictionary<EnemyType, EnemyController>();
-        [field:SerializeField] public List<EnemyCatalog> EnemyCatalogs = new List<EnemyCatalog>();
+        [SerializeField] public List<EnemyCatalog> EnemyCatalogs;
 
         public Dictionary<EnemyType, EnemyController> GenerateDictionary()
         {
-            dictionary.Clear();
+            Dictionary<EnemyType, EnemyController> dictionary = new ();
             foreach (var catalog in EnemyCatalogs)
             {
                 dictionary.Add(catalog.EnemyType, catalog.EnemyPrefab);

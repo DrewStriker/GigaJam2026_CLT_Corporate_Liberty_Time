@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Character Config
   m_EditorClassIdentifier: Characters::Game.Characters.PlayerConfig
   <Heatlh>k__BackingField: 1
-  <Speed>k__BackingField: 400
+  <Speed>k__BackingField: 200
   <JumpForce>k__BackingField: 8
