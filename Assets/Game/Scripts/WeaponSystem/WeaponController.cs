@@ -23,7 +23,7 @@ namespace Game.WeaponSystem
                .SetLoops(-1,LoopType.Yoyo)
                .SetEase(Ease.InOutSine);
            renderer.DoColor(
-                   ShaderProperties.OverlayColor,Color.white,
+                   ShaderProperties.OverlayColor,new Color(1,1,1,0.3f),
                    floatingDuration/3)
                .SetLoops(-1,LoopType.Yoyo)
                .SetEase(Ease.InOutSine);

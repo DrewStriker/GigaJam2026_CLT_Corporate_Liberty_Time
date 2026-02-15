@@ -1763,6 +1763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 2163131496490204110, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fd03afce4f041c4d8cf72d4c0ef90a8, type: 2}
     - target: {fileID: 5270767993846762842, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.17
