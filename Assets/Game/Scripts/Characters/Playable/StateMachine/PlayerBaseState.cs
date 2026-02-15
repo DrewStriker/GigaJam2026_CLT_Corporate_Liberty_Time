@@ -5,7 +5,8 @@ namespace Game.Characters
     {
         protected readonly IPlayableCharacter character;
         protected readonly new PlayerStateMachine stateMachine;
-        protected AnimationController AnimationController => character.AnimationController;
+       protected AnimationController AnimationController => character.AnimationController;
+        protected PlayableCharacterMovementController MovementController => character.MovementController;
 
         public PlayerBaseState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine)
         {

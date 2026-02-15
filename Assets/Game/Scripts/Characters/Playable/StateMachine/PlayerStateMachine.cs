@@ -15,16 +15,7 @@ namespace Game.Characters
             stateFactory = new PlayerStateFactory(this, character);
             CurrentState = stateFactory.IdleState;
         }
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
-        public override void Update()
-        {
-            base.Update();
-        }
-
+       
         private bool IsValidState(BaseState callingState)
         {
             return callingState == CurrentState;

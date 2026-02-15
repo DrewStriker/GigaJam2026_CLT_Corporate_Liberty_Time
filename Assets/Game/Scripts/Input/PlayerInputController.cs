@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Game.Input
 {
     public enum InputType { InGame, UI }
    
-    public class PlayerInputController : IMovementInfo
+    public class PlayerInputController : IMovementInfo, ITickable, IDisposable
     {
         public InputAction Jump { get; private set; }
         public InputAction Movement { get; private set; }
@@ -16,12 +18,13 @@ namespace Game.Input
 
 
         private PlayerInput playerInput;
-        private Vector2 movementValue;
+        private InputAction movementAction;
 
         public PlayerInputController()
         {
             playerInput = new PlayerInput();
             Initialize();
+            movementAction = playerInput.FindAction("Movement");
         }
 
         private void Initialize()
@@ -38,15 +41,22 @@ namespace Game.Input
         private void AssignInputEvents()
         {
             Movement.performed += OnMovementPerformed;
+            Movement.canceled += OnMovementPerformed;
         }
         private void UnassignInputEvents()
         {
             Movement.performed -= OnMovementPerformed;
+            Movement.canceled -= OnMovementPerformed;
         }
 
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
             Direction = context.ReadValue<Vector2>();
+            // Debug.Log(Mathf.Abs((Direction.magnitude)));
+        }
+        public void Tick()
+        {
+            Direction =movementAction.ReadValue<Vector2>();
         }
 
         public void EnableInput(InputType inputType)
@@ -66,7 +76,27 @@ namespace Game.Input
 
         ~PlayerInputController()
         {
-            UnassignInputEvents();
+            Dispose(false);
+        }
+
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                playerInput?.Dispose();
+                movementAction?.Dispose();
+                Jump?.Dispose();
+                Movement?.Dispose();
+                Attack?.Dispose();
+                Interact?.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

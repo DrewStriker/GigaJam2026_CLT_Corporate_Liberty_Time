@@ -15,10 +15,12 @@ namespace Game.Characters
 
         public AnimationController AnimationController => throw new NotImplementedException();
         public CharacterStats characterStats { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
 
         public event Action OnAttackRange;
         private void Awake()
         {
+            Rigidbody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponent<NavMeshAgent>();
             characterStats = new CharacterStats(config);
         }

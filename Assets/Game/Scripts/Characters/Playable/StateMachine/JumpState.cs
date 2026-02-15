@@ -9,11 +9,13 @@ namespace Game.Characters
         public override void OnStateEnter()
         {
             stateMachine.PlayerMovementController.Jump();
+            AnimationController.Play(Animation.Jump);
             UnityEngine.Debug.Log("Jump State");
         }
 
         public override void OnStateExit()
-        {
+        {           
+
         }
         public override void FixedUpdate()
         {
@@ -24,6 +26,7 @@ namespace Game.Characters
         {
             stateMachine.TryIdleState(this);
             stateMachine.TryMovementState(this);
+            stateMachine.TryAttackState(this);
         }
     }
 }

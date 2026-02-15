@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac96be37dae3bc4b86459a9b70ad326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.EnemyController
-  config: {fileID: 11400000, guid: 7450deb84b9bfd841b787a332411c658, type: 2}
+  config: {fileID: 11400000, guid: 395c4d242eea339419b49b638e4eaa67, type: 2}
 --- !u!195 &3460817565018568574
 NavMeshAgent:
   m_ObjectHideFlags: 0

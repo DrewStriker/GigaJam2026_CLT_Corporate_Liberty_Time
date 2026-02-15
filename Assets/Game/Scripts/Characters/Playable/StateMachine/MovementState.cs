@@ -25,6 +25,8 @@ namespace Game.Characters
 
         public override void Update()
         {
+            character.UpdateBaseAnimation();
+            if(character.Rigidbody.linearVelocity. y > 0) return;
             stateMachine.TryAttackState(this);
             stateMachine.TryIdleState(this);
             stateMachine.TryJumpState(this);
