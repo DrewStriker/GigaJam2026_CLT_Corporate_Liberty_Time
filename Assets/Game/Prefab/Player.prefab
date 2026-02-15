@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 7450deb84b9bfd841b787a332411c658, type: 2}
+  handTransform: {fileID: 7497997044891191896}
 --- !u!114 &2036189989350134849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +209,8 @@ CapsuleCollider:
   m_Height: 1.71
   m_Direction: 1
   m_Center: {x: 0, y: 0.82, z: 0}
+--- !u!4 &7497997044891191896 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+  m_PrefabInstance: {fileID: 729319913023884466}
+  m_PrefabAsset: {fileID: 0}

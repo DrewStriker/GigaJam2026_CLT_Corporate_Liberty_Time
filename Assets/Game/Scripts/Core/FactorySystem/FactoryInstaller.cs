@@ -4,7 +4,7 @@ using Game.Core.FactorySystem;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Core
+namespace Game.Core.FactorySystem
 {
     public abstract class FactoryInstaller<TKey, TContract> : MonoInstaller
         where TKey : Enum

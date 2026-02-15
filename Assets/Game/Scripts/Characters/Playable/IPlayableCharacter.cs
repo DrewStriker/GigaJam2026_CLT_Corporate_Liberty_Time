@@ -1,11 +1,13 @@
 using DamageSystem;
+using Game.CollectableSystem;
 using Game.Input;
+using Game.WeaponSystem;
 using UnityEngine;
 using Zenject;
 
 namespace Game.Characters
 {
-    public interface IPlayableCharacter : ICharacter
+    public interface IPlayableCharacter : ICharacter, ICollector<WeaponType>
     {
         [Inject]  public PlayerInputController InputController { get; }
        public PlayableCharacterMovementController MovementController { get; }

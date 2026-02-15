@@ -1,13 +1,17 @@
 using DamageSystem;
+using Game.CollectableSystem;
 using Game.StatsSystem;
+using Game.WeaponSystem;
 using UnityEngine;
 using Zenject;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Game.Characters
 {
     using Game.Input;
     public class PlayerController : CharacterBase, IPlayableCharacter
     {
+        [SerializeField] private Transform handTransform;
        [Inject]  public PlayerInputController InputController { get; private set; }
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
@@ -62,6 +66,14 @@ namespace Game.Characters
             direction.y = 0;
             Rigidbody.AddForce(direction*7, ForceMode.Impulse);
             
+        }
+
+        public void Attach(ICollectable<WeaponType> item)
+        {
+            item.Transform.SetParent(handTransform);
+            item.Transform.localPosition = Vector3.zero;
+            item.Transform.rotation = Quaternion.identity;
+
         }
     }
 }

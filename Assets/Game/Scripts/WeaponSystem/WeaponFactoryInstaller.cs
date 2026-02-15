@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Game.Core;
-using UnityEngine;
+﻿using Game.Core.FactorySystem;
 
 namespace Game.WeaponSystem
 {
