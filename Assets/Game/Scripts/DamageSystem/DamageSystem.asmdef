@@ -2,7 +2,8 @@
     "name": "DamageSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:eb3feebaba313924a81c13441a72fd32"
+        "GUID:eb3feebaba313924a81c13441a72fd32",
+        "GUID:52f1d1a5995b45a9a577044c3a5665ac"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,5 +1,6 @@
 ﻿using System;
 using Game.Core;
+using Game.Core.SimplePool;
 using UnityEngine;
 
 namespace DamageSystem
@@ -23,17 +24,24 @@ namespace DamageSystem
                 QueryTriggerInteraction.Ignore);
 
             if (hitCount == 0) return;
-            damageData.Configure(damage, transform.position);
-            
             for (int i = 0; i < hitCount; i++)
             {
                 if(hits[i].gameObject == this.gameObject) continue;
                 if(!hits[i].TryGetComponent(out IDamageable damageable)) continue;
+                ConfiguraDamageData(hits[i], damage);
+                //TODO: refact
+                FindAnyObjectByType<SimpleObjectPool>().Spawn(damageData.AttackerPosition, Quaternion.identity);
                 damageable.TakeDamage(damageData);
                 OnHit.Invoke(hits[i]);
             }
             
 
+        }
+
+        private void ConfiguraDamageData(Collider collider, int damage)
+        {
+            var position = collider.ClosestPoint(bounds.center);
+            damageData.Configure(damage,position);
         }
         
         
