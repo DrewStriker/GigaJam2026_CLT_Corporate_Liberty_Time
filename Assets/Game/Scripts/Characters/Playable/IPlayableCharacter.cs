@@ -2,12 +2,13 @@ using Codice.Client.BaseCommands.Merge.Xml;
 using DamageSystem;
 using Game.CollectableSystem;
 using Game.Input;
+using Game.WeaponSystem;
 using UnityEngine;
 using Zenject;
 
 namespace Game.Characters
 {
-    public interface IPlayableCharacter : ICharacter, IWeaponCollector, ICollector<ItemType>
+    public interface IPlayableCharacter : ICharacter, ICollector<WeaponType>, ICollector<ItemType>
     {
         [Inject] public PlayerInputController InputController { get; }
         public PlayableCharacterMovementController MovementController { get; }

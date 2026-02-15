@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8395399243216348184}
   - component: {fileID: 3942100052182346682}
   - component: {fileID: 3490726285555827231}
+  - component: {fileID: 8634442239832702567}
   - component: {fileID: 7873089516612011846}
   m_Layer: 0
   m_Name: GameplayInstaller
@@ -55,6 +56,7 @@ MonoBehaviour:
   - {fileID: 6475312043561205969}
   - {fileID: 8395399243216348184}
   - {fileID: 3490726285555827231}
+  - {fileID: 8634442239832702567}
   - {fileID: 7873089516612011846}
   _installerPrefabs: []
   _autoRun: 1
@@ -134,7 +136,23 @@ MonoBehaviour:
   registry:
     catalogs:
     - <Type>k__BackingField: 0
-      <Prefab>k__BackingField: {fileID: 5594125327480320469, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
+      <Prefab>k__BackingField: {fileID: 8083547492350433764, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
+--- !u!114 &8634442239832702567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda80c7b366c4c6eb6ff748c84ae0d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ItemSystem::Game.ItemSystem.ItemFactoryInstaller
+  registry:
+    catalogs:
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 3002472621197512731, guid: 4dcff5431113ae84b87a02088c1d1794, type: 3}
 --- !u!114 &7873089516612011846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f26809bb6d74a9da4a801094b85358f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SimplePool::Game.Core.SimplePool.PoolInstaller
-  initialPoolSize: 10
+  initialPoolSize: 5
   visualFxRegistry:
     catalogs:
     - <Type>k__BackingField: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8083547492350433764}
   - component: {fileID: 8976180595779872798}
   m_Layer: 7
-  m_Name: Weapon 1
+  m_Name: Weapon wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
