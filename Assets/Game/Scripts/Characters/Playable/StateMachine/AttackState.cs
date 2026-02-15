@@ -1,21 +1,30 @@
 
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Game.Characters
 {
     public class AttackState : PlayerBaseState
     {
+        private const int MaxAtkIndex = 2;
+        private int attackIndex = 0;
 
+        private int GetNextIndex()
+        {
+            attackIndex = (attackIndex % MaxAtkIndex) + 1;
+            return attackIndex;
+        }
+        
         public AttackState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
         {
         }
 
         public override void OnStateEnter()
         {
-            AnimationController.Play(Animation.Attack2,0,1);
+            PlayCurrentAnimation();
             WaitToReturn().Forget();
         }
-
+        
         public override void OnStateExit()
         {
         }
@@ -35,7 +44,17 @@ namespace Game.Characters
             stateMachine.TryIdleState(this);
             stateMachine.TryMovementState(this);
             
-  
         }
+        
+        
+        private void PlayCurrentAnimation()
+        {
+            var index = GetNextIndex();
+            Debug.Log(index);
+            var nextAnim = index == 1 ? Animation.Attack1 : Animation.Attack2;        
+            AnimationController.Play(nextAnim,0,1);
+
+        }
+
     }
 }
