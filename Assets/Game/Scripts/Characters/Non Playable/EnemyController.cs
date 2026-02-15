@@ -72,6 +72,7 @@ namespace Game.Characters
         protected  override  async void Die()
         {
             base.Die();
+            navMeshAgent.enabled = false;
             AnimationController.Play(Animation.Death, 0.1f,2);
             await UniTask.Delay(2000);
             gameObject.SetActive(false);

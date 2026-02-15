@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3301034338485008876, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ed6d47c903fa604bb98c64f65fd7044, type: 2}
     - target: {fileID: 5030703547944760151, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
       propertyPath: m_Name
       value: Enemy Basic 2 Variant

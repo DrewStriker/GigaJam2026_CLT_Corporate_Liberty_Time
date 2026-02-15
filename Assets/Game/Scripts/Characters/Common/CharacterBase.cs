@@ -57,6 +57,7 @@ namespace Game.Characters
         protected virtual void Die()
         {
             Collider.enabled = false;
+            Rigidbody.isKinematic = true;
             Rigidbody.linearVelocity = Vector3.zero;
            
         }
