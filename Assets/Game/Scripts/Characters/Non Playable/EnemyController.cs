@@ -8,24 +8,17 @@ using Zenject;
 
 namespace Game.Characters
 {
-    public class EnemyController : MonoBehaviour, ICharacter
+    public class EnemyController : CharacterBase
     {
-        [SerializeField] private CharacterStatsSO config;
         private Transform playerTransform => playableCharacter.Transform;
         [Inject]private IPlayableCharacter playableCharacter;
         private NavMeshAgent navMeshAgent;
-
-        public AnimationController AnimationController { get; private set; }
-        public CharacterStats characterStats { get; private set; }
-        public Rigidbody Rigidbody { get; private set; }
-
+        
         public event Action OnAttackRange;
-        private void Awake()
+        protected override void Awake()
         {
-            Rigidbody = GetComponent<Rigidbody>();
+            base.Awake();
             navMeshAgent = GetComponent<NavMeshAgent>();
-            characterStats = new CharacterStats(config);
-            AnimationController = new AnimationController(GetComponentInChildren<Animator>());
         }
         
 
@@ -36,7 +29,7 @@ namespace Game.Characters
 
         private void Initialize()
         {
-            navMeshAgent.speed = config.Speed;
+            navMeshAgent.speed = characterStats.MoveSpeed;
             AnimationController.Play(Animation.Run);
         }
 
@@ -77,6 +70,11 @@ namespace Game.Characters
         public void TakeDamage(int damage)
         {
             characterStats.DecreaseHealth(damage);
+        }
+
+        protected override void Die()
+        {
+            Destroy(gameObject);
         }
     }
 }
