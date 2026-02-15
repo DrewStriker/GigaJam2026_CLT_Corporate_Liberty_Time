@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0814db621680598429d6bf5df0805c96, type: 3}
   m_Name: SpawnConfig
   m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.SpawnConfig
-  <Rank0Config>k__BackingField: {fileID: 0}
-  <Rank1Config>k__BackingField: {fileID: 0}
-  <Rank2Config>k__BackingField: {fileID: 0}
-  <Rank3Config>k__BackingField: {fileID: 0}
-  <Rank4Config>k__BackingField: {fileID: 0}
-  <Rank5Config>k__BackingField: {fileID: 0}
-  <Rank6Config>k__BackingField: {fileID: 0}
+  <Rank0Config>k__BackingField: {fileID: 11400000, guid: 96890f33abfa87048b26d24e6299b6cd, type: 2}
+  <Rank1Config>k__BackingField: {fileID: 11400000, guid: bc639cc7687d2de46a8a10e12ff2c986, type: 2}
+  <Rank2Config>k__BackingField: {fileID: 11400000, guid: e1642f7fef8736c4f977ac0e534371d4, type: 2}
+  <Rank3Config>k__BackingField: {fileID: 11400000, guid: 72961456e721f0a4dbe02f1789fa2927, type: 2}
+  <Rank4Config>k__BackingField: {fileID: 11400000, guid: a94524ee512865646abadb39e9ddc660, type: 2}
+  <Rank5Config>k__BackingField: {fileID: 11400000, guid: 0720e91713bc0bd41b3eb5d527d26507, type: 2}
+  <Rank6Config>k__BackingField: {fileID: 11400000, guid: 396a7e1980971084f896a7325182487c, type: 2}

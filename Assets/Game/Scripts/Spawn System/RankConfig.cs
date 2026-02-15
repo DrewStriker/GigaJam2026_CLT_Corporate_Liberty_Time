@@ -7,5 +7,15 @@ namespace Game.SpawnSystem
     {
         [field:SerializeField] public EnemyData[] Enemies { get; private set; }
         [field:SerializeField] public float SpawnInterval { get; private set; }
+
+        public float TotalSpawnChance()
+        {
+            float total = 0f;
+            foreach (var enemy in Enemies)
+            {
+                total += enemy.SpawnChance;
+            }
+            return total;
+        }
     }
 }

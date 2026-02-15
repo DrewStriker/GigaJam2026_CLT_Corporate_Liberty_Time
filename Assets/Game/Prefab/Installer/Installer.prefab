@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8981857358159118476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923642722345913678}
+  - component: {fileID: 6847190957512440169}
+  - component: {fileID: 6637402059641166641}
+  - component: {fileID: 6047602490104057225}
+  - component: {fileID: 8042595399703168310}
+  m_Layer: 0
+  m_Name: Installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923642722345913678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981857358159118476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.76, y: 2.31, z: -4.98034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6847190957512440169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981857358159118476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Zenject::Zenject.SceneContext
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 6047602490104057225}
+  - {fileID: 6637402059641166641}
+  - {fileID: 8042595399703168310}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!114 &6637402059641166641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981857358159118476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f983dcafef71a684abdc9e315ee5acfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.EnemySpawnInstaller
+  enemyCatalogRegistry:
+    EnemyCatalogs:
+    - <EnemyPrefab>k__BackingField: {fileID: 5331832094785785327, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
+      <EnemyType>k__BackingField: 0
+    - <EnemyPrefab>k__BackingField: {fileID: 8073730505282056659, guid: 5baaa0809ed490f468a365ff7497717b, type: 3}
+      <EnemyType>k__BackingField: 1
+    - <EnemyPrefab>k__BackingField: {fileID: 4254113749800935350, guid: 05081ef03898fa54982ac1a71d84cd92, type: 3}
+      <EnemyType>k__BackingField: 2
+    - <EnemyPrefab>k__BackingField: {fileID: 1876214085429358429, guid: c72dd04624421cb4783190cf97949de2, type: 3}
+      <EnemyType>k__BackingField: 3
+--- !u!114 &6047602490104057225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981857358159118476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9356b50053db61649951f1b14eafa31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Characters::Game.Characters.PlayerInstaller
+  _playerController: {fileID: 0}
+--- !u!114 &8042595399703168310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981857358159118476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e4eca6c6193544a8358aef0025863b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RankSystem::Game.RankSystem.RankInstaller
