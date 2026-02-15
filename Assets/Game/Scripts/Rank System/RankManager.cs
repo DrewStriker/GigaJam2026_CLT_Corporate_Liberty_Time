@@ -6,7 +6,7 @@ namespace Game.RankSystem
 {
     public class RankManager : MonoBehaviour
     {
-        [SerializeField] private RankConfig rankConfig;
+        [SerializeField] private RankUpConfig rankUpConfig;
         public int CurrentRank { get; private set; }
         public float RankProgress { get; private set; }
 
@@ -19,12 +19,12 @@ namespace Game.RankSystem
         private void Start()
         {
             pointsRequirementQueue = new Queue<float>();
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank1);
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank2);
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank3);
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank4);
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank5);
-            pointsRequirementQueue.Enqueue(rankConfig.PointsToRank6);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank1);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank2);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank3);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank4);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank5);
+            pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank6);
 
             pointsToRankUp = pointsRequirementQueue.Dequeue();
         }
