@@ -3,6 +3,6 @@
 
     public interface IDamageable
     {
-        void TakeDamage(int damage);
+        void TakeDamage(DamageData damageData);
     }
 }

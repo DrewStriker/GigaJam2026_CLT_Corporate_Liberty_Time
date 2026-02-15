@@ -43,14 +43,26 @@ namespace Game.Characters
             AnimationController.SetFloat(AnimationParameter.VelocityH,moveDirection );
         }
         
+        public override void TakeDamage(DamageData damageData)
+        {
+            base.TakeDamage(damageData);
+            Knockback(damageData.AttackerPosition);
+        }
+        
         protected override void Die()
         {
             base.Die();
             Debug.Log("Player Died");
         }
 
-
-
+        private void Knockback(Vector3 position)
+        {
+            
+            Vector3 direction = (transform.position - position).normalized;
+            direction.y = 0;
+            Rigidbody.AddForce(direction*7, ForceMode.Impulse);
+            
+        }
     }
 }
 

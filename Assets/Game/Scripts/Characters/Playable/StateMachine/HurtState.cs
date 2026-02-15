@@ -21,7 +21,7 @@ namespace Game.Characters
 
         public override void FixedUpdate()
         {
-            MovementController.UpdateMovement();
+            // MovementController.UpdateMovement();
             
         }
 
@@ -34,7 +34,7 @@ namespace Game.Characters
         
         private async UniTask WaitToReturn()
         {
-            await UniTask.Delay(700);
+            await UniTask.Delay(500);
             stateMachine.TryIdleState(this);
             stateMachine.TryMovementState(this);
         }

@@ -14,6 +14,7 @@ namespace Game.Characters
         private Transform playerTransform => playableCharacter.Transform;
         [Inject]private IPlayableCharacter playableCharacter;
         private NavMeshAgent navMeshAgent;
+        private DamageData damageData = new();
         
         public event Action OnAttackRange;
         protected override void Awake()
@@ -45,7 +46,8 @@ namespace Game.Characters
             {
                 if(other.gameObject.TryGetComponent(out IDamageable damageable))
                 {
-                    damageable.TakeDamage(1);
+                    damageData.Configure(1, transform.position);
+                    damageable.TakeDamage(damageData);
                 }
             }
         }
@@ -77,6 +79,8 @@ namespace Game.Characters
             await UniTask.Delay(2000);
             gameObject.SetActive(false);
         }
+
+    
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using DamageSystem;
+using DG.Tweening;
 using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
@@ -28,10 +29,9 @@ namespace Game.Characters
 
         
         
-        public void TakeDamage(int damage)
+        public virtual  void TakeDamage(DamageData damageData)
         {
-            Debug.Log("damaged: "+gameObject.name);
-            characterStats.DecreaseHealth(damage);
+            characterStats.DecreaseHealth(damageData.Damage);
             if (characterStats.CurrentHealth <= 0)
             {
                 Die();
@@ -62,6 +62,9 @@ namespace Game.Characters
            
         }
 
-        
+
+
+
+
     }
 }
