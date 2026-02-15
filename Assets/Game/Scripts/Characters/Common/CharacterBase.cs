@@ -32,13 +32,10 @@ namespace Game.Characters
         public virtual  void TakeDamage(DamageData damageData)
         {
             characterStats.DecreaseHealth(damageData.Damage);
+            HurtBlink();
             if (characterStats.CurrentHealth <= 0)
             {
                 Die();
-            }
-            else
-            {
-                HurtBlink();
             }
         }
 

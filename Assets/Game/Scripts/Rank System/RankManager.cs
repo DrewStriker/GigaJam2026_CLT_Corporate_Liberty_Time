@@ -30,9 +30,9 @@ namespace Game.RankSystem
         }
 
 
-        private void Update()
+        private void OnGUI()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (GUI.Button(new Rect(20, 20, 100, 50), "Add Points"))
             {
                 IncreasePoints(100f);
             }
