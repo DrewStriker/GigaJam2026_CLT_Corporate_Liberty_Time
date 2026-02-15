@@ -9,7 +9,7 @@ namespace Game.Core.SimplePool.SfxPool
     {
         private readonly Dictionary<SfxType, AudioClip> clips;
 
-        private readonly AudioSourcePool runtimePrefab;
+        private readonly AudioPoolObject runtimePrefab;
 
         [Inject] private IPoolManager<PoolObject> pool;
 
@@ -19,11 +19,11 @@ namespace Game.Core.SimplePool.SfxPool
             runtimePrefab = CreateRuntimePrefab();
         }
 
-        private AudioSourcePool CreateRuntimePrefab()
+        private AudioPoolObject CreateRuntimePrefab()
         {
             var go = new GameObject("audioPoolPrefab");
             var audio = go.AddComponent<AudioSource>();
-            var poolObj = go.AddComponent<AudioSourcePool>();
+            var poolObj = go.AddComponent<AudioPoolObject>();
 
             go.SetActive(false);
             return poolObj;
