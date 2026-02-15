@@ -8,6 +8,8 @@ namespace Game.Characters
         public PlayerBaseState JumpState { get; private set; }
         public PlayerBaseState AttackState { get; private set; }
         public PlayerBaseState InteractState { get; private set; }
+        public PlayerBaseState HurtState { get; private set; }
+        public PlayerBaseState DeathState { get; private set; }
 
         public PlayerStateFactory(PlayerStateMachine stateMachine, IPlayableCharacter character)
         {
@@ -16,7 +18,10 @@ namespace Game.Characters
             JumpState = new JumpState(stateMachine, character);
             AttackState = new AttackState(stateMachine, character);
             InteractState = new InteractState(stateMachine, character);
+            HurtState = new HurtState(stateMachine, character);
+            DeathState = new DeathState(stateMachine, character);
         }
+        
     }
 }
 

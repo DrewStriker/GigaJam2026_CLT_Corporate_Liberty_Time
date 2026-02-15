@@ -1,4 +1,6 @@
 using System;
+using DamageSystem;
+using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,7 +15,7 @@ namespace Game.Characters
         [Inject]private IPlayableCharacter playableCharacter;
         private NavMeshAgent navMeshAgent;
 
-        public AnimationController AnimationController => throw new NotImplementedException();
+        public AnimationController AnimationController { get; private set; }
         public CharacterStats characterStats { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
 
@@ -23,7 +25,9 @@ namespace Game.Characters
             Rigidbody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponent<NavMeshAgent>();
             characterStats = new CharacterStats(config);
+            AnimationController = new AnimationController(GetComponentInChildren<Animator>());
         }
+        
 
         private void Start()
         {
@@ -33,11 +37,23 @@ namespace Game.Characters
         private void Initialize()
         {
             navMeshAgent.speed = config.Speed;
+            AnimationController.Play(Animation.Run);
         }
 
         private void Update()
         {
             ChasePlayer();
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag(Tags.Player))
+            {
+                if(other.gameObject.TryGetComponent(out IDamageable damageable))
+                {
+                    damageable.TakeDamage(1);
+                }
+            }
         }
 
         private void ChasePlayer()
@@ -56,6 +72,11 @@ namespace Game.Characters
         {
             navMeshAgent.isStopped = true;
             OnAttackRange?.Invoke();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            characterStats.DecreaseHealth(damage);
         }
     }
 }

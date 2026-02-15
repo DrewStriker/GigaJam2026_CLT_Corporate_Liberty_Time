@@ -50,7 +50,6 @@ namespace Game.Characters
         private void PlayCurrentAnimation()
         {
             var index = GetNextIndex();
-            Debug.Log(index);
             var nextAnim = index == 1 ? Animation.Attack1 : Animation.Attack2;        
             AnimationController.Play(nextAnim,0,1);
 

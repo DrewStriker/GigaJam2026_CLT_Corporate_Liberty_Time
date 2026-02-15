@@ -14,13 +14,6 @@ namespace Game.StatsSystem
         public event Action<float> OnHealthChanged;
         public event Action<float> OnMoveSpeedChanged;
 
-        // public CharacterStats(float maxHealth, float moveSpeed)
-        // {
-        //     MaxHealth = maxHealth;
-        //     CurrentHealth = MaxHealth;
-        //     MoveSpeed = moveSpeed;
-        // }
-
         public CharacterStats(CharacterStatsSO characterStatSo)
         {
             MaxHealth = characterStatSo.Heatlh;
@@ -29,7 +22,7 @@ namespace Game.StatsSystem
             JumpForce = characterStatSo.JumpForce;
         }
 
-        public void ChangeHealth(float amount)
+        public void DecreaseHealth(float amount)
         {
             float newValue = CurrentHealth - amount;
             if (!Mathf.Approximately(newValue, CurrentHealth))
@@ -38,6 +31,7 @@ namespace Game.StatsSystem
                 OnHealthChanged?.Invoke(CurrentHealth);
             }
         }
+        
 
        
         

@@ -20,6 +20,7 @@ namespace Game.Characters
         }
         public override void FixedUpdate()
         {
+            character.UpdateBaseAnimation();
         }
 
         public override void Update()

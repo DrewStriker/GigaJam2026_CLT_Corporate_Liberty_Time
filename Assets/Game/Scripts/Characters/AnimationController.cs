@@ -12,6 +12,8 @@ namespace Game.Characters
         public static readonly int Attack2 = Animator.StringToHash("Attack2");
         public static readonly int isJumping = Animator.StringToHash("isJumping");
         public static readonly int velocityH = Animator.StringToHash("velocityH");
+        public static readonly int Hurt = Animator.StringToHash("Hurt");
+        public static readonly int Death = Animator.StringToHash("Death");
         //...
     }
     
@@ -23,6 +25,8 @@ namespace Game.Characters
         public static readonly Animation Jump  = new(AnimHash.Jump);
         public static readonly Animation Attack1 = new(AnimHash.Attack1);
         public static readonly Animation Attack2 = new(AnimHash.Attack2);
+        public static readonly Animation Hurt = new(AnimHash.Hurt);
+        public static readonly Animation Death = new(AnimHash.Death);
 
         public readonly int Hash { get;  }
         private Animation(int hash)

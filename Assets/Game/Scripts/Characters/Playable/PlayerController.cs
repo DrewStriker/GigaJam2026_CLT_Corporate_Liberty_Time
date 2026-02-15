@@ -50,7 +50,12 @@ namespace Game.Characters
             float moveDirection = Mathf.Abs(InputController.Direction.sqrMagnitude);
             AnimationController.SetFloat(AnimationParameter.VelocityH,moveDirection );
         }
-        
+
+        public void TakeDamage(int damage)
+        {
+            Debug.Log("taking player damage");
+            characterStats.DecreaseHealth(damage);
+        }
     }
 }
 

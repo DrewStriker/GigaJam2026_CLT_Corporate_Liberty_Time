@@ -1,21 +1,28 @@
 
+using System;
+
 namespace Game.Characters
 {
     using Game.Input;
-    public class PlayerStateMachine : StateMachine
+    public class PlayerStateMachine : StateMachine, IDisposable
     {
+        private IPlayableCharacter Character;
         private PlayerStateFactory stateFactory;
         private PlayerInputController playerInputController;
         public PlayableCharacterMovementController PlayerMovementController { get; private set; }
         public PlayerStateMachine(IPlayableCharacter character)
         {
+            this.Character = character;
             playerInputController = character.InputController;
             PlayerMovementController = character.MovementController;
 
             stateFactory = new PlayerStateFactory(this, character);
             CurrentState = stateFactory.IdleState;
+            character.characterStats.OnHealthChanged += OnHealthChanged;
         }
-       
+
+  
+
         private bool IsValidState(BaseState callingState)
         {
             return callingState == CurrentState;
@@ -71,6 +78,21 @@ namespace Game.Characters
             CurrentState.OnStateExit();
             CurrentState = state;
             CurrentState.OnStateEnter();
+        }
+
+        private void OnHealthChanged(float value)
+        {
+            if (value ==0) 
+                SwitchState(stateFactory.DeathState);
+            else 
+                SwitchState(stateFactory.HurtState);
+            
+        }
+        public void Dispose()
+        {
+            playerInputController?.Dispose();
+            Character.characterStats.OnHealthChanged -= OnHealthChanged;
+           
         }
     }
 }
