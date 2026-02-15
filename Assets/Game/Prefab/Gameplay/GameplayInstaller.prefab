@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2801290507128602273}
   - component: {fileID: 234130634198334231}
-  - component: {fileID: 7340009031126937279}
   - component: {fileID: 6475312043561205969}
   - component: {fileID: 8395399243216348184}
+  - component: {fileID: 3942100052182346682}
+  - component: {fileID: 3490726285555827231}
   m_Layer: 0
   m_Name: GameplayInstaller
   m_TagString: Untagged
@@ -49,9 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Zenject::Zenject.SceneContext
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 7340009031126937279}
+  - {fileID: 3942100052182346682}
   - {fileID: 6475312043561205969}
   - {fileID: 8395399243216348184}
+  - {fileID: 3490726285555827231}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -69,28 +71,6 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
---- !u!114 &7340009031126937279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961836753165177990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f983dcafef71a684abdc9e315ee5acfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.EnemySpawnInstaller
-  enemyCatalogRegistry:
-    EnemyCatalogs:
-    - <EnemyPrefab>k__BackingField: {fileID: 3301034338485008876, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
-      <EnemyType>k__BackingField: 0
-    - <EnemyPrefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
-      <EnemyType>k__BackingField: 1
-    - <EnemyPrefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
-      <EnemyType>k__BackingField: 2
-    - <EnemyPrefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
-      <EnemyType>k__BackingField: 3
 --- !u!114 &6475312043561205969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9356b50053db61649951f1b14eafa31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.PlayerInstaller
-  _playerController: {fileID: 0}
 --- !u!114 &8395399243216348184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +95,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e4eca6c6193544a8358aef0025863b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RankSystem::Game.RankSystem.RankInstaller
+--- !u!114 &3942100052182346682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f983dcafef71a684abdc9e315ee5acfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.EnemySpawnInstaller
+  registry:
+    catalogs:
+    - <Prefab>k__BackingField: {fileID: 3301034338485008876, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
+      <Type>k__BackingField: 0
+    - <Prefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
+      <Type>k__BackingField: 1
+--- !u!114 &3490726285555827231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5d2e1ed8d448afb5f79b3da5f0ec5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WeaponSystem::Game.WeaponSystem.WeaponFactoryInstaller
+  registry:
+    catalogs:
+    - <Prefab>k__BackingField: {fileID: 0}
+      <Type>k__BackingField: 0

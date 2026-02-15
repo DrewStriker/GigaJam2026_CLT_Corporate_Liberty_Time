@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
-using Game.Characters;
+﻿using System;
+using System.Collections.Generic;
+using Game.Core.FactorySystem;
 using UnityEngine;
 using Zenject;
 
-namespace Game.SpawnSystem
+namespace Game.Core
 {
     public abstract class FactoryInstaller<TKey, TContract> : MonoInstaller
-        where TContract : Component
+        where TKey : Enum
+         where
+        TContract : MonoBehaviour
     {
-        protected abstract Dictionary<TKey, TContract> BuildDictionary();
+        [SerializeField] 
+        private CatalogRegistry<Catalog<TKey, TContract>, TKey, TContract> registry;
 
+        protected Dictionary<TKey, TContract> BuildDictionary() => registry.GenerateDictionary();
         public override void InstallBindings()
         {
             Container.BindInstance(BuildDictionary()).AsSingle();
