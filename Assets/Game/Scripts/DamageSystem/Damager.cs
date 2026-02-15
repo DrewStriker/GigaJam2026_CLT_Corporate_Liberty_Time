@@ -2,7 +2,9 @@
 using Game.Core;
 using Game.Core.SimplePool;
 using Game.Core.SimplePool.Game.Core.SimplePool;
+using Game.Core.SimplePool.VfxPool;
 using UnityEngine;
+using Zenject;
 
 namespace DamageSystem
 {
@@ -14,7 +16,7 @@ namespace DamageSystem
         private DamageData damageData = new();
         private Collider[] hits = new Collider[16];
         public event Action<Collider> OnHit = delegate { };
-        
+        [Inject] private VfxPoolFacade vfxPoolFacade;
         public void DoDamage(int damage)
         {
             int hitCount = Physics.OverlapBoxNonAlloc(
@@ -32,10 +34,8 @@ namespace DamageSystem
                 if(!hits[i].TryGetComponent(out IDamageable damageable)) continue;
                 ConfiguraDamageData(hits[i], damage);
                 //TODO: refact
-                FindAnyObjectByType<PoolManager>()
-                    .Spawn(hitEffectPrefab,
-                        damageData.AttackerPosition,
-                        Quaternion.identity);
+                vfxPoolFacade.Spawn(VfxType.Hit, damageData.AttackerPosition);
+                
                 
                 damageable.TakeDamage(damageData);
                 OnHit.Invoke(hits[i]);

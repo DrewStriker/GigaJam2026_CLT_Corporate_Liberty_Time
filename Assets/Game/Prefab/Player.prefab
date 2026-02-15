@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DamageSystem::DamageSystem.Damager
   bounds:
-    m_Center: {x: 0, y: 0.81, z: 0.15}
-    m_Extent: {x: 1, y: 0.78, z: 0.78}
+    m_Center: {x: 0, y: 0.81, z: 0.35}
+    m_Extent: {x: 1, y: 0.78, z: 0.99}
+  hitEffectPrefab: {fileID: 7247910105196762427, guid: 8ee081c6dcbdfb94e914a7259a43c7a5, type: 3}
 --- !u!54 &6631488542055171551
 Rigidbody:
   m_ObjectHideFlags: 0

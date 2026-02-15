@@ -1,4 +1,5 @@
 ﻿using System;
+using Zenject;
 
 namespace Game.Core.SimplePool
 {
@@ -7,11 +8,18 @@ namespace Game.Core.SimplePool
 
     namespace Game.Core.SimplePool
     {
-        public class PoolManager : MonoBehaviour, IPoolManager<PoolObject>
+        public class PoolManager : IPoolManager<PoolObject>
         {
             [SerializeField] private int initialPoolSize = 10;
             readonly Dictionary<PoolObject, Stack<PoolObject>> pools = new();
             readonly Dictionary<PoolObject, PoolObject> instanceToPrefab = new();
+            private DiContainer container;
+
+            public PoolManager(DiContainer container, int initialPoolSize)
+            {
+                this.container = container;
+                this.initialPoolSize = initialPoolSize;
+            }
             
             Stack<PoolObject> Initialize(PoolObject poolObject)
             {
@@ -24,7 +32,7 @@ namespace Game.Core.SimplePool
 
             PoolObject Create(PoolObject prefab)
             {
-                var instance = Instantiate(prefab, transform);
+                var instance = container.InstantiatePrefabForComponent<PoolObject>(prefab);
                 instance.gameObject.SetActive(false);
 
                 instance.ReturnToPool += Despawn;

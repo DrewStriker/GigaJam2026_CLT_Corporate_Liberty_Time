@@ -12,9 +12,11 @@ namespace Game.Core.FactorySystem
     {
         [SerializeField] public List<TCatalog> catalogs;
 
+        Dictionary<TKey, TValue> dictionary = new ();
+       
         public Dictionary<TKey, TValue> GenerateDictionary()
         {
-            Dictionary<TKey, TValue> dictionary = new ();
+            if(dictionary.Count > 0) return dictionary;
             foreach (var catalog in catalogs)
             {
                 dictionary.Add(catalog.Type, catalog.Prefab);
