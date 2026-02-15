@@ -1,7 +1,7 @@
-﻿using Game.Core.FactorySystem;
-
+﻿
 namespace Game.Core.SimplePool.VfxPool
 {
+    using FactorySystem;
     using System.Collections.Generic;
     using UnityEngine;
     using Zenject;
@@ -13,7 +13,6 @@ namespace Game.Core.SimplePool.VfxPool
         
         public VfxPoolFacade(CatalogRegistry<Catalog<VfxType, PoolObject>, VfxType, PoolObject> registry)
         {
-            this.pool = pool;
             dictionary = registry.GenerateDictionary();
             
         }
