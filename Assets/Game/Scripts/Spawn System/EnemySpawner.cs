@@ -15,6 +15,11 @@ namespace Game.SpawnSystem
             timer = new Timer(Core.TimerMode.CountDown);
         }
 
+        private void Start()
+        {
+            enemyFactory.Create(EnemyType.Basic);
+        }
+
         //private void Sort
     }
 }

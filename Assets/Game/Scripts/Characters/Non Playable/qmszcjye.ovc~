@@ -23,6 +23,12 @@ namespace Game.Characters
             characterStats = new CharacterStats(config);
         }
 
+        [Inject]
+        public void Construct(IPlayableCharacter playableCharacter)
+        {
+            playerTransform = playableCharacter.Transform;
+        }
+
         private void Start()
         {
             Initialize();

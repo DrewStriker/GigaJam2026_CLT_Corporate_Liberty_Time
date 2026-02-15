@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Game.Scripts.Characters.Playable
+﻿using Zenject;
+using UnityEngine;
+namespace Game.Characters
 {
-    internal class PlayerInstaller
+    public class PlayerInstaller : MonoInstaller
     {
+        [SerializeField] private PlayerController _playerController;
+        public override void InstallBindings()
+        {
+            Container.Bind<IPlayableCharacter>().FromInstance(_playerController).AsSingle();
+        }
     }
 }
