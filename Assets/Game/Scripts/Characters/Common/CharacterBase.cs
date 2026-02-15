@@ -1,4 +1,5 @@
-﻿using Game.Core;
+﻿using DG.Tweening;
+using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
 
@@ -39,12 +40,13 @@ namespace Game.Characters
         }
 
 
+
         private void HurtBlink()
         {
             for(int i = 0; i < Renderers.Length; i++)
             {
-                Renderers[i].DoColor(ShaderProperties.Color, Color.red, 0, DG.Tweening.Ease.Linear, 0, false);
-                Renderers[i].DoColor(ShaderProperties.Color, Color.white, 0.3f, DG.Tweening.Ease.Linear, 0.05f, false);
+                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.red, 0, Ease.Linear, 0, false);
+                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.white, 0.3f, Ease.Linear, 0.05f, false);
             }
 
         }
