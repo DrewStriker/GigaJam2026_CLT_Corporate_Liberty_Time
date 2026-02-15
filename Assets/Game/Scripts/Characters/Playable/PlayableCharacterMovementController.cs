@@ -1,26 +1,26 @@
+using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
 
 namespace Game.Characters
 {
-    using Game.Core;
     public class PlayableCharacterMovementController
     {
-        CharacterStats characterStats;
-        private Rigidbody rigidbody;
-        private IMovementInfo movementInfo;
-        private Collider[] groundHits = new Collider[1];
+        private readonly CharacterStats characterStats;
+        private readonly Collider[] groundHits = new Collider[1];
+        private readonly IMovementInfo movementInfo;
+        private readonly Rigidbody rigidbody;
 
-        private float jumpForce => characterStats.JumpForce;
-        private float baseVelocity => characterStats.MoveSpeed;
-        
-        public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats, IMovementInfo movementInfo)
+        public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats,
+            IMovementInfo movementInfo)
         {
             this.characterStats = characterStats;
             this.rigidbody = rigidbody;
             this.movementInfo = movementInfo;
-           
         }
+
+        private float jumpForce => characterStats.JumpForce;
+        private float baseVelocity => characterStats.MoveSpeed;
 
         public void UpdateMovement()
         {
@@ -35,14 +35,14 @@ namespace Game.Characters
 
         private void UpdateRotation()
         {
-            float rotationSpeed = 15f;
-            Vector3 velocity = rigidbody.linearVelocity;
-            Vector3 horizontal = velocity;
+            var rotationSpeed = 15f;
+            var velocity = rigidbody.linearVelocity;
+            var horizontal = velocity;
             horizontal.y = 0;
             if (horizontal.sqrMagnitude > 0.01f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(horizontal);
-                Quaternion smooth = Quaternion.Slerp(
+                var targetRotation = Quaternion.LookRotation(horizontal);
+                var smooth = Quaternion.Slerp(
                     rigidbody.rotation,
                     targetRotation,
                     rotationSpeed * Time.fixedDeltaTime);
@@ -58,8 +58,8 @@ namespace Game.Characters
 
         public bool IsGrounded()
         {
-            CapsuleCollider collider = rigidbody.GetComponent<CapsuleCollider>();
-            int hitCount = Physics.OverlapSphereNonAlloc(
+            var collider = rigidbody.GetComponent<CapsuleCollider>();
+            var hitCount = Physics.OverlapSphereNonAlloc(
                 rigidbody.position + collider.center + Vector3.down * collider.height / 2f,
                 collider.radius,
                 groundHits,
@@ -74,4 +74,3 @@ namespace Game.Characters
         }
     }
 }
-

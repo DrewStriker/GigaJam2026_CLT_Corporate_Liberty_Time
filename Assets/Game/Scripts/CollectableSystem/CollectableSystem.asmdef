@@ -1,4 +1,4 @@
 ﻿{
   "name": "CollectableSystem",
-  "references":[ "GUID:eb3feebaba313924a81c13441a72fd32" ]
+  "references":[ "GUID:eb3feebaba313924a81c13441a72fd32", "GUID:565e1a42374141e98c8923955963a03e" ]
 }

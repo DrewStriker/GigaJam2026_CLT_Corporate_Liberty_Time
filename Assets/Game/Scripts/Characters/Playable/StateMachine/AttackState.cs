@@ -1,22 +1,21 @@
-
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Game.Characters
 {
     public class AttackState : PlayerBaseState
     {
         private const int MaxAtkIndex = 2;
-        private int attackIndex = 0;
+        private int attackIndex;
+
+        public AttackState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine,
+            character)
+        {
+        }
 
         private int GetNextIndex()
         {
-            attackIndex = (attackIndex % MaxAtkIndex) + 1;
+            attackIndex = attackIndex % MaxAtkIndex + 1;
             return attackIndex;
-        }
-        
-        public AttackState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine, character)
-        {
         }
 
         public override void OnStateEnter()
@@ -24,10 +23,11 @@ namespace Game.Characters
             PlayCurrentAnimation();
             WaitToReturn().Forget();
         }
-        
+
         public override void OnStateExit()
         {
         }
+
         public override void FixedUpdate()
         {
             MovementController.UpdateMovement();
@@ -40,20 +40,17 @@ namespace Game.Characters
 
         private async UniTask WaitToReturn()
         {
-            await UniTask.Delay(1000);
+            await UniTask.Delay(500);
             stateMachine.TryIdleState(this);
             stateMachine.TryMovementState(this);
-            
         }
-        
-        
+
+
         private void PlayCurrentAnimation()
         {
             var index = GetNextIndex();
-            var nextAnim = index == 1 ? Animation.Attack1 : Animation.Attack2;        
-            AnimationController.Play(nextAnim,0,1);
-
+            var nextAnim = index == 1 ? Animation.Attack1 : Animation.Attack2;
+            AnimationController.Play(nextAnim, 0, 1);
         }
-
     }
 }

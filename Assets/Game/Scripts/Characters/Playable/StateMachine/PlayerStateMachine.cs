@@ -1,27 +1,33 @@
-
 using System;
+using Game.Input;
 
 namespace Game.Characters
 {
-    using Game.Input;
     public class PlayerStateMachine : StateMachine, IDisposable
     {
-        private IPlayableCharacter Character;
-        private PlayerStateFactory stateFactory;
-        private PlayerInputController playerInputController;
-        public PlayableCharacterMovementController PlayerMovementController { get; private set; }
+        private readonly IPlayableCharacter Character;
+        private readonly PlayerInputController playerInputController;
+        private readonly PlayerStateFactory stateFactory;
+
         public PlayerStateMachine(IPlayableCharacter character)
         {
-            this.Character = character;
+            Character = character;
             playerInputController = character.InputController;
             PlayerMovementController = character.MovementController;
 
             stateFactory = new PlayerStateFactory(this, character);
             CurrentState = stateFactory.IdleState;
-            character.characterStats.OnHealthChanged += OnHealthChanged;
+            character.characterStats.HealthChanged += HealthChanged;
         }
 
-  
+        public PlayableCharacterMovementController PlayerMovementController { get; }
+
+        public void Dispose()
+        {
+            playerInputController?.Dispose();
+            Character.characterStats.HealthChanged -= HealthChanged;
+        }
+
 
         private bool IsValidState(BaseState callingState)
         {
@@ -32,45 +38,33 @@ namespace Game.Characters
         {
             if (!IsValidState(callingState)) return;
             if (playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
-            {
                 SwitchState(stateFactory.MovementState);
-            }
         }
 
         public void TryIdleState(BaseState callingState)
         {
             if (!IsValidState(callingState)) return;
             if (!playerInputController.Movement.IsPressed() && PlayerMovementController.IsGrounded())
-            {
                 SwitchState(stateFactory.IdleState);
-            }
         }
 
         public void TryJumpState(BaseState callingState)
         {
             if (!IsValidState(callingState)) return;
             if (playerInputController.Jump.WasPressedThisFrame() && PlayerMovementController.IsGrounded())
-            {
                 SwitchState(stateFactory.JumpState);
-            }
         }
 
         public void TryAttackState(BaseState callingState)
         {
             if (!IsValidState(callingState)) return;
-            if (playerInputController.Attack.WasPressedThisFrame())
-            {
-                SwitchState(stateFactory.AttackState);
-            }
+            if (playerInputController.Attack.WasPressedThisFrame()) SwitchState(stateFactory.AttackState);
         }
 
         public void TryInteractState(BaseState callingState)
         {
             if (!IsValidState(callingState)) return;
-            if (playerInputController.Interact.WasPressedThisFrame())
-            {
-                SwitchState(stateFactory.InteractState);
-            }
+            if (playerInputController.Interact.WasPressedThisFrame()) SwitchState(stateFactory.InteractState);
         }
 
         private void SwitchState(BaseState state)
@@ -80,20 +74,12 @@ namespace Game.Characters
             CurrentState.OnStateEnter();
         }
 
-        private void OnHealthChanged(float value)
+        private void HealthChanged(int value)
         {
-            if (value ==0) 
+            if (value == 0)
                 SwitchState(stateFactory.DeathState);
-            else 
+            else
                 SwitchState(stateFactory.HurtState);
-            
-        }
-        public void Dispose()
-        {
-            playerInputController?.Dispose();
-            Character.characterStats.OnHealthChanged -= OnHealthChanged;
-           
         }
     }
 }
-

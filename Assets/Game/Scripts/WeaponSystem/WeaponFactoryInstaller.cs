@@ -1,9 +1,9 @@
-﻿using Game.Core.FactorySystem;
+﻿using Game.CollectableSystem;
+using Game.Core.FactorySystem;
 
 namespace Game.WeaponSystem
 {
-    public class WeaponFactoryInstaller : FactoryInstaller<WeaponType, WeaponController>
+    public class WeaponFactoryInstaller : FactoryInstaller<WeaponType, WeaponCollectable>
     {
-
     }
 }

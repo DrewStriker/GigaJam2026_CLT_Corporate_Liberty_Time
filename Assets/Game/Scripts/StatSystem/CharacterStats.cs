@@ -3,17 +3,8 @@ using UnityEngine;
 
 namespace Game.StatsSystem
 {
-
-    public sealed class CharacterStats
+    public class CharacterStats
     {
-        public  float MaxHealth { get; }
-        public float CurrentHealth { get; private set; }
-        public float MoveSpeed { get; private set; }
-        public float JumpForce { get; private set; }
-        
-        public event Action<float> OnHealthChanged;
-        public event Action<float> OnMoveSpeedChanged;
-
         public CharacterStats(CharacterStatsSO characterStatSo)
         {
             MaxHealth = characterStatSo.Heatlh;
@@ -22,25 +13,42 @@ namespace Game.StatsSystem
             JumpForce = characterStatSo.JumpForce;
         }
 
-        public void DecreaseHealth(float amount)
+        public int MaxHealth { get; }
+        public int Damage { get; private set; } = 1;
+        public int CurrentHealth { get; private set; }
+        public float MoveSpeed { get; private set; }
+        public float JumpForce { get; private set; }
+
+        public event Action<int> HealthChanged;
+        public event Action<float> MoveSpeedChanged;
+        public event Action<int> DamageChanged;
+
+
+        public void IncreaseHealth(int amount)
         {
-            float newValue = CurrentHealth - amount;
+            var newValue = CurrentHealth + amount;
             if (!Mathf.Approximately(newValue, CurrentHealth))
             {
-                CurrentHealth = Mathf.Clamp( newValue,0, MaxHealth);
-                OnHealthChanged?.Invoke(CurrentHealth);
+                CurrentHealth = Mathf.Clamp(newValue, 0, MaxHealth);
+                HealthChanged?.Invoke(CurrentHealth);
             }
         }
-        
 
-       
-        
-        public void SetMoveSpeed(float value)
+        public void IncreaseMoveSpeed(float amount)
         {
-            if (value > 0f)
+            if (!Mathf.Approximately(amount, 0f))
             {
-                MoveSpeed = value;
-                OnMoveSpeedChanged?.Invoke(MoveSpeed);
+                MoveSpeed += amount;
+                MoveSpeedChanged?.Invoke(MoveSpeed);
+            }
+        }
+
+        public void IncreaseDamage(int amount)
+        {
+            if (!Mathf.Approximately(amount, 0f))
+            {
+                Damage += amount;
+                DamageChanged?.Invoke(Damage);
             }
         }
 

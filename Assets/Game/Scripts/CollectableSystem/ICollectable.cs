@@ -1,14 +1,15 @@
 ﻿using System;
+using Game.Scripts.BuffSystem;
 using UnityEngine;
 
 namespace Game.CollectableSystem
 {
     public interface ICollectable<T> where T : Enum
     {
-        T Type { get; }
-        void Collect(ICollector<T> collector);
+        public BuffDataSO BuffData { get; }
         Transform Transform { get; }
 
- 
+        // T Type { get; }
+        void Collect(ICollector<T> collector);
     }
 }

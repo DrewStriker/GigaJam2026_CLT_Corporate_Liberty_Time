@@ -1,20 +1,15 @@
-﻿using DamageSystem;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Game.Characters
 {
-    public abstract class CharacterBase :  MonoBehaviour, ICharacter
+    public abstract class CharacterBase : MonoBehaviour, ICharacter
     {
+        [SerializeField] private CharacterStatsSO config;
         private Collider Collider;
         private Renderer[] Renderers;
-        [SerializeField] private CharacterStatsSO config;
-        public AnimationController AnimationController { get; private set; }
-        public CharacterStats characterStats { get; private set; }
-        public Rigidbody Rigidbody { get; private set; }
 
 
         protected virtual void Awake()
@@ -22,33 +17,30 @@ namespace Game.Characters
             Collider = GetComponent<Collider>();
             Renderers = GetComponentsInChildren<Renderer>();
             Rigidbody = GetComponent<Rigidbody>();
-            characterStats = new(config);
+            characterStats = new CharacterStats(config);
             AnimationController = new AnimationController(GetComponentInChildren<Animator>());
-            
         }
 
-        
-        
-        public virtual  void TakeDamage(DamageData damageData)
+        public AnimationController AnimationController { get; private set; }
+        public CharacterStats characterStats { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
+
+
+        public virtual void TakeDamage(DamageData damageData)
         {
-            characterStats.DecreaseHealth(damageData.Damage);
+            characterStats.IncreaseHealth(-damageData.Damage);
             HurtBlink();
-            if (characterStats.CurrentHealth <= 0)
-            {
-                Die();
-            }
+            if (characterStats.CurrentHealth <= 0) Die();
         }
-
 
 
         private void HurtBlink()
         {
-            for(int i = 0; i < Renderers.Length; i++)
+            for (var i = 0; i < Renderers.Length; i++)
             {
-                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.red, 0, Ease.Linear, 0, false);
-                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.white, 0.3f, Ease.Linear, 0.05f, false);
+                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.red, 0);
+                Renderers[i].DoColor(ShaderProperties.BaseColor, Color.white, 0.3f, Ease.Linear, 0.05f);
             }
-
         }
 
         protected virtual void Die()
@@ -56,12 +48,6 @@ namespace Game.Characters
             Collider.enabled = false;
             Rigidbody.isKinematic = true;
             Rigidbody.linearVelocity = Vector3.zero;
-           
         }
-
-
-
-
-
     }
 }
