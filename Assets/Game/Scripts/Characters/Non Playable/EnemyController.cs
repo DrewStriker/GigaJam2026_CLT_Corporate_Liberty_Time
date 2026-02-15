@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using DamageSystem;
 using Game.Core;
 using Game.StatsSystem;
@@ -66,15 +67,14 @@ namespace Game.Characters
             navMeshAgent.isStopped = true;
             OnAttackRange?.Invoke();
         }
+        
 
-        public void TakeDamage(int damage)
+        protected  override  async void Die()
         {
-            characterStats.DecreaseHealth(damage);
-        }
-
-        protected override void Die()
-        {
-            Destroy(gameObject);
+            base.Die();
+            AnimationController.Play(Animation.Death, 0.1f,2);
+            await UniTask.Delay(2000);
+            gameObject.SetActive(false);
         }
     }
 }

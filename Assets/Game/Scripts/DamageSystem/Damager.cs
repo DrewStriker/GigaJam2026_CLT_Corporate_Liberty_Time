@@ -11,24 +11,6 @@ namespace DamageSystem
         private Collider[] hits = new Collider[16];
         public event Action<Collider> OnHit = delegate { };
 
-        // private readonly Transform transform;
-        // public Damager(Bounds bounds, Transform transform)
-        // {
-        //     this.bounds = bounds;
-        //     hits = new Collider[16];
-        //     this.transform = transform;
-        //     
-        // }
-        
-        
-        private void OnGUI()
-        {
-            if(GUILayout.Button("Damage "))
-            {
-                DoDamage(10);
-            }
-        }
-        
 
         public void DoDamage(int damage)
         {
@@ -43,7 +25,8 @@ namespace DamageSystem
             if (hitCount == 0) return;
             for (int i = 0; i < hitCount; i++)
             {
-                if(!hits[i].TryGetComponent(out IDamageable damageable)) return;
+                if(hits[i].gameObject == this.gameObject) continue;
+                if(!hits[i].TryGetComponent(out IDamageable damageable)) continue;
                 damageable.TakeDamage(damage);
                 OnHit.Invoke(hits[i]);
             }

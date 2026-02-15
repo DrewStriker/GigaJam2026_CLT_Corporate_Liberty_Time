@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 3460817565018568574}
   - component: {fileID: -1640208080191651277}
   - component: {fileID: 4843237485468206426}
-  - component: {fileID: 7756438621784082140}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -122,21 +121,6 @@ CapsuleCollider:
   m_Height: 1.559239
   m_Direction: 1
   m_Center: {x: 0.014880806, y: 0.74390537, z: 0}
---- !u!114 &7756438621784082140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2441371074340013908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95531d05e29048148fa8ab0d09463639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DamageSystem::DamageSystem.Damager
-  bounds:
-    m_Center: {x: 0, y: 0.78, z: -0.07}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!1001 &1014674264500244411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +173,13 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ac1c30ebfed95944a9b76d094e66c683, type: 2}
+    - target: {fileID: 2713407854068906292, guid: 67a953b1f051c2142919c46b7fd5d5c2, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Bip001 R Clavicle'\n\tFrom animation clip
+        'Damage'"
+      objectReference: {fileID: 0}
     - target: {fileID: 2839635079350266232, guid: 67a953b1f051c2142919c46b7fd5d5c2, type: 3}
       propertyPath: m_Name
       value: Enemy Character Base

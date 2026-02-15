@@ -2,11 +2,13 @@
 using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Game.Characters
 {
     public abstract class CharacterBase :  MonoBehaviour, ICharacter
     {
+        private Collider Collider;
         private Renderer[] Renderers;
         [SerializeField] private CharacterStatsSO config;
         public AnimationController AnimationController { get; private set; }
@@ -15,7 +17,8 @@ namespace Game.Characters
 
 
         protected virtual void Awake()
-        {           
+        {
+            Collider = GetComponent<Collider>();
             Renderers = GetComponentsInChildren<Renderer>();
             Rigidbody = GetComponent<Rigidbody>();
             characterStats = new(config);
@@ -50,8 +53,13 @@ namespace Game.Characters
             }
 
         }
-        
-        protected abstract void Die();
+
+        protected virtual void Die()
+        {
+            Collider.enabled = false;
+            Rigidbody.linearVelocity = Vector3.zero;
+           
+        }
 
         
     }
