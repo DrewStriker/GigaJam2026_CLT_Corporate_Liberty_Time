@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.Core;
 using Game.Core.SimplePool;
+using Game.Core.SimplePool.SfxPool;
 using Game.Core.SimplePool.VfxPool;
 using UnityEngine;
 using Zenject;
@@ -10,9 +11,9 @@ namespace DamageSystem
     public class Damager : MonoBehaviour, IDamager
     {
         [SerializeField] private Bounds bounds = new(Vector3.forward * 0.56f, Vector3.one);
-        [SerializeField] private PoolObject hitEffectPrefab;
         private readonly DamageData damageData = new();
         private readonly Collider[] hits = new Collider[16];
+        [Inject] private SfxPoolFacade sfxPoolFacade;
         [Inject] private VfxPoolFacade vfxPoolFacade;
 
 
@@ -45,10 +46,8 @@ namespace DamageSystem
                 if (hits[i].gameObject == gameObject) continue;
                 if (!hits[i].TryGetComponent(out IDamageable damageable)) continue;
                 ConfiguraDamageData(hits[i], damage);
-                //TODO: refact
                 vfxPoolFacade.Spawn(VfxType.Hit, damageData.AttackerPosition);
-
-
+                sfxPoolFacade.Play(SfxType.Hit, damageData.AttackerPosition);
                 damageable.TakeDamage(damageData);
                 OnHit.Invoke(hits[i]);
             }

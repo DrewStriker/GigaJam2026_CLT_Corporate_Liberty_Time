@@ -111,10 +111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.EnemySpawnInstaller
   registry:
     catalogs:
-    - <Prefab>k__BackingField: {fileID: 3301034338485008876, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
-      <Type>k__BackingField: 0
-    - <Prefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
-      <Type>k__BackingField: 1
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 3301034338485008876, guid: 89b7eebd17acc8645a8adddc89c4c9ce, type: 3}
+    - <Type>k__BackingField: 1
+      <Prefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
 --- !u!114 &3490726285555827231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: WeaponSystem::Game.WeaponSystem.WeaponFactoryInstaller
   registry:
     catalogs:
-    - <Prefab>k__BackingField: {fileID: 5594125327480320469, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
-      <Type>k__BackingField: 0
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 5594125327480320469, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
 --- !u!114 &7873089516612011846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SimplePool::Game.Core.SimplePool.PoolInstaller
   initialPoolSize: 10
-  vfxRegistry:
+  visualFxRegistry:
     catalogs:
-    - <Prefab>k__BackingField: {fileID: 7247910105196762427, guid: 8ee081c6dcbdfb94e914a7259a43c7a5, type: 3}
-      <Type>k__BackingField: 0
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 7247910105196762427, guid: 8ee081c6dcbdfb94e914a7259a43c7a5, type: 3}
+  soundFxRegistry:
+    catalogs:
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 368b7e0bf5ff47f41b57c9e39140865b, type: 3}
