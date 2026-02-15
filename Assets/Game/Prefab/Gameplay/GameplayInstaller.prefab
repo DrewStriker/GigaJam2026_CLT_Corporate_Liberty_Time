@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8395399243216348184}
   - component: {fileID: 3942100052182346682}
   - component: {fileID: 3490726285555827231}
+  - component: {fileID: 7873089516612011846}
   m_Layer: 0
   m_Name: GameplayInstaller
   m_TagString: Untagged
@@ -33,7 +34,8 @@ Transform:
   m_LocalPosition: {x: -6.76, y: 2.31, z: -4.98034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7855752722041568620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &234130634198334231
@@ -54,6 +56,7 @@ MonoBehaviour:
   - {fileID: 6475312043561205969}
   - {fileID: 8395399243216348184}
   - {fileID: 3490726285555827231}
+  - {fileID: 7873089516612011846}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -129,3 +132,61 @@ MonoBehaviour:
     catalogs:
     - <Prefab>k__BackingField: {fileID: 0}
       <Type>k__BackingField: 0
+--- !u!114 &7873089516612011846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f26809bb6d74a9da4a801094b85358f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SimplePool::Game.Core.SimplePool.PoolInstaller
+  poolManager: {fileID: 5600290739518351529}
+--- !u!1 &2862142743703887680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7855752722041568620}
+  - component: {fileID: 5600290739518351529}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7855752722041568620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862142743703887680}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.61916, y: -2.31, z: 4.97794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2801290507128602273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5600290739518351529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862142743703887680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760fe5c83ac64bdfa22d0fb907ec9b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SimplePool::Game.Core.SimplePool.Game.Core.SimplePool.PoolManager
+  initialPoolSize: 10

@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.Core;
 using Game.Core.SimplePool;
+using Game.Core.SimplePool.Game.Core.SimplePool;
 using UnityEngine;
 
 namespace DamageSystem
@@ -9,6 +10,7 @@ namespace DamageSystem
     public class Damager : MonoBehaviour, IDamager
     {
         [SerializeField] private Bounds bounds = new Bounds(Vector3.forward*0.56f, Vector3.one);
+        [SerializeField] private PoolObject hitEffectPrefab;
         private DamageData damageData = new();
         private Collider[] hits = new Collider[16];
         public event Action<Collider> OnHit = delegate { };
@@ -30,7 +32,11 @@ namespace DamageSystem
                 if(!hits[i].TryGetComponent(out IDamageable damageable)) continue;
                 ConfiguraDamageData(hits[i], damage);
                 //TODO: refact
-                FindAnyObjectByType<SimpleObjectPool>().Spawn(damageData.AttackerPosition, Quaternion.identity);
+                FindAnyObjectByType<PoolManager>()
+                    .Spawn(hitEffectPrefab,
+                        damageData.AttackerPosition,
+                        Quaternion.identity);
+                
                 damageable.TakeDamage(damageData);
                 OnHit.Invoke(hits[i]);
             }
