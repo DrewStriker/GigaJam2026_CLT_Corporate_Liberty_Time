@@ -1,3 +1,4 @@
+using Game.Characters;
 using Game.RankSystem;
 using UnityEngine;
 using Zenject;
@@ -8,7 +9,7 @@ namespace Game.SpawnSystem
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private SpawnConfig spawnConfig;
-        [Inject] private EnemyFactory enemyFactory;
+        [Inject] private PlaceholderFactory<EnemyType,EnemyController> enemyFactory;
         [Inject] private RankManager rankManager;
 
         private Timer timer;

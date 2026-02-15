@@ -31,7 +31,7 @@ namespace Game.SpawnSystem
         public override void InstallBindings()
         {
             Container.BindInstance(enemyCatalogRegistry.GenerateDictionary());
-            Container.BindFactory<EnemyType, EnemyController, EnemyFactory>().FromMethod(CreateEnemy);
+            Container.BindFactory<EnemyType, EnemyController, PlaceholderFactory<EnemyType,EnemyController>>().FromMethod(CreateEnemy);
         }
 
         private EnemyController CreateEnemy(DiContainer container, EnemyType type)
