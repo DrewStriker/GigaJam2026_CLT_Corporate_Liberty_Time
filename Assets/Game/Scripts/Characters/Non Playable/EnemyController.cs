@@ -82,6 +82,7 @@ namespace Game.Characters
         {
             navMeshAgent.enabled = false;
             Rigidbody.isKinematic = true;
+            Collider.isTrigger = true;
             AnimationController.Play(Animation.Death, 0.1f, 2);
             await UniTask.Delay(2000);
             gameObject.SetActive(false);
