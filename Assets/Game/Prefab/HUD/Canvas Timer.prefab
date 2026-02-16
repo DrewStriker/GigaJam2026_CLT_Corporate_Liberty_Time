@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2774587920418604104}
   - component: {fileID: 4132388227890570195}
   - component: {fileID: 4704359681031529489}
+  - component: {fileID: 488643132535551475}
   m_Layer: 5
   m_Name: Canvas Timer
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &488643132535551475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223798658796242046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea92d9662e601f4d915ce510ac11505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UI::Game.UI.UITimerController
+  timerText: {fileID: 554879673888662000}
+  extraTimeText: {fileID: 4182203253305724834}
 --- !u!1 &485677057696358078
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,15 +303,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: +1h
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 414ce1dab584a6945ac12b316fef3b00, type: 2}
+  m_sharedMaterial: {fileID: -7823004034340434037, guid: 414ce1dab584a6945ac12b316fef3b00, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

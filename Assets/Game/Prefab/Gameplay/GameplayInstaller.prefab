@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3490726285555827231}
   - component: {fileID: 8634442239832702567}
   - component: {fileID: 7873089516612011846}
+  - component: {fileID: 8473487973162150286}
   m_Layer: 0
   m_Name: GameplayInstaller
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   - {fileID: 3490726285555827231}
   - {fileID: 8634442239832702567}
   - {fileID: 7873089516612011846}
+  - {fileID: 8473487973162150286}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -74,7 +76,7 @@ MonoBehaviour:
   OnPostResolve:
     m_PersistentCalls:
       m_Calls: []
-  _parentNewObjectsUnderSceneContext: 0
+  _parentNewObjectsUnderSceneContext: 1
   _contractNames: []
   _parentContractNames: []
 --- !u!114 &6475312043561205969
@@ -188,3 +190,15 @@ MonoBehaviour:
     catalogs:
     - <Type>k__BackingField: 0
       <Prefab>k__BackingField: {fileID: 8300000, guid: 368b7e0bf5ff47f41b57c9e39140865b, type: 3}
+--- !u!114 &8473487973162150286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f676533150c354f8c0d4550b0115f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TimeSystem::TimerManagerInstaller
