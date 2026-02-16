@@ -1,7 +1,7 @@
-using Codice.Client.BaseCommands.Merge.Xml;
 using DamageSystem;
 using Game.CollectableSystem;
 using Game.Input;
+using Game.ItemSystem;
 using Game.WeaponSystem;
 using UnityEngine;
 using Zenject;
@@ -56,12 +56,12 @@ namespace Game.Characters
             item.Transform.SetParent(handTransform);
             item.Transform.localPosition = Vector3.zero;
             item.Transform.rotation = Quaternion.identity;
-            item.BuffData.ApplyBuff(characterStats);
+            item.BuffData.ApplyBuffTo(characterStats);
         }
 
         public void Collect(ICollectable<ItemType> item)
         {
-            item.BuffData.ApplyBuff(characterStats);
+            item.BuffData.ApplyBuffTo(characterStats);
         }
 
 

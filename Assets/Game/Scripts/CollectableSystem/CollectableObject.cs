@@ -13,7 +13,9 @@ namespace Game.CollectableSystem
         private const float floatingDuration = 1;
         private Tween colorTween;
         private Tween moveTween;
-        private Renderer renderer;
+        private new Renderer renderer;
+        [field: SerializeField] public BuffDataSO BuffData { get; private set; }
+        public Transform Transform => transform;
 
         private void Awake()
         {
@@ -37,9 +39,6 @@ namespace Game.CollectableSystem
             Collect(collector);
         }
 
-        [field: SerializeField] public BuffDataSO BuffData { get; private set; }
-        public Transform Transform => transform;
-
 
         public virtual void Collect(ICollector<T> collector)
         {
@@ -53,12 +52,12 @@ namespace Game.CollectableSystem
             StopEffect();
             moveTween = transform.DOMoveY(transform.position.y + floatingHight, floatingDuration)
                 .SetLoops(-1, LoopType.Yoyo)
-                .SetEase(Ease.InOutSine);
+                .SetEase(Ease.Linear);
             colorTween = renderer.DoColor(
                     ShaderProperties.OverlayColor, new Color(1, 1, 1, 0.3f),
-                    floatingDuration / 3)
+                    floatingDuration / 2.2f)
                 .SetLoops(-1, LoopType.Yoyo)
-                .SetEase(Ease.InOutSine);
+                .SetEase(Ease.Linear);
         }
 
         private void StopEffect()

@@ -23,7 +23,7 @@ namespace Game.Scripts.BuffSystem
         [field: Range(0, 1000)]
         public float MoveSpeed { get; private set; }
 
-        public async void ApplyBuff(CharacterStats stats)
+        public async void ApplyBuffTo(CharacterStats stats)
         {
             stats.IncreaseHealth(Health);
             AddBuff(stats);

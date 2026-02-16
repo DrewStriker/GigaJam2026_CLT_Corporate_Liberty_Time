@@ -34,5 +34,11 @@ namespace Game.Core.SimplePool.SfxPool
             var obj = pool.Spawn(runtimePrefab, pos, Quaternion.identity);
             obj.Play(clips[type], volume, pitchVariation);
         }
+
+        public void Play(AudioClip clip, Vector3 pos, float volume = 1, bool pitchVariation = false)
+        {
+            var obj = pool.Spawn(runtimePrefab, pos, Quaternion.identity);
+            obj.Play(clip, volume, pitchVariation);
+        }
     }
 }

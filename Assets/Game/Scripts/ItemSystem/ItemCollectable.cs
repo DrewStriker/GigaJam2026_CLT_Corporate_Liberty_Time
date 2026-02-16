@@ -6,7 +6,6 @@ namespace Game.ItemSystem
     {
         public override void Collect(ICollector<ItemType> collector)
         {
-            print("collect");
             base.Collect(collector);
             gameObject.SetActive(false);
         }
