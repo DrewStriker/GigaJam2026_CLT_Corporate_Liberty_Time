@@ -1,4 +1,6 @@
-﻿using Game.Characters;
+﻿using System.Threading.Tasks;
+using Game.Characters;
+using SceneLoadSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,6 +16,8 @@ namespace Game.Scripts.GameplaySystem
         [SerializeField] private AssetReference gameOverReference;
         [Inject] private IGameplayState gameplayState;
         [Inject] private IPlayableCharacter playableCharacter;
+        [Inject] private ISceneLoader sceneLoader;
+
         private AsyncOperationHandle<SceneInstance> hudSceneHandle;
         private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
 
@@ -63,16 +67,15 @@ namespace Game.Scripts.GameplaySystem
             gameplayState.SetState(StateType.Combat);
         }
 
-        private void OnGameplayCombat()
+        private async Task OnGameplayCombat()
         {
-            hudSceneHandle = hudSceneReference.LoadSceneAsync(LoadSceneMode.Additive);
+            await sceneLoader.LoadAsync(hudSceneReference);
         }
 
-        private void OnGameplayEnd()
+        private async Task OnGameplayEnd()
         {
-            gameOverSceneHandle = gameOverReference.LoadSceneAsync(LoadSceneMode.Additive);
-            if (!hudSceneHandle.IsValid()) return;
-            Addressables.UnloadSceneAsync(hudSceneHandle);
+            await sceneLoader.UnloadAsync(hudSceneReference);
+            await sceneLoader.LoadAsync(gameOverReference);
         }
     }
 }
