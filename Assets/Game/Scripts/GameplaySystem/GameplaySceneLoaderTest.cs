@@ -12,17 +12,40 @@ namespace Game.GameplaySystem
     {
         [SerializeField] private AssetReference hudSceneReference;
         [SerializeField] private AssetReference gameOverReference;
-        [Inject] private IGameplayState gameplayState;
-        [Inject] private ISceneLoader sceneLoader;
+        private IGameplayState gameplayState;
+        private ISceneLoader sceneLoader;
 
-        private void OnGameplayIntro()
+        public void Initialize(IGameplayState gameplayState, ISceneLoader sceneLoader)
         {
-            gameplayState.SetState(StateType.Combat);
+            this.sceneLoader = sceneLoader;
+            this.gameplayState = gameplayState;
+            gameplayState.StateChanged += OnStateChanged;
+        }
+
+        public void Dispose()
+        {
+            gameplayState.StateChanged -= OnStateChanged;
+        }
+
+        private void OnStateChanged(StateType obj)
+        {
+            switch (obj)
+            {
+                // case StateType.Intro:
+                //     OnGameplayIntro();
+                //     break;
+                case StateType.Combat:
+                    OnGameplayCombat();
+                    break;
+                case StateType.End:
+                    OnGameplayEnd();
+                    break;
+            }
         }
 
         private async Task OnGameplayCombat()
         {
-            await sceneLoader.LoadAsync(hudSceneReference);
+            // await sceneLoader.LoadAsync(hudSceneReference);
         }
 
         private async Task OnGameplayEnd()

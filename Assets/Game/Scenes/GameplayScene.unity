@@ -1618,6 +1618,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f948d45fa843ce9fd43ca34b892b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameplaySystem::Game.Scripts.GameplaySystem.GameplayController
+  test:
+    hudSceneReference:
+      m_AssetGUID: fe85d03b36c88064796d565df3aaf7f6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    gameOverReference:
+      m_AssetGUID: e97ef4b6121c9d446a8bfa2fbbe4991c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
 --- !u!4 &1715840800
 Transform:
   m_ObjectHideFlags: 0

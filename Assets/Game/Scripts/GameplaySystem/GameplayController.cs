@@ -12,7 +12,7 @@ namespace Game.Scripts.GameplaySystem
 {
     public class GameplayController : MonoBehaviour
     {
-        // [SerializeField] private GameplaySceneLoaderTest test;
+        [SerializeField] private GameplaySceneLoaderTest test;
         [Inject] private IGameplayState gameplayState;
         [Inject] private IPlayableCharacter playableCharacter;
         [Inject] private ISceneLoader sceneLoader;
@@ -23,6 +23,7 @@ namespace Game.Scripts.GameplaySystem
 
         private void Start()
         {
+            test.Initialize(gameplayState, sceneLoader);
             gameplayState.StateChanged += OnStateChanged;
             playableCharacter.Death += OnPlayerDeath;
             gameplayState.SetState(StateType.Intro);
@@ -56,12 +57,10 @@ namespace Game.Scripts.GameplaySystem
 
         private void OnGameplayEnd()
         {
-            throw new NotImplementedException();
         }
 
         private void OnGameplayCombat()
         {
-            throw new NotImplementedException();
         }
 
         private void OnGameplayIntro()
@@ -70,6 +69,7 @@ namespace Game.Scripts.GameplaySystem
 
         private void OnPlayerDeath()
         {
+            gameplayState.SetState(StateType.End);
         }
     }
 }
