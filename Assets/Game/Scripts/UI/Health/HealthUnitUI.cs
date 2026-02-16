@@ -1,11 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.UI.Health
 {
-    public class HealthItemUI : MonoBehaviour
+    public class HealthUnitUI : MonoBehaviour
     {
         [SerializeField] private Image imageFill;
+
+
+        private void OnEnable()
+        {
+            Show();
+        }
 
         public void Show()
         {

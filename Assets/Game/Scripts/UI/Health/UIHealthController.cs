@@ -9,14 +9,15 @@ namespace Game.UI.Health
 {
     public class UIHealthController : MonoBehaviour
     {
+        [SerializeField] private HealthUnitUI UiHealthUnitPrefab;
         public PlayerController playableCharacter;
-        private List<HealthItemUI> healthItemUIs = new();
+        private List<HealthUnitUI> healthUnits = new();
 
         private CharacterStats characterStats => playableCharacter.characterStats;
 
         private void Awake()
         {
-            healthItemUIs = GetComponentsInChildren<HealthItemUI>().ToList();
+            healthUnits = GetComponentsInChildren<HealthUnitUI>().ToList();
         }
 
         // [Inject]
@@ -39,25 +40,24 @@ namespace Game.UI.Health
 
         private void OnHealthChanged(int value)
         {
-            if (healthItemUIs.Count < value)
-                AddHealthItem();
             FillImages(value);
         }
 
-        private void AddHealthItem()
+        private void AddHealthUiUnit()
         {
-            var healthItem = Instantiate(healthItemUIs[0], transform);
-            healthItemUIs.Add(healthItem);
+            var healthUnit = Instantiate(UiHealthUnitPrefab, transform);
+            healthUnits.Add(healthUnit);
+            healthUnit.Show();
         }
 
 
         private void FillImages(int healthValue)
         {
-            for (var i = 0; i < healthItemUIs.Count; i++)
+            for (var i = 0; i < healthUnits.Count; i++)
                 if (i < healthValue)
-                    healthItemUIs[i].Show();
+                    healthUnits[i].Show();
                 else
-                    healthItemUIs[i].Hide();
+                    healthUnits[i].Hide();
         }
     }
 }

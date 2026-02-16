@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e33249b2cd45c408e6bc9261ad21d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UI::Game.UI.Health.UIHealthController
+  UiHealthUnitPrefab: {fileID: 2136694119495431033, guid: f0057cf104e0d834fa838f5aa56e4359, type: 3}
+  playableCharacter: {fileID: 0}
 --- !u!1001 &1731018032534261125
 PrefabInstance:
   m_ObjectHideFlags: 0
