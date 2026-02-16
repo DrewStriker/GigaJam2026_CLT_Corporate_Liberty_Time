@@ -1,4 +1,6 @@
-﻿namespace SceneLoadSystem
+﻿using Cysharp.Threading.Tasks;
+
+namespace SceneLoadSystem
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -18,7 +20,7 @@
             var handle = scene.LoadSceneAsync(mode);
             _handles.Add(scene, handle);
 
-            await handle.Task;
+            await handle.ToUniTask();
         }
 
         public async Task UnloadAsync(AssetReference scene)
@@ -27,6 +29,7 @@
 
             await Addressables.UnloadSceneAsync(handle).Task;
             _handles.Remove(scene);
+            // await handle.ToUniTask();
         }
     }
 }
