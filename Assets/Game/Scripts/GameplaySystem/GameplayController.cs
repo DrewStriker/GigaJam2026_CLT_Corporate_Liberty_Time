@@ -1,12 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Game.Scripts.GameplaySystem
 {
     public class GameplayController : MonoBehaviour
     {
+        private AsyncOperationHandle<SceneInstance> loadHandle;
         [Inject] private IGameplayState gameplayState;
+        [SerializeField] private AssetReference hudSceneReference;
 
         private void Start()
         {
@@ -17,6 +22,7 @@ namespace Game.Scripts.GameplaySystem
         private void OnDestroy()
         {
             gameplayState.StateChanged -= OnStateChanged;
+            Addressables.UnloadSceneAsync(loadHandle);
         }
 
         private void OnStateChanged(StateType state)
@@ -41,8 +47,9 @@ namespace Game.Scripts.GameplaySystem
             gameplayState.SetState(StateType.Combat);
         }
 
-        private void OnGameplayCombat()
+        private async void OnGameplayCombat()
         {
+            loadHandle = hudSceneReference.LoadSceneAsync(LoadSceneMode.Additive);
         }
     }
 }

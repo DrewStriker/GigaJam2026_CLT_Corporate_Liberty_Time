@@ -1469,6 +1469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f948d45fa843ce9fd43ca34b892b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameplaySystem::Game.Scripts.GameplaySystem.GameplayController
+  hudSceneReference:
+    m_AssetGUID: fe85d03b36c88064796d565df3aaf7f6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1715840800
 Transform:
   m_ObjectHideFlags: 0
@@ -1987,12 +1993,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 2056528389}
   - {fileID: 8859969976932595316}
+  - {fileID: 1715840800}
   - {fileID: 1947710346}
   - {fileID: 1186816790}
   - {fileID: 1305344805}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1715840800}
   - {fileID: 598331757}
   - {fileID: 1034721061}
   - {fileID: 1768712500}
