@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Characters;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -9,20 +10,29 @@ namespace Game.Scripts.GameplaySystem
 {
     public class GameplayController : MonoBehaviour
     {
-        private AsyncOperationHandle<SceneInstance> loadHandle;
-        [Inject] private IGameplayState gameplayState;
         [SerializeField] private AssetReference hudSceneReference;
+        [SerializeField] private AssetReference gameOverReference;
+        [Inject] private IGameplayState gameplayState;
+        [Inject] private IPlayableCharacter playableCharacter;
+        private AsyncOperationHandle<SceneInstance> hudSceneHandle;
+        private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
+
 
         private void Start()
         {
             gameplayState.StateChanged += OnStateChanged;
+            playableCharacter.Death += OnPlayerDeath;
             gameplayState.SetState(StateType.Intro);
         }
 
         private void OnDestroy()
         {
+            playableCharacter.Death -= OnPlayerDeath;
             gameplayState.StateChanged -= OnStateChanged;
-            Addressables.UnloadSceneAsync(loadHandle);
+            Addressables.UnloadSceneAsync(gameOverSceneHandle);
+
+            if (gameOverSceneHandle.IsValid())
+                Addressables.UnloadSceneAsync(gameOverSceneHandle);
         }
 
         private void OnStateChanged(StateType state)
@@ -37,8 +47,14 @@ namespace Game.Scripts.GameplaySystem
                     OnGameplayCombat();
                     break;
                 case StateType.End:
+                    OnGameplayEnd();
                     break;
             }
+        }
+
+        private void OnPlayerDeath()
+        {
+            gameplayState.SetState(StateType.End);
         }
 
 
@@ -47,9 +63,16 @@ namespace Game.Scripts.GameplaySystem
             gameplayState.SetState(StateType.Combat);
         }
 
-        private async void OnGameplayCombat()
+        private void OnGameplayCombat()
         {
-            loadHandle = hudSceneReference.LoadSceneAsync(LoadSceneMode.Additive);
+            hudSceneHandle = hudSceneReference.LoadSceneAsync(LoadSceneMode.Additive);
+        }
+
+        private void OnGameplayEnd()
+        {
+            gameOverSceneHandle = gameOverReference.LoadSceneAsync(LoadSceneMode.Additive);
+            if (!hudSceneHandle.IsValid()) return;
+            Addressables.UnloadSceneAsync(hudSceneHandle);
         }
     }
 }

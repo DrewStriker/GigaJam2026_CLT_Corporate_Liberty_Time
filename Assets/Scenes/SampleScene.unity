@@ -1475,6 +1475,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  gameOverReference:
+    m_AssetGUID: e97ef4b6121c9d446a8bfa2fbbe4991c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1715840800
 Transform:
   m_ObjectHideFlags: 0
@@ -1999,8 +2005,8 @@ SceneRoots:
   - {fileID: 1305344805}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 598331757}
   - {fileID: 1034721061}
+  - {fileID: 598331757}
   - {fileID: 1768712500}
   - {fileID: 750181758}
   - {fileID: 288065317}

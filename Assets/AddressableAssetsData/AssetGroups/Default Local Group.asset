@@ -15,6 +15,21 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 54ef7de9caed68f41b57cab25d05d00a
   m_SerializeEntries:
+  - m_GUID: 3bf41a5ed3734534eba1418587bac7d6
+    m_Address: Assets/Scenes/TestScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Assets/Scenes/SampleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e97ef4b6121c9d446a8bfa2fbbe4991c
+    m_Address: Assets/Scenes/GameOverScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fe85d03b36c88064796d565df3aaf7f6
     m_Address: Assets/Scenes/HUD Scene.unity
     m_ReadOnly: 0

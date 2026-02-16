@@ -1,6 +1,6 @@
+using System;
 using DamageSystem;
 using Game.StatsSystem;
-using log4net.Util;
 using UnityEngine;
 
 namespace Game.Characters
@@ -11,5 +11,6 @@ namespace Game.Characters
         public CharacterStats characterStats { get; }
         public Rigidbody Rigidbody { get; }
         public Collider Collider { get; }
+        public event Action Death;
     }
 }

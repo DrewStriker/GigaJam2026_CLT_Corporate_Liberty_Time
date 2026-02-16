@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using Game.Core;
 using Game.StatsSystem;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Game.Characters
         [SerializeField] private CharacterStatsSO config;
         private Renderer[] Renderers;
         public Collider Collider { get; private set; }
+        public event Action Death;
 
 
         protected virtual void Awake()
@@ -30,6 +32,7 @@ namespace Game.Characters
         {
             characterStats.DecreaseHealth(damageData.Damage);
             HurtBlink();
+            if (characterStats.CurrentHealth == 0) Death?.Invoke();
         }
 
 
