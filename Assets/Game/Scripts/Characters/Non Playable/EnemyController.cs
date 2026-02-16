@@ -70,7 +70,7 @@ namespace Game.Characters
             OnAttackRange?.Invoke();
         }
 
-        public virtual void TakeDamage(DamageData damageData)
+        public override void TakeDamage(DamageData damageData)
         {
             base.TakeDamage(damageData);
             if (characterStats.CurrentHealth <= 0)
@@ -81,6 +81,7 @@ namespace Game.Characters
         protected async void Die()
         {
             navMeshAgent.enabled = false;
+            Rigidbody.isKinematic = true;
             AnimationController.Play(Animation.Death, 0.1f, 2);
             await UniTask.Delay(2000);
             gameObject.SetActive(false);
