@@ -8,8 +8,8 @@ namespace Game.Characters
     public abstract class CharacterBase : MonoBehaviour, ICharacter
     {
         [SerializeField] private CharacterStatsSO config;
-        private Collider Collider;
         private Renderer[] Renderers;
+        public Collider Collider { get; private set; }
 
 
         protected virtual void Awake()
@@ -28,9 +28,8 @@ namespace Game.Characters
 
         public virtual void TakeDamage(DamageData damageData)
         {
-            characterStats.IncreaseHealth(-damageData.Damage);
+            characterStats.DecreaseHealth(damageData.Damage);
             HurtBlink();
-            if (characterStats.CurrentHealth <= 0) Die();
         }
 
 
@@ -41,13 +40,6 @@ namespace Game.Characters
                 Renderers[i].DoColor(ShaderProperties.BaseColor, Color.red, 0);
                 Renderers[i].DoColor(ShaderProperties.BaseColor, Color.white, 0.3f, Ease.Linear, 0.05f);
             }
-        }
-
-        protected virtual void Die()
-        {
-            Collider.enabled = false;
-            Rigidbody.isKinematic = true;
-            Rigidbody.linearVelocity = Vector3.zero;
         }
     }
 }

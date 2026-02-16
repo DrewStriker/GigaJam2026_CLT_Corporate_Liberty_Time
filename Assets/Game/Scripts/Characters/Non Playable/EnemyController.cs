@@ -12,17 +12,19 @@ namespace Game.Characters
     public class EnemyController : CharacterBase
     {
         private Transform playerTransform => playableCharacter.Transform;
-        [Inject]private IPlayableCharacter playableCharacter;
+        [Inject] private IPlayableCharacter playableCharacter;
         private NavMeshAgent navMeshAgent;
         private DamageData damageData = new();
-        
+
+
         public event Action OnAttackRange;
+
         protected override void Awake()
         {
             base.Awake();
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
-        
+
 
         private void Start()
         {
@@ -43,13 +45,11 @@ namespace Game.Characters
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.CompareTag(Tags.Player))
-            {
-                if(other.gameObject.TryGetComponent(out IDamageable damageable))
+                if (other.gameObject.TryGetComponent(out IDamageable damageable))
                 {
                     damageData.Configure(1, transform.position);
                     damageable.TakeDamage(damageData);
                 }
-            }
         }
 
         private void ChasePlayer()
@@ -69,18 +69,21 @@ namespace Game.Characters
             navMeshAgent.isStopped = true;
             OnAttackRange?.Invoke();
         }
-        
 
-        protected  override  async void Die()
+        public virtual void TakeDamage(DamageData damageData)
         {
-            base.Die();
+            base.TakeDamage(damageData);
+            if (characterStats.CurrentHealth <= 0)
+                Die();
+        }
+
+
+        protected async void Die()
+        {
             navMeshAgent.enabled = false;
-            AnimationController.Play(Animation.Death, 0.1f,2);
+            AnimationController.Play(Animation.Death, 0.1f, 2);
             await UniTask.Delay(2000);
             gameObject.SetActive(false);
         }
-
-    
     }
 }
-

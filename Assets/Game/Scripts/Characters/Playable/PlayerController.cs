@@ -64,13 +64,6 @@ namespace Game.Characters
             item.BuffData.ApplyBuffTo(characterStats);
         }
 
-
-        protected override void Die()
-        {
-            base.Die();
-            Debug.Log("Player Died");
-        }
-
         private void Knockback(Vector3 position)
         {
             var direction = (transform.position - position).normalized;

@@ -1,4 +1,3 @@
-
 using DamageSystem;
 using Game.StatsSystem;
 using log4net.Util;
@@ -8,10 +7,9 @@ namespace Game.Characters
 {
     public interface ICharacter : IDamageable
     {
-        public AnimationController  AnimationController {get;}
-        public CharacterStats characterStats {get;}
-        public Rigidbody Rigidbody { get;  }
-
+        public AnimationController AnimationController { get; }
+        public CharacterStats characterStats { get; }
+        public Rigidbody Rigidbody { get; }
+        public Collider Collider { get; }
     }
 }
-

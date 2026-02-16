@@ -34,6 +34,11 @@ namespace Game.StatsSystem
             }
         }
 
+        public void DecreaseHealth(int amount)
+        {
+            IncreaseHealth(-amount);
+        }
+
         public void IncreaseMoveSpeed(float amount)
         {
             if (!Mathf.Approximately(amount, 0f))
