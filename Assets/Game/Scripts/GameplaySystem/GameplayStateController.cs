@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.GameplaySystem
+namespace Game.GameplaySystem
 {
     public interface IGameplayState
     {

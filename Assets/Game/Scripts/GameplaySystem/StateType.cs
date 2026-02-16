@@ -1,4 +1,4 @@
-﻿namespace Game.Scripts.GameplaySystem
+﻿namespace Game.GameplaySystem
 {
     public enum StateType
     {

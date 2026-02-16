@@ -1,5 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using Game.Characters;
+using Game.GameplaySystem;
 using SceneLoadSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -11,8 +12,7 @@ namespace Game.Scripts.GameplaySystem
 {
     public class GameplayController : MonoBehaviour
     {
-        [SerializeField] private AssetReference hudSceneReference;
-        [SerializeField] private AssetReference gameOverReference;
+        // [SerializeField] private GameplaySceneLoaderTest test;
         [Inject] private IGameplayState gameplayState;
         [Inject] private IPlayableCharacter playableCharacter;
         [Inject] private ISceneLoader sceneLoader;
@@ -40,7 +40,6 @@ namespace Game.Scripts.GameplaySystem
 
         private void OnStateChanged(StateType state)
         {
-            print(state + "start");
             switch (state)
             {
                 case StateType.Intro:
@@ -55,26 +54,22 @@ namespace Game.Scripts.GameplaySystem
             }
         }
 
-        private void OnPlayerDeath()
+        private void OnGameplayEnd()
         {
-            gameplayState.SetState(StateType.End);
+            throw new NotImplementedException();
         }
 
+        private void OnGameplayCombat()
+        {
+            throw new NotImplementedException();
+        }
 
         private void OnGameplayIntro()
         {
-            gameplayState.SetState(StateType.Combat);
         }
 
-        private async Task OnGameplayCombat()
+        private void OnPlayerDeath()
         {
-            await sceneLoader.LoadAsync(hudSceneReference);
-        }
-
-        private async Task OnGameplayEnd()
-        {
-            await sceneLoader.UnloadAsync(hudSceneReference);
-            await sceneLoader.LoadAsync(gameOverReference);
         }
     }
 }

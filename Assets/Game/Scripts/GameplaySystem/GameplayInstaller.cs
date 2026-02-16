@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Zenject;
 
-namespace Game.Scripts.GameplaySystem
+namespace Game.GameplaySystem
 {
     public class GameplayInstaller : MonoInstaller
     {
