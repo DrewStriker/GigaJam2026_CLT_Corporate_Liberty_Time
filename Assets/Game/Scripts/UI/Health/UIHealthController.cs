@@ -10,23 +10,22 @@ namespace Game.UI.Health
     public class UIHealthController : MonoBehaviour
     {
         [SerializeField] private HealthUnitUI UiHealthUnitPrefab;
-        public PlayerController playableCharacter;
+        [Inject] private IPlayableCharacter playableCharacter;
         private List<HealthUnitUI> healthUnits = new();
 
         private CharacterStats characterStats => playableCharacter.characterStats;
+
+        [Inject]
+        private void Construct(IPlayableCharacter playableCharacter)
+        {
+            print(this.playableCharacter.characterStats == null);
+            this.playableCharacter = playableCharacter;
+        }
 
         private void Awake()
         {
             healthUnits = GetComponentsInChildren<HealthUnitUI>().ToList();
         }
-
-        // [Inject]
-        // private void Construct(IPlayableCharacter playableCharacter)
-        // {
-        //     print(this.playableCharacter.characterStats == null);
-        //     this.playableCharacter = playableCharacter;
-        //
-        // }
 
         private void Start()
         {
