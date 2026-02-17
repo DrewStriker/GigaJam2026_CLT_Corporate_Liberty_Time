@@ -2450,10 +2450,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2530833185426000458, guid: 21477125fbae07447a0d17984d149dfa, type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3084723714961314165, guid: 21477125fbae07447a0d17984d149dfa, type: 3}
       propertyPath: m_Name
       value: 'NPC '
