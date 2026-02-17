@@ -20,12 +20,13 @@ namespace Game.Characters
 
         public NavMeshAgent NavMeshAgent { get; private set; }
         public DamageData damageData { get; private set; } = new();
-        [SerializeField] private BehaviorGraphAgent behhaviorAgent;
+        private BehaviorGraphAgent behhaviorAgent;
 
         protected override void Awake()
         {
             base.Awake();
             NavMeshAgent = GetComponent<NavMeshAgent>();
+            behhaviorAgent = GetComponent<BehaviorGraphAgent>();
         }
 
         private void Start()
