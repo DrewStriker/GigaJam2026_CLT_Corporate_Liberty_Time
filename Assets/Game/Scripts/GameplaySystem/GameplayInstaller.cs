@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Zenject;
+﻿using Zenject;
 
 namespace Game.GameplaySystem
 {
@@ -8,6 +7,7 @@ namespace Game.GameplaySystem
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<GameplayStateController>().AsSingle();
+            Container.Bind<IWinConditionEvent>().To<WinConditionEvent>().AsSingle();
         }
     }
 }
