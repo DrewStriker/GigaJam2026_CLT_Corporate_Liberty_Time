@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3370606801978690222}
   - component: {fileID: 8395399243216348184}
   - component: {fileID: 3942100052182346682}
+  - component: {fileID: 596791541211004226}
   - component: {fileID: 3490726285555827231}
   - component: {fileID: 8634442239832702567}
   - component: {fileID: 7873089516612011846}
@@ -53,13 +54,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Zenject::Zenject.SceneContext
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 3942100052182346682}
-  - {fileID: 3370606801978690222}
   - {fileID: 6475312043561205969}
+  - {fileID: 3942100052182346682}
+  - {fileID: 596791541211004226}
   - {fileID: 8395399243216348184}
   - {fileID: 3490726285555827231}
   - {fileID: 8634442239832702567}
   - {fileID: 7873089516612011846}
+  - {fileID: 3370606801978690222}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -74,7 +76,7 @@ MonoBehaviour:
   OnPostResolve:
     m_PersistentCalls:
       m_Calls: []
-  _parentNewObjectsUnderSceneContext: 0
+  _parentNewObjectsUnderSceneContext: 1
   _contractNames: []
   _parentContractNames: []
 --- !u!114 &6475312043561205969
@@ -135,6 +137,22 @@ MonoBehaviour:
       <Prefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
     - <Type>k__BackingField: 3
       <Prefab>k__BackingField: {fileID: 6191526272064295117, guid: c4ce84bd28c80a74093fbc72e937f50b, type: 3}
+--- !u!114 &596791541211004226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c85dc76f0048059f60e38108900cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Characters::Game.Characters.NpcFactoryInstaller
+  registry:
+    catalogs:
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 7643634846166465984, guid: 21477125fbae07447a0d17984d149dfa, type: 3}
 --- !u!114 &3490726285555827231
 MonoBehaviour:
   m_ObjectHideFlags: 0

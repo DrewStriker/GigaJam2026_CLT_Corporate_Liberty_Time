@@ -4,13 +4,6 @@ using Unity.Behavior;
 
 namespace Game.Characters
 {
-    [BlackboardEnum]
-    public enum NpcDecitionType
-    {
-        Flee,
-        Chase
-    }
-
     public class NpcController : EnemyController
     {
         public event Action<NpcDecitionType> Decision;
