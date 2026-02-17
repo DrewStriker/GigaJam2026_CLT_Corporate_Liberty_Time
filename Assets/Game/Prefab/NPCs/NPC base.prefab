@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 5461364343038016602}
   - component: {fileID: 8058765469152444609}
   - component: {fileID: 2530833185426000458}
-  - component: {fileID: 6305016198696336117}
+  - component: {fileID: 7643634846166465984}
   - component: {fileID: 1422237315803218282}
   - component: {fileID: 198386615209048684}
   - component: {fileID: 4186448193907940491}
@@ -413,7 +413,9 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Bip001 R Clavicle'\n\tFrom animation clip 'Damage'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -476,7 +478,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &6305016198696336117
+--- !u!114 &7643634846166465984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -485,9 +487,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3084723714961314165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac96be37dae3bc4b86459a9b70ad326, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b9d0fa4fa8b4dfba61fea7deea8cb76, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Characters::Game.Characters.EnemyController
+  m_EditorClassIdentifier: Characters::Game.Characters.NpcController
   config: {fileID: 11400000, guid: eb0f11a8182550d4abb68da76715eb7c, type: 2}
 --- !u!54 &1422237315803218282
 Rigidbody:

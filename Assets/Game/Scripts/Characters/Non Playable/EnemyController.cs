@@ -16,24 +16,23 @@ namespace Game.Characters
 
     public class EnemyController : CharacterBase, IEnemyCharacter
     {
-        [Inject] private PlayerController playerTarget;
+        [Inject] protected PlayerController playerTarget;
 
         public NavMeshAgent NavMeshAgent { get; private set; }
         public DamageData damageData { get; private set; } = new();
-        private BehaviorGraphAgent behhaviorAgent;
+        protected BehaviorGraphAgent behaviorAgent;
 
         protected override void Awake()
         {
             base.Awake();
             NavMeshAgent = GetComponent<NavMeshAgent>();
-            behhaviorAgent = GetComponent<BehaviorGraphAgent>();
+            behaviorAgent = GetComponent<BehaviorGraphAgent>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
-            print(playerTarget);
-            behhaviorAgent.SetVariableValue("PlayerController", playerTarget);
-            behhaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
+            behaviorAgent.SetVariableValue("PlayerController", playerTarget);
+            behaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
         }
 
         private void OnCollisionEnter(Collision other)
@@ -57,8 +56,8 @@ namespace Game.Characters
 
         protected async void Die()
         {
-            behhaviorAgent.Restart();
-            behhaviorAgent.enabled = false;
+            behaviorAgent.Restart();
+            behaviorAgent.enabled = false;
             NavMeshAgent.enabled = false;
             Rigidbody.isKinematic = true;
             Collider.isTrigger = true;

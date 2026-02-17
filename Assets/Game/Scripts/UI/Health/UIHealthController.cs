@@ -18,7 +18,6 @@ namespace Game.UI.Health
         [Inject]
         private void Construct(IPlayableCharacter playableCharacter)
         {
-            print(this.playableCharacter.characterStats == null);
             this.playableCharacter = playableCharacter;
         }
 
