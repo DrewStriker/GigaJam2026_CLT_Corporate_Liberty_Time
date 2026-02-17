@@ -1,20 +1,32 @@
 ﻿using System;
 using DG.Tweening;
 using Game.Core;
+using Game.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Game.InteractionSystem
 {
     public class InteractableObject : MonoBehaviour, IInteractable
     {
+        [SerializeField] private Collider collider;
+        [Inject] private PlayerInputController playerInputController;
         protected new Renderer renderer;
 
         private Tween colorTween;
+        private InputAction InteractInput;
 
         private void Awake()
         {
             renderer = GetComponentInChildren<Renderer>();
         }
+
+        private void OnEnable()
+        {
+            InteractInput = playerInputController.Interact;
+        }
+
 
         public virtual void Interact()
         {
@@ -31,6 +43,13 @@ namespace Game.InteractionSystem
         {
             if (other.gameObject.CompareTag(Tags.Player))
                 StopEffect();
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag(Tags.Player))
+                if (InteractInput.WasPressedThisFrame())
+                    Interact();
         }
 
 

@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6519611324760209403}
   - component: {fileID: 7739201497826024940}
   - component: {fileID: 1412648811861052667}
+  - component: {fileID: 8636863101654542477}
   - component: {fileID: 5600231532940875918}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Interactable Object base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,6 +131,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &8636863101654542477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993611857829464625}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5600231532940875918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +164,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f307c15b83421699f1dada359fe2c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: InteractionSystem::Game.InteractionSystem.InteractableObject
+  collider: {fileID: 8636863101654542477}

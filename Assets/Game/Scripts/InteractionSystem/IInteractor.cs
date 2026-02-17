@@ -1,8 +1,6 @@
-﻿// namespace Game.InteractionSystem
-// {
-//     public interface IInteractor
-//     {
-//         
-//     }
-// }
-
+﻿namespace Game.InteractionSystem
+{
+    public interface IInteractor
+    {
+    }
+}
