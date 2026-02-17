@@ -18,7 +18,7 @@ MonoBehaviour:
   m_Variables:
   - rid: 4980745174056698569
   - rid: 4980745174056698587
-  m_VersionTimestamp: 639068730505149748
+  m_VersionTimestamp: 639068836655732390
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 2483704668060571638}
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: ControllerReference
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
-  VersionTimestamp: 639068730505149748
+  VersionTimestamp: 639068836655732390
   AssetID:
     m_Value0: 9554154999311143161
     m_Value1: 13854167485122612456
