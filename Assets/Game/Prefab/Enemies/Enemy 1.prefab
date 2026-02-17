@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3460817565018568574}
   - component: {fileID: -1640208080191651277}
   - component: {fileID: 4843237485468206426}
+  - component: {fileID: 3246300301786975621}
   m_Layer: 3
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.EnemyController
   config: {fileID: 11400000, guid: 395c4d242eea339419b49b638e4eaa67, type: 2}
-  behhaviorAgent: {fileID: 0}
+  behhaviorAgent: {fileID: 3246300301786975621}
 --- !u!195 &3460817565018568574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -122,6 +123,35 @@ CapsuleCollider:
   m_Height: 1.559239
   m_Direction: 1
   m_Center: {x: 0.014880806, y: 0.74390537, z: 0}
+--- !u!114 &3246300301786975621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2441371074340013908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
+  m_Graph: {fileID: 5997595735705597847, guid: e0aa7664a9b3ac94295e169b455e0a38, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 4980745174056698432
+  m_OriginalGraph: {fileID: 0}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4980745174056698432
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 2441371074340013908}
 --- !u!1001 &1014674264500244411
 PrefabInstance:
   m_ObjectHideFlags: 0

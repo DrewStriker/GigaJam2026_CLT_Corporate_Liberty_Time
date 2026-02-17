@@ -248,40 +248,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4264301}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &35090915 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2441371074340013908, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
-  m_PrefabInstance: {fileID: 1032855011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &35090923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35090915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
-  m_Graph: {fileID: 5997595735705597847, guid: e0aa7664a9b3ac94295e169b455e0a38, type: 2}
-  m_BlackboardVariableOverridesList:
-  - rid: 4980745174056698432
-  m_OriginalGraph: {fileID: 0}
-  m_IsInitialised: 0
-  m_IsStarted: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4980745174056698432
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1
-          m_Value1: 0
-        Name: Self
-        m_Value: {fileID: 35090915}
 --- !u!1 &200547087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,17 +1213,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1486784634054400504, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
-      propertyPath: managedReferences[4980745174056698263].m_Value
-      value: 
-      objectReference: {fileID: 1855161224}
     - target: {fileID: 2441371074340013908, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
       propertyPath: m_Name
       value: Enemy 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843237485468206426, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058792726382903371, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1299,17 +1257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5331832094785785327, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
-      propertyPath: behhaviorAgent
-      value: 
-      objectReference: {fileID: 35090923}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2441371074340013908, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 35090923}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 858cf101fe3f11942a22326c484f9910, type: 3}
 --- !u!1 &1034721059
 GameObject:

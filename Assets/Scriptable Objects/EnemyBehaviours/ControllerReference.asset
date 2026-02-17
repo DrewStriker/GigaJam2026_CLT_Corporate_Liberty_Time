@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: ControllerReference
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
+  AssetID:
+    m_Value0: 9554154999311143161
+    m_Value1: 13854167485122612456
+  m_Variables:
+  - rid: 4980745174056698569
+  - rid: 4980745174056698587
+  m_VersionTimestamp: 639068730505149748
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: 2483704668060571638}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4980745174056698569
+      type: {class: 'TypedVariableModel`1[[Game.Characters.PlayerController, Characters]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6679461628983084296
+          m_Value1: 12197353995953175092
+        Name: PlayerController
+        IsExposed: 0
+        m_IsShared: 1
+        m_Value: {fileID: 0}
+    - rid: 4980745174056698587
+      type: {class: 'TypedVariableModel`1[[Game.Characters.EnemyController, Characters]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2823282431401204221
+          m_Value1: 4757609134515721817
+        Name: EnemyController
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+--- !u!114 &2483704668060571638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: ControllerReference
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
+  VersionTimestamp: 639068730505149748
+  AssetID:
+    m_Value0: 9554154999311143161
+    m_Value1: 13854167485122612456
+  m_Blackboard:
+    m_Variables:
+    - rid: 4980745174056698578
+    - rid: 4980745174056698597
+  m_SharedBlackboardVariableGuids:
+  - m_Value0: 6679461628983084296
+    m_Value1: 12197353995953175092
+  references:
+    version: 2
+    RefIds:
+    - rid: 4980745174056698578
+      type: {class: 'BlackboardVariable`1[[Game.Characters.PlayerController, Characters]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6679461628983084296
+          m_Value1: 12197353995953175092
+        Name: PlayerController
+        m_Value: {fileID: 0}
+    - rid: 4980745174056698597
+      type: {class: 'BlackboardVariable`1[[Game.Characters.EnemyController, Characters]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2823282431401204221
+          m_Value1: 4757609134515721817
+        Name: EnemyController
+        m_Value: {fileID: 0}
