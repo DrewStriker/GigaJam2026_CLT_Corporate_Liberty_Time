@@ -372,9 +372,9 @@ GameObject:
   - component: {fileID: 1422237315803218282}
   - component: {fileID: 198386615209048684}
   - component: {fileID: 4186448193907940491}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NPC base
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac96be37dae3bc4b86459a9b70ad326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.EnemyController
-  config: {fileID: 11400000, guid: 395c4d242eea339419b49b638e4eaa67, type: 2}
+  config: {fileID: 11400000, guid: eb0f11a8182550d4abb68da76715eb7c, type: 2}
 --- !u!54 &1422237315803218282
 Rigidbody:
   m_ObjectHideFlags: 0
