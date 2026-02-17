@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151f384480635844390421944a64dfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TimeSystem::TimerManager
+  timeScale: 0.707
   gameDuration: 17
   extraTimeRange: 5

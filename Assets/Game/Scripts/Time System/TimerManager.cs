@@ -5,9 +5,9 @@ namespace Game.TimeSystem
 {
     public class TimerManager : MonoBehaviour, ITimerManager
     {
-        [SerializeField] float gameDuration;
-        [Range(0, 5)]
-        [SerializeField] int extraTimeRange;
+        [SerializeField] [Range(0, 1)] private float timeScale = 1;
+        [SerializeField] private float gameDuration;
+        [Range(0, 5)] [SerializeField] private int extraTimeRange;
         public Timer Timer { get; private set; }
         public int ExtraTime { get; private set; }
 
@@ -27,7 +27,7 @@ namespace Game.TimeSystem
 
         private void Update()
         {
-            Timer.UpdateTimer(Time.deltaTime);
+            Timer.UpdateTimer(Time.deltaTime * timeScale);
         }
 
         public void StartTimer()
@@ -51,7 +51,7 @@ namespace Game.TimeSystem
 
         private float GetRandomOvertime()
         {
-            int random = ExtraTime = UnityEngine.Random.Range(0, extraTimeRange + 1);
+            var random = ExtraTime = UnityEngine.Random.Range(0, extraTimeRange + 1);
             return Timer.GetFractionedDuration() * random;
         }
 
@@ -60,7 +60,5 @@ namespace Game.TimeSystem
             Timer.OnTimerCompleted -= OnMainTimeExpired;
             Timer.OnTimerCompleted -= OnExtraTimeExpired;
         }
-
-
     }
 }

@@ -1313,6 +1313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb2a5d47bb59614dba225cbc89b57b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RankSystem::Game.RankSystem.RankManager
+  enemyDefeatMultiplier: 30
   rankUpConfig: {fileID: 11400000, guid: c2eeec3e6f0f7d84b93821ba8cc5fe5a, type: 2}
 --- !u!1001 &1271365986
 PrefabInstance:
@@ -2422,8 +2423,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7720388623773889646, guid: 15c5d7d5795bd39489a5bc8b96f1c7af, type: 3}
-      propertyPath: extraTimeRange
-      value: 5
+      propertyPath: timeScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
