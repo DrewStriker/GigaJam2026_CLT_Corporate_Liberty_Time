@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Game.Characters;
 using UnityEngine;
 
 namespace Game.RankSystem
 {
     public class RankManager : MonoBehaviour
     {
+        [SerializeField] private int enemyDefeatMultiplier = 30;
         [SerializeField] private RankUpConfig rankUpConfig;
         public int CurrentRank { get; private set; }
         public float RankProgress { get; private set; }
@@ -29,29 +31,30 @@ namespace Game.RankSystem
             pointsRequirementQueue.Enqueue(rankUpConfig.PointsToRank6);
 
             pointsToRankUp = pointsRequirementQueue.Dequeue();
+            EnemyController.LostAllHealth += OnEnemyLostAllHealth;
         }
 
+        private void OnDestroy()
+        {
+            EnemyController.LostAllHealth -= OnEnemyLostAllHealth;
+        }
 
         private void OnGUI()
         {
             if (GUI.Button(new Rect(20, 20, 100, 50), "Add Points"))
-            {
-                IncreasePoints(100f);
-            }
+                IncreasePoints(100);
         }
-        public void IncreasePoints(float value)
-        {   
-            Debug.Log($"Adding {value} points");
+
+        public void IncreasePoints(int value)
+        {
             currentScore += value;
             RankProgress = Mathf.InverseLerp(0f, pointsToRankUp, currentScore);
 
-            if (RankProgress >= 1f)
-            {
-                RankUp();
-            }
+            if (RankProgress >= 1f) RankUp();
 
             OnScoreChanged?.Invoke(currentScore);
         }
+
 
         private void RankUp()
         {
@@ -60,13 +63,18 @@ namespace Game.RankSystem
                 Debug.Log("Max Rank Reached");
                 return;
             }
+
             CurrentRank++;
-            if (pointsRequirementQueue.TryDequeue(out float result)) pointsToRankUp = result;
+            if (pointsRequirementQueue.TryDequeue(out var result)) pointsToRankUp = result;
             RankProgress = Mathf.InverseLerp(0f, pointsToRankUp, currentScore);
             OnRankChanged?.Invoke();
             Debug.Log($"Rank Up!\nCurrent Rank: {CurrentRank}\nRank Progress: {RankProgress}" +
-                $"\nCurrent Points: {currentScore}\nPoints to Rank Up: {pointsToRankUp}");
+                      $"\nCurrent Points: {currentScore}\nPoints to Rank Up: {pointsToRankUp}");
+        }
+
+        private void OnEnemyLostAllHealth(int value)
+        {
+            IncreasePoints(value * enemyDefeatMultiplier);
         }
     }
 }
-

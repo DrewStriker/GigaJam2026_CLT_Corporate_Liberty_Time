@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using Game.Core;
@@ -21,6 +22,7 @@ namespace Game.Characters
         public NavMeshAgent NavMeshAgent { get; private set; }
         public DamageData damageData { get; private set; } = new();
         protected BehaviorGraphAgent behaviorAgent;
+        public static event Action<int> LostAllHealth;
 
         protected override void Awake()
         {
@@ -56,6 +58,7 @@ namespace Game.Characters
 
         protected async void Die()
         {
+            LostAllHealth?.Invoke(characterStats.MaxHealth);
             behaviorAgent.Restart();
             behaviorAgent.enabled = false;
             NavMeshAgent.enabled = false;
