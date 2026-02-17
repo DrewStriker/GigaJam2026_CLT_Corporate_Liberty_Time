@@ -1,45 +1,38 @@
-using System;
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using Game.Core;
-using Game.StatsSystem;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
 namespace Game.Characters
 {
-    public class EnemyController : CharacterBase
+    public interface IEnemyCharacter : ICharacter
     {
-        private Transform playerTransform => playableCharacter.Transform;
-        [Inject] private IPlayableCharacter playableCharacter;
-        private NavMeshAgent navMeshAgent;
-        private DamageData damageData = new();
+        NavMeshAgent NavMeshAgent { get; }
+        DamageData damageData { get; }
+    }
 
+    public class EnemyController : CharacterBase, IEnemyCharacter
+    {
+        [Inject] private PlayerController playerTarget;
 
-        public event Action OnAttackRange;
+        public NavMeshAgent NavMeshAgent { get; private set; }
+        public DamageData damageData { get; private set; } = new();
+        [SerializeField] private BehaviorGraphAgent behhaviorAgent;
 
         protected override void Awake()
         {
             base.Awake();
-            navMeshAgent = GetComponent<NavMeshAgent>();
+            NavMeshAgent = GetComponent<NavMeshAgent>();
         }
-
 
         private void Start()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            navMeshAgent.speed = characterStats.MoveSpeed;
-            AnimationController.Play(Animation.Run);
-        }
-
-        private void Update()
-        {
-            ChasePlayer();
+            print(playerTarget);
+            behhaviorAgent.SetVariableValue("PlayerController", playerTarget);
+            behhaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
         }
 
         private void OnCollisionEnter(Collision other)
@@ -52,23 +45,6 @@ namespace Game.Characters
                 }
         }
 
-        private void ChasePlayer()
-        {
-            if (Vector3.Distance(transform.position, playerTransform.position) > 1)
-            {
-                navMeshAgent.SetDestination(playerTransform.position);
-                navMeshAgent.isStopped = false;
-                return;
-            }
-
-            Stop();
-        }
-
-        private void Stop()
-        {
-            navMeshAgent.isStopped = true;
-            OnAttackRange?.Invoke();
-        }
 
         public override void TakeDamage(DamageData damageData)
         {
@@ -80,7 +56,9 @@ namespace Game.Characters
 
         protected async void Die()
         {
-            navMeshAgent.enabled = false;
+            behhaviorAgent.Restart();
+            behhaviorAgent.enabled = false;
+            NavMeshAgent.enabled = false;
             Rigidbody.isKinematic = true;
             Collider.isTrigger = true;
             AnimationController.Play(Animation.Death, 0.1f, 2);

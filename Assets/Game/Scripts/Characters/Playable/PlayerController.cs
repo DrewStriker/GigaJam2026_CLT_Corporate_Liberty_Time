@@ -12,10 +12,14 @@ namespace Game.Characters
     {
         [SerializeField] private Transform handTransform;
 
+        [Inject] public PlayerInputController InputController { get; private set; }
+        public PlayableCharacterMovementController MovementController { get; private set; }
+        public PlayerStateMachine StateMachine { get; private set; }
+        public IDamager Damager { get; private set; }
+
         protected override void Awake()
         {
             base.Awake();
-            Transform = transform;
             Damager = GetComponentInChildren<IDamager>();
             MovementController =
                 new PlayableCharacterMovementController(GetComponent<Rigidbody>(), characterStats, InputController);
@@ -33,11 +37,6 @@ namespace Game.Characters
             StateMachine.FixedUpdate();
         }
 
-        [Inject] public PlayerInputController InputController { get; private set; }
-        public PlayableCharacterMovementController MovementController { get; private set; }
-        public PlayerStateMachine StateMachine { get; private set; }
-        public Transform Transform { get; private set; }
-        public IDamager Damager { get; private set; }
 
         public void UpdateBaseAnimation()
         {

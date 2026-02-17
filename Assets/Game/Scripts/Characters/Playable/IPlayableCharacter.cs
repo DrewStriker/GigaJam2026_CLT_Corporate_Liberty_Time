@@ -8,12 +8,11 @@ using Game.ItemSystem;
 
 namespace Game.Characters
 {
-    public interface IPlayableCharacter : ICharacter, ICollector<ItemType>, ICollector<WeaponType>
+    public interface IPlayableCharacter : ICharacter, ITarget, ICollector<ItemType>, ICollector<WeaponType>
     {
         [Inject] public PlayerInputController InputController { get; }
         public PlayableCharacterMovementController MovementController { get; }
         public PlayerStateMachine StateMachine { get; }
-        public Transform Transform { get; }
         public IDamager Damager { get; }
         public void UpdateBaseAnimation();
     }

@@ -23,6 +23,7 @@ namespace Game.Characters
             AnimationController = new AnimationController(GetComponentInChildren<Animator>());
         }
 
+        public Transform Transform => transform;
         public AnimationController AnimationController { get; private set; }
         public CharacterStats characterStats { get; private set; }
         public Rigidbody Rigidbody { get; private set; }

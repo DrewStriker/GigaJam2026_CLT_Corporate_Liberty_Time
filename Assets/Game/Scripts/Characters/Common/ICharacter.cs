@@ -7,6 +7,7 @@ namespace Game.Characters
 {
     public interface ICharacter : IDamageable
     {
+        public Transform Transform { get; }
         public AnimationController AnimationController { get; }
         public CharacterStats characterStats { get; }
         public Rigidbody Rigidbody { get; }
