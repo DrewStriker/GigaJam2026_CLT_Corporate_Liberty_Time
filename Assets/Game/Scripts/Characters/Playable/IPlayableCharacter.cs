@@ -1,6 +1,7 @@
 using DamageSystem;
 using Game.CollectableSystem;
 using Game.Input;
+using Game.InteractionSystem;
 using Game.WeaponSystem;
 using UnityEngine;
 using Zenject;
