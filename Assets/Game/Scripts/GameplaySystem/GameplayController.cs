@@ -1,6 +1,6 @@
-﻿using System;
-using Game.Characters;
+﻿using Game.Characters;
 using Game.GameplaySystem;
+using Game.TimeSystem;
 using SceneLoadSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -16,6 +16,8 @@ namespace Game.Scripts.GameplaySystem
         [Inject] private IGameplayState gameplayState;
         [Inject] private IPlayableCharacter playableCharacter;
         [Inject] private ISceneLoader sceneLoader;
+        [Inject] private ITimerManager timerManager;
+        [Inject] private IWinConditionEvent winConditionEvent;
 
         private AsyncOperationHandle<SceneInstance> hudSceneHandle;
         private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
@@ -26,13 +28,24 @@ namespace Game.Scripts.GameplaySystem
             test.Initialize(gameplayState, sceneLoader);
             gameplayState.StateChanged += OnStateChanged;
             playableCharacter.Death += OnPlayerDeath;
+            timerManager.ExtraTimeExpired += OnTimerEnd;
+            winConditionEvent.WinConditionMet += TestWinCondition;
             gameplayState.SetState(StateType.Intro);
+        }
+
+        private void TestWinCondition(bool conditionMet)
+        {
+            if (conditionMet) Debug.Log("You Won!");
+            else Debug.Log("You Lose!");
         }
 
         private void OnDestroy()
         {
             playableCharacter.Death -= OnPlayerDeath;
             gameplayState.StateChanged -= OnStateChanged;
+            timerManager.ExtraTimeExpired -= OnTimerEnd;
+            winConditionEvent.WinConditionMet -= TestWinCondition;
+
             Addressables.UnloadSceneAsync(gameOverSceneHandle);
 
             if (gameOverSceneHandle.IsValid())
@@ -70,6 +83,14 @@ namespace Game.Scripts.GameplaySystem
         private void OnPlayerDeath()
         {
             gameplayState.SetState(StateType.End);
+            winConditionEvent.InvokeWinCondition(false);
         }
+
+        private void OnTimerEnd()
+        {
+            gameplayState.SetState(StateType.End);
+            winConditionEvent.InvokeWinCondition(true);
+        }
+
     }
 }

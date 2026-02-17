@@ -2,7 +2,7 @@ using Game.Characters;
 using Game.RankSystem;
 using UnityEngine;
 using Zenject;
-using Timer = Game.Core.Timer;
+using Timer = Game.TimeSystem.Timer;
 
 namespace Game.SpawnSystem
 {
@@ -29,7 +29,7 @@ namespace Game.SpawnSystem
                 spawnConfig.Rank6Config
             };
 
-            timer = new Timer(Core.TimerMode.CountDown);
+            timer = new Timer(TimeSystem.TimerMode.CountDown);
             timer.OnTimerCompleted += SpawnRandomEnemy;
         }
 
