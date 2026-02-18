@@ -1,5 +1,32 @@
 {
   "dependencies": {
+    "com.placement-tool": {
+      "version": "https://github.com/alexandregaudencio/PlacementTool.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2f083401d1b44f01b161215402b0e8bb7938034b"
+    },
+    "com.unity.2d.tilemap": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0"
+      }
+    },
+    "com.unity.2d.tilemap.extras": {
+      "version": "6.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.tilemap": "1.0.0",
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.addressables": {
       "version": "2.8.1",
       "depth": 0,
