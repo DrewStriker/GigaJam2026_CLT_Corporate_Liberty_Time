@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.EnemyController
   config: {fileID: 11400000, guid: 395c4d242eea339419b49b638e4eaa67, type: 2}
-  behhaviorAgent: {fileID: 3246300301786975621}
 --- !u!195 &3460817565018568574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -107,7 +106,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2441371074340013908}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 688c287a10c87c44bb558df90c68a561, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
