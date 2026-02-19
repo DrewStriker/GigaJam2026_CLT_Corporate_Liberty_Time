@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: NPC stats
   m_EditorClassIdentifier: Characters::Game.Characters.PlayerConfig
   <Heatlh>k__BackingField: 2
+  <Armor>k__BackingField: 1
   <Speed>k__BackingField: 2
   <JumpForce>k__BackingField: 8
