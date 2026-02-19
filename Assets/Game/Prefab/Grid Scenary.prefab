@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 2845264161415176752}
   - component: {fileID: 8619856642081746774}
   - component: {fileID: 7669572037631490301}
+  - component: {fileID: 808898351691462260}
   m_Layer: 0
   m_Name: buildings duplex
   m_TagString: Untagged
@@ -1105,6 +1106,25 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!114 &808898351691462260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492889311153802371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74c18eedfbed0440aeec0926c53bba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core::ChildMeshRandomizer
+  prefabs:
+  - {fileID: 7884047403725966062, guid: 4cbf1f1b2d05a364fa7d704c511e9db2, type: 3}
+  - {fileID: 7738387352632491688, guid: 452d0f0f17fec6846a09d1f805bc5d22, type: 3}
+  - {fileID: 6293264026640803954, guid: 0855b0f140f57764ea1f8a0a625c0fb7, type: 3}
+  - {fileID: 7217203303444042434, guid: 00aad32cb3079964bacf6dcd311e1628, type: 3}
+  - {fileID: 8829582240279267788, guid: a2a4fe8fb670b7c45985d03f277ca397, type: 3}
+  - {fileID: 7317167573922201723, guid: 4be1f39a7a4191d409314ea2b26507c6, type: 3}
 --- !u!1 &3014681633444167177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,6 +1865,7 @@ GameObject:
   - component: {fileID: 5223377111580744317}
   - component: {fileID: 3599883674940093076}
   - component: {fileID: 4330874812737241278}
+  - component: {fileID: 5592036585182993556}
   m_Layer: 0
   m_Name: buildings simple
   m_TagString: Untagged
@@ -1981,6 +2002,23 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!114 &5592036585182993556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769606949404444197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74c18eedfbed0440aeec0926c53bba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core::ChildMeshRandomizer
+  prefabs:
+  - {fileID: 8580424472770012855, guid: 0c5f123e62fb7b34b8107a5f524e74f4, type: 3}
+  - {fileID: 179425292766434675, guid: bc2ca9c2d70c1a4449f2a7f95652cafa, type: 3}
+  - {fileID: 7220583704998477638, guid: 2b5b60c50960f1944a7dfcac67035745, type: 3}
+  - {fileID: 1174608368337667380, guid: a4dad0c70e7e8884789390dc5d5fc718, type: 3}
 --- !u!1001 &11267210376596118
 PrefabInstance:
   m_ObjectHideFlags: 0
