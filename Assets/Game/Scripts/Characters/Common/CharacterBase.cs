@@ -28,10 +28,9 @@ namespace Game.Characters
         public CharacterStats characterStats { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
 
-
         public virtual void TakeDamage(DamageData damageData)
         {
-            characterStats.DecreaseHealth(damageData.Damage);
+            if (!characterStats.DecreaseArmor(damageData.ArmorDamage)) characterStats.DecreaseHealth(damageData.Damage);
             HurtBlink();
             if (characterStats.CurrentHealth == 0) Death?.Invoke();
         }

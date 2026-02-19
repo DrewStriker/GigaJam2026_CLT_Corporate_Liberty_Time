@@ -12,7 +12,8 @@ namespace Game.Characters
         protected override void Start()
         {
             Rigidbody.isKinematic = true;
-            characterStats.HealthChanged += OnDamage;
+            //characterStats.HealthChanged += OnDamage;
+            characterStats.ArmorChanged += OnArmorDamage;
             base.Start();
             behaviorAgent.SetVariableValue("NpcController", this);
         }
@@ -22,12 +23,14 @@ namespace Game.Characters
             if (canDamagePlayer) base.OnCollisionEnter(other);
         }
 
-        private void OnDamage(int obj)
+        // Mudar para um evento de Armor Break ao invés de apenas OnDamage, talvez?
+        private void OnArmorDamage(int obj)
         {
             var randDecision = EnumExtensions.GetRandomEnum<NpcDecitionType>();
             behaviorAgent.SetVariableValue("decision", randDecision);
             Decision?.Invoke(randDecision);
-            characterStats.HealthChanged -= OnDamage;
+            //characterStats.HealthChanged -= OnArmorDamage;
+            characterStats.ArmorChanged -= OnArmorDamage;
         }
 
         public void EnableDamage()

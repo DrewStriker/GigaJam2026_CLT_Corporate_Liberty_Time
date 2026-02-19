@@ -6,6 +6,7 @@ namespace Game.StatsSystem
     public class CharacterStatsSO : ScriptableObject
     {
         [field: SerializeField] public int Heatlh { get; private set; } = 1;
+        [field: SerializeField] public int Armor { get; private set; } = 0;
         [field: SerializeField] public float Speed { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; }
     }
