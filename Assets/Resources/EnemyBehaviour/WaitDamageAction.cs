@@ -1,6 +1,5 @@
 using Game.Characters;
 using System;
-using Game.StatsSystem;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
@@ -36,6 +35,11 @@ public partial class WaitDamageAction : Action
 
     private void OnDecided(NpcDecitionType obj)
     {
+        if (obj == NpcDecitionType.Chase)
+        {
+            npc.Value.Rigidbody.isKinematic = false;
+            npc.Value.EnableDamage();
+        }
         result = Status.Success;
     }
 }

@@ -41,10 +41,12 @@ namespace DamageSystem
                 QueryTriggerInteraction.Ignore);
 
             if (hitCount == 0) return;
+
             for (var i = 0; i < hitCount; i++)
             {
                 if (hits[i].gameObject == gameObject) continue;
                 if (!hits[i].TryGetComponent(out IDamageable damageable)) continue;
+                Debug.Log($"Hit {hits[i].name}");
                 ConfiguraDamageData(hits[i], damage);
                 vfxPoolFacade.Spawn(VfxType.Hit, damageData.AttackerPosition);
                 sfxPoolFacade.Play(SfxType.Hit, damageData.AttackerPosition, 1, true);

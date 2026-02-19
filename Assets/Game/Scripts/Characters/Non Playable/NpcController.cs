@@ -1,23 +1,25 @@
 ﻿using System;
 using Game.Scripts.Core;
-using Unity.Behavior;
+using UnityEngine;
 
 namespace Game.Characters
 {
     public class NpcController : EnemyController
     {
         public event Action<NpcDecitionType> Decision;
+        private bool canDamagePlayer;
 
         protected override void Start()
         {
+            Rigidbody.isKinematic = true;
             characterStats.HealthChanged += OnDamage;
             base.Start();
             behaviorAgent.SetVariableValue("NpcController", this);
         }
 
-        protected void OnDestroy()
+        protected override void OnCollisionEnter(Collision other)
         {
-            characterStats.HealthChanged -= OnDamage;
+            if (canDamagePlayer) base.OnCollisionEnter(other);
         }
 
         private void OnDamage(int obj)
@@ -26,6 +28,11 @@ namespace Game.Characters
             behaviorAgent.SetVariableValue("decision", randDecision);
             Decision?.Invoke(randDecision);
             characterStats.HealthChanged -= OnDamage;
+        }
+
+        public void EnableDamage()
+        {
+            canDamagePlayer = true;
         }
     }
 }

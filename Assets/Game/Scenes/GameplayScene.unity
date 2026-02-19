@@ -1030,7 +1030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1947710346
 Transform:
   m_ObjectHideFlags: 0
@@ -1685,6 +1685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1422237315803218282, guid: 21477125fbae07447a0d17984d149dfa, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3084723714961314165, guid: 21477125fbae07447a0d17984d149dfa, type: 3}
       propertyPath: m_Name
       value: 'NPC '
@@ -1745,6 +1749,10 @@ PrefabInstance:
     - target: {fileID: 223798658796242046, guid: ef09b737f1ad6d0469bff36d86639cf5, type: 3}
       propertyPath: m_Name
       value: Canvas Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 223798658796242046, guid: ef09b737f1ad6d0469bff36d86639cf5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2774587920418604104, guid: ef09b737f1ad6d0469bff36d86639cf5, type: 3}
       propertyPath: m_Pivot.x
