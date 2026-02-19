@@ -1118,6 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74c18eedfbed0440aeec0926c53bba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Core::ChildMeshRandomizer
+  hideObjectChance: 0
   prefabs:
   - {fileID: 7884047403725966062, guid: 4cbf1f1b2d05a364fa7d704c511e9db2, type: 3}
   - {fileID: 7738387352632491688, guid: 452d0f0f17fec6846a09d1f805bc5d22, type: 3}
@@ -2014,6 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74c18eedfbed0440aeec0926c53bba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Core::ChildMeshRandomizer
+  hideObjectChance: 10
   prefabs:
   - {fileID: 8580424472770012855, guid: 0c5f123e62fb7b34b8107a5f524e74f4, type: 3}
   - {fileID: 179425292766434675, guid: bc2ca9c2d70c1a4449f2a7f95652cafa, type: 3}

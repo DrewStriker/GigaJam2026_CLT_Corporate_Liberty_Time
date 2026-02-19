@@ -5,6 +5,7 @@ using Random = System.Random;
 
 public class ChildMeshRandomizer : MonoBehaviour
 {
+    [SerializeField, Range(0,100)] private int hideObjectChance = 10;
     [SerializeField] private GameObject[] prefabs;
     private MeshFilter[] childrenMeshFilters;
     private Random random =  new Random();
@@ -27,8 +28,15 @@ public class ChildMeshRandomizer : MonoBehaviour
         
         foreach (var meshFilter in childrenMeshFilters)
         {
-            int index = random.Next(meshes.Count);
-            meshFilter.mesh = meshes[index];
+            if(random.Next(100) >  hideObjectChance)
+            {
+                int index = random.Next(meshes.Count);
+                meshFilter.mesh = meshes[index];
+            }
+            else
+            {
+                meshFilter.gameObject.SetActive(false);
+            }
             
         }
     }
