@@ -52,9 +52,7 @@ namespace Game.Characters
 
         public void Collect(ICollectable<WeaponType> item)
         {
-            item.Transform.SetParent(handTransform);
-            item.Transform.localPosition = Vector3.zero;
-            item.Transform.rotation = Quaternion.identity;
+            item.SetParent(handTransform);
             item.BuffData.ApplyBuffTo(characterStats);
         }
 

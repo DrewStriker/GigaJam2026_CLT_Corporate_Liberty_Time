@@ -11,5 +11,6 @@ namespace Game.CollectableSystem
 
         // T Type { get; }
         void Collect(ICollector<T> collector);
+        public void SetParent(Transform parent);
     }
 }
