@@ -3,6 +3,7 @@ using DamageSystem;
 using DG.Tweening;
 using Game.Core;
 using Game.Input;
+using Game.Scripts.Core;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -65,18 +66,19 @@ namespace Game.InteractionSystem
         public virtual void Interact()
         {
             StopEffect();
+            
             behaviour.Execute(this);
             isMoving = true;
             navMeshObstacle.enabled = false;
 
         }
-        
+
 
         private void StartEffect()
         {
             colorTween = Renderer.DoColor(
                 ShaderProperties.OverlayColor,
-                new Color(1, 1, 1, 0.3f),
+                GameColors.InteractionOn,
                 0);
 
         }
@@ -85,7 +87,7 @@ namespace Game.InteractionSystem
         {
             colorTween?.Kill();
             Renderer.DoColor(ShaderProperties.OverlayColor,
-                new Color(1, 1, 1, 0),
+                GameColors.Transparent,
                 0);
         }
 
