@@ -11,6 +11,7 @@ namespace Game.CollectableSystem
     [RequireComponent(typeof(SphereCollider))]
     public abstract class CollectableObject<T> : MonoBehaviour, ICollectable<T> where T : Enum
     {
+        [field: SerializeField] public T Type { get; private set; }
         private const float floatingHight = 0.5f;
         private const float floatingDuration = 1;
         private Tween colorTween;

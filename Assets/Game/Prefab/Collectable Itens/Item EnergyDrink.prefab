@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 6214508320844450352}
   - component: {fileID: 8140878489869426467}
   m_Layer: 7
-  m_Name: 'Item EnergyDrink '
+  m_Name: Item EnergyDrink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,4 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d510a104b334fba907a16e8057e7f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ItemSystem::Game.ItemSystem.ItemCollectable
+  <Type>k__BackingField: 1
   <BuffData>k__BackingField: {fileID: 11400000, guid: a5979dee3ba925b46bd98bd11da2a40c, type: 2}

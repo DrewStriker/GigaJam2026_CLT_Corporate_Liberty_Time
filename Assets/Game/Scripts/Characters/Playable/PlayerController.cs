@@ -1,4 +1,7 @@
+using System;
+using Cysharp.Threading.Tasks;
 using DamageSystem;
+using DG.Tweening;
 using Game.CollectableSystem;
 using Game.Input;
 using Game.ItemSystem;
@@ -16,7 +19,7 @@ namespace Game.Characters
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public IDamager Damager { get; private set; }
-        public ICollectable<WeaponType> weaponEquipped;
+        private ICollectable<WeaponType> weaponEquipped;
 
         protected override void Awake()
         {
@@ -53,20 +56,44 @@ namespace Game.Characters
 
         public void Collect(ICollectable<WeaponType> item)
         {
-            if (weaponEquipped != null)
-            {
-                weaponEquipped.UnCollect();
-                print("n]ão era null");
-            }
-
+            if (weaponEquipped != null) weaponEquipped.UnCollect();
             weaponEquipped = item;
             item.SetParent(handTransform);
             item.BuffData.ApplyBuffTo(characterStats);
         }
 
-        public void Collect(ICollectable<ItemType> item)
+        public async void Collect(ICollectable<ItemType> item)
         {
             item.BuffData.ApplyBuffTo(characterStats);
+            //TODO: provisory!!!! Refact latter
+            CoffeePowerUpBehaviour(item);
+        }
+
+        //TODO: provisory!!!! Refact latter
+        private async void CoffeePowerUpBehaviour(ICollectable<ItemType> item)
+        {
+            if (item.Type == ItemType.Coffee)
+            {
+                transform.DOScale(3, 1)
+                    .SetEase(Ease.OutQuad);
+                Damager.Bounds = new Bounds(new Vector3(0, 2, 0), new Vector3(2, 3, 2) * 2);
+                var elapsedTime = 0f;
+                try
+                {
+                    while (elapsedTime < item.BuffData.Duration)
+                    {
+                        Damager.DoDamage(characterStats.Damage);
+                        await UniTask.Yield(PlayerLoopTiming.Update);
+                        elapsedTime += Time.deltaTime;
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+
+                Damager.Bounds = new Bounds(Vector3.up + Vector3.forward, Vector3.one);
+                transform.DOScale(1, 0.5f).SetEase(Ease.OutQuad);
+            }
         }
 
         private void Knockback(Vector3 position)

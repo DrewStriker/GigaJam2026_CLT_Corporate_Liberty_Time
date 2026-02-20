@@ -10,7 +10,7 @@ namespace DamageSystem
 {
     public class Damager : MonoBehaviour, IDamager
     {
-        [SerializeField] private Bounds bounds = new(Vector3.forward * 0.56f, Vector3.one);
+        [field: SerializeField] public Bounds Bounds { get; set; } = new(Vector3.up, Vector3.one);
         private readonly DamageData damageData = new();
         private readonly Collider[] hits = new Collider[16];
         [Inject] private SfxPoolFacade sfxPoolFacade;
@@ -20,21 +20,22 @@ namespace DamageSystem
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            var center = transform.position + transform.forward + bounds.center;
+            var center = transform.position + transform.TransformDirection(Bounds.center);
             var rotationMatrix = Matrix4x4.TRS(
                 center,
                 transform.rotation,
                 Vector3.one);
 
             Gizmos.matrix = rotationMatrix;
-            Gizmos.DrawWireCube(Vector3.zero, bounds.size);
+            Gizmos.DrawWireCube(Vector3.zero, Bounds.size);
         }
 
         public void DoDamage(int damage)
         {
+            var center = transform.position + transform.TransformDirection(Bounds.center);
             var hitCount = Physics.OverlapBoxNonAlloc(
-                transform.position + transform.forward * 1f,
-                bounds.size * 0.5f,
+                center,
+                Bounds.size * 0.5f,
                 hits,
                 transform.rotation,
                 Layers.Character,
@@ -57,7 +58,7 @@ namespace DamageSystem
 
         private void ConfiguraDamageData(Collider collider, int damage)
         {
-            var position = collider.ClosestPoint(bounds.center);
+            var position = collider.ClosestPoint(Bounds.center);
             damageData.Configure(damage, position);
         }
     }
