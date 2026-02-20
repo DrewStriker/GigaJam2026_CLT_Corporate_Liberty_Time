@@ -76,7 +76,7 @@ namespace Game.Characters
             {
                 transform.DOScale(3, 1)
                     .SetEase(Ease.OutQuad);
-                Damager.Bounds = new Bounds(new Vector3(0, 2, 0), new Vector3(2, 3, 2) * 2);
+                Damager.Bounds = new Bounds(new Vector3(0, 2, 0), new Vector3(2, 4, 2) * 2);
                 var elapsedTime = 0f;
                 try
                 {
@@ -91,7 +91,7 @@ namespace Game.Characters
                 {
                 }
 
-                Damager.Bounds = new Bounds(Vector3.up + Vector3.forward, Vector3.one);
+                Damager.Bounds = new Bounds(Vector3.up + Vector3.forward, Vector3.one * 2);
                 transform.DOScale(1, 0.5f).SetEase(Ease.OutQuad);
             }
         }
