@@ -12,7 +12,12 @@ namespace Game.Characters
         private Renderer[] Renderers;
         public Collider Collider { get; private set; }
         public event Action Death;
+        public Transform Transform => transform;
+        public AnimationController AnimationController { get; private set; }
+        public CharacterStats characterStats { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
 
+        public bool IsDamageActive { get; protected set; } = true;
 
         protected virtual void Awake()
         {
@@ -23,14 +28,10 @@ namespace Game.Characters
             AnimationController = new AnimationController(GetComponentInChildren<Animator>());
         }
 
-        public Transform Transform => transform;
-        public AnimationController AnimationController { get; private set; }
-        public CharacterStats characterStats { get; private set; }
-        public Rigidbody Rigidbody { get; private set; }
-
 
         public virtual void TakeDamage(DamageData damageData)
         {
+            if (!IsDamageActive) return;
             characterStats.DecreaseHealth(damageData.Damage);
             HurtBlink();
             if (characterStats.CurrentHealth == 0) Death?.Invoke();

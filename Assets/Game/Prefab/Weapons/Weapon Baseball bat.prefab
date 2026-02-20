@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12891c66e504f3086822437e3db5af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WeaponSystem::Game.CollectableSystem.WeaponCollectable
+  <Type>k__BackingField: 1
   <BuffData>k__BackingField: {fileID: 11400000, guid: 463a234976d556647a6fc0057b1fc8af, type: 2}
 --- !u!135 &3361429837773360783
 SphereCollider:
