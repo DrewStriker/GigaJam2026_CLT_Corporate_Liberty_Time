@@ -13,19 +13,18 @@ namespace Game.InteractionSystem
 {
     
     //Do Damage to Enemies (followers and NPCs) when, behaviour is active
-    public class InteractableObject : MonoBehaviour, IInteractable
+    public abstract class InteractableObject : MonoBehaviour, IInteractable
     {
         [SerializeField] private int damage = 1;
         [SerializeField] private InteractionBehaviourSO behaviour;
         private DamageData damageData = new();
-        private bool isMoving = false;
         private Tween colorTween;
         private NavMeshObstacle navMeshObstacle;
         public Renderer Renderer { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
+        protected bool IsMoving { get; private set; } = false;
         public Transform Transform => transform;
-
-        public Transform Holder { get; private set; }
+        public abstract bool IsDamageValid();
 
         private void Awake()
         {
@@ -34,13 +33,12 @@ namespace Game.InteractionSystem
             Rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
-            if (Holder)
-                Grabbing();
-            if(isMoving && Rigidbody.IsSleeping())
+
+            if(IsMoving && Rigidbody.IsSleeping())
             {
-                isMoving = false;
+                IsMoving = false;
                 navMeshObstacle.enabled = true;
             }
         }
@@ -48,17 +46,20 @@ namespace Game.InteractionSystem
 
         
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
-            if (isMoving && Holder == null) TryDamageEnemy(other);
-            if (!other.gameObject.CompareTag(Tags.Player)) return;
-            StartEffect();
+            if(IsDamageValid()) TryDamageEnemy(other);
+            if (other.gameObject.CompareTag(Tags.Player))
+            {
+                StartEffect();
+                
+            }
             
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if(isMoving) return;
+            if(IsMoving) return;
             if (!other.gameObject.CompareTag(Tags.Player)) return;
             StopEffect();
         }
@@ -68,7 +69,7 @@ namespace Game.InteractionSystem
             StopEffect();
             
             behaviour.Execute(this);
-            isMoving = true;
+            IsMoving = true;
             navMeshObstacle.enabled = false;
 
         }
@@ -91,7 +92,7 @@ namespace Game.InteractionSystem
                 0);
         }
 
-        private void TryDamageEnemy(Collider other)
+        protected void TryDamageEnemy(Collider other)
         {
             if (!other.CompareTag(Tags.Enemy)) return;
             if (!other.TryGetComponent(out IDamageable damageable)) return;
@@ -101,21 +102,6 @@ namespace Game.InteractionSystem
             
         }
 
-        private void Grabbing()
-        {
-            Rigidbody.MovePosition(Holder.transform.position + Holder.forward);
-            Rigidbody.MoveRotation(Holder.rotation);
-        }
-        public void Grab(Transform holder)
-        {
-            Holder = holder;
-            
-        }
-
-        public void Release()
-        {
-            Holder = null;
-            Interact();
-        }
+   
     }
 }

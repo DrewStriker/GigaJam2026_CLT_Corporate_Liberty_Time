@@ -1,6 +1,4 @@
 ﻿using System;
-using Game.Core;
-using Game.Core.SimplePool;
 using Game.Core.SimplePool.SfxPool;
 using Game.Core.SimplePool.VfxPool;
 using UnityEngine;
@@ -10,12 +8,12 @@ namespace DamageSystem
 {
     public class Damager : MonoBehaviour, IDamager
     {
+        [SerializeField] private LayerMask targetLayers; 
         [field: SerializeField] public Bounds Bounds { get; set; } = new(Vector3.up, Vector3.one);
         private readonly DamageData damageData = new();
         private readonly Collider[] hits = new Collider[16];
         [Inject] private SfxPoolFacade sfxPoolFacade;
         [Inject] private VfxPoolFacade vfxPoolFacade;
-
 
         private void OnDrawGizmosSelected()
         {
@@ -38,7 +36,7 @@ namespace DamageSystem
                 Bounds.size * 0.5f,
                 hits,
                 transform.rotation,
-                Layers.Character,
+                targetLayers,
                 QueryTriggerInteraction.Ignore);
 
             if (hitCount == 0) return;

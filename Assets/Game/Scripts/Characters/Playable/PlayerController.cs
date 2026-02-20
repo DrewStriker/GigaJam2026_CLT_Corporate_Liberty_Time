@@ -37,52 +37,57 @@ namespace Game.Characters
         {
             StateMachine.Update();
 
-            if (interactableObjectNear == null) return;
+            if (grabbedObject == null) return;
             if (InputController.Interact.WasPerformedThisFrame())
             {
-                interactableObjectNear.Grab(transform);
+                grabbedObject.Grab(transform);
             }
 
             if (InputController.Interact.WasReleasedThisFrame())
             {
-                interactableObjectNear.Release();
+                grabbedObject.Release();
             }
             
         }
 
         //TODO: Refact Latter
-        private IInteractable interactableObjectNear;
+        private IGrabbable grabbedObject;
         
         
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(Tags.InteractableObject)) return;
-            if(!other.TryGetComponent(out IInteractable interactable)) return;
-            if (interactableObjectNear == null)
+            if (!other.CompareTag(Tags.Grabbable)) return;
+            if(!other.TryGetComponent(out IGrabbable interactable)) return;
+            if (grabbedObject == null)
             {
-                interactableObjectNear = interactable;
+                grabbedObject = interactable;
                 return;
             }
             if(!IsNearThanActual(other.transform)) return;
-            interactableObjectNear = interactable;
+            grabbedObject = interactable;
         }
 
         bool IsNearThanActual(Transform other)
         {
            var newDistance = Vector3.Distance(transform.position, other.transform.position);
-           var previousObjDistance = Vector3.Distance(transform.position, interactableObjectNear.Transform.position);
+           var previousObjDistance = Vector3.Distance(transform.position, grabbedObject.Transform.position);
            return  newDistance < previousObjDistance;
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag(Tags.InteractableObject)) return;
-            if(!other.TryGetComponent(out IInteractable interactable)) return;
-            if (interactable != interactableObjectNear) return;
-            interactableObjectNear = null;
-
+            if (!other.CompareTag(Tags.Grabbable)) return;
+            if (other.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable == grabbedObject)
+                {
+                    grabbedObject = null;
+                }
+            }
+            
         }
 
+        
         private void FixedUpdate()
         {
             StateMachine.FixedUpdate();
