@@ -26,9 +26,8 @@ namespace Game.CollectableSystem
 
         private void OnEnable()
         {
-            transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-            transform.RandomRotationY(0, 360);
             StartEffect();
+            transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         }
 
         private void OnDisable()
@@ -66,8 +65,8 @@ namespace Game.CollectableSystem
 
         private void StopEffect()
         {
-            moveTween.Kill(true);
-            colorTween.Kill(true);
+            moveTween?.Kill();
+            colorTween?.Kill();
             transform.localRotation = Quaternion.identity;
             renderer.DoColor(ShaderProperties.OverlayColor, new Color(1, 1, 1, 0), 0);
         }
