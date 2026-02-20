@@ -64,6 +64,7 @@ namespace Game.InteractionSystem
 
         public virtual void Interact()
         {
+            StopEffect();
             behaviour.Execute(this);
             isMoving = true;
             navMeshObstacle.enabled = false;
