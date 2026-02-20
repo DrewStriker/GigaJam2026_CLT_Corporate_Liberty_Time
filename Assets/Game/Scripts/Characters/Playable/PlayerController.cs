@@ -36,7 +36,8 @@ namespace Game.Characters
         private void Update()
         {
             StateMachine.Update();
-            
+
+            if (interactableObjectNear == null) return;
             if (InputController.Interact.WasPerformedThisFrame())
             {
                 interactableObjectNear.Grab(transform);
