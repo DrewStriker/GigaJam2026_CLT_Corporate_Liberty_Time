@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using DG.Tweening;
 using Game.CollectableSystem;
+using Game.Core;
 using Game.Input;
+using Game.InteractionSystem;
 using Game.ItemSystem;
 using Game.WeaponSystem;
 using UnityEngine;
@@ -33,8 +36,51 @@ namespace Game.Characters
         private void Update()
         {
             StateMachine.Update();
+            
+            if (InputController.Interact.WasPerformedThisFrame())
+            {
+                interactableObjectNear.Grab(transform);
+            }
+
+            if (InputController.Interact.WasReleasedThisFrame())
+            {
+                interactableObjectNear.Release();
+            }
+            
         }
 
+        //TODO: Refact Latter
+        private IInteractable interactableObjectNear;
+        
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag(Tags.InteractableObject)) return;
+            if(!other.TryGetComponent(out IInteractable interactable)) return;
+            if (interactableObjectNear == null)
+            {
+                interactableObjectNear = interactable;
+                return;
+            }
+            if(!IsNearThanActual(other.transform)) return;
+            interactableObjectNear = interactable;
+        }
+
+        bool IsNearThanActual(Transform other)
+        {
+           var newDistance = Vector3.Distance(transform.position, other.transform.position);
+           var previousObjDistance = Vector3.Distance(transform.position, interactableObjectNear.Transform.position);
+           return  newDistance < previousObjDistance;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag(Tags.InteractableObject)) return;
+            if(!other.TryGetComponent(out IInteractable interactable)) return;
+            if (interactable != interactableObjectNear) return;
+            interactableObjectNear = null;
+
+        }
 
         private void FixedUpdate()
         {

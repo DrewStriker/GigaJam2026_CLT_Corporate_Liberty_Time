@@ -20,10 +20,11 @@ namespace Game.InteractionSystem
         private bool isMoving = false;
         private Tween colorTween;
         private NavMeshObstacle navMeshObstacle;
-        public new Renderer Renderer { get; private set; }
+        public Renderer Renderer { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
         public Transform Transform => transform;
 
+        public Transform Holder { get; private set; }
 
         private void Awake()
         {
@@ -34,6 +35,8 @@ namespace Game.InteractionSystem
 
         private void FixedUpdate()
         {
+            if (Holder)
+                Grabbing();
             if(isMoving && Rigidbody.IsSleeping())
             {
                 isMoving = false;
@@ -42,18 +45,19 @@ namespace Game.InteractionSystem
         }
         
 
+        
 
         private void OnTriggerEnter(Collider other)
         {
-            TryDamageEnemy(other);
+            if (isMoving && Holder == null) TryDamageEnemy(other);
             if (!other.gameObject.CompareTag(Tags.Player)) return;
-            Interact();
             StartEffect();
             
         }
 
         private void OnTriggerExit(Collider other)
         {
+            if(isMoving) return;
             if (!other.gameObject.CompareTag(Tags.Player)) return;
             StopEffect();
         }
@@ -93,7 +97,22 @@ namespace Game.InteractionSystem
             
             
         }
-        
-        
+
+        private void Grabbing()
+        {
+            Rigidbody.MovePosition(Holder.transform.position + Holder.forward);
+            Rigidbody.MoveRotation(Holder.rotation);
+        }
+        public void Grab(Transform holder)
+        {
+            Holder = holder;
+            
+        }
+
+        public void Release()
+        {
+            Holder = null;
+            Interact();
+        }
     }
 }

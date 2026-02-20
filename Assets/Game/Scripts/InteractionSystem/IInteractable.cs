@@ -2,7 +2,7 @@
 
 namespace Game.InteractionSystem
 {
-    public interface IInteractable
+    public interface IInteractable : IGrabbable
     {
         void Interact();
         Rigidbody Rigidbody { get; }
