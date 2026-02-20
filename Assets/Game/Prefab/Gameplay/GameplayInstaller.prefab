@@ -153,6 +153,10 @@ MonoBehaviour:
     catalogs:
     - <Type>k__BackingField: 0
       <Prefab>k__BackingField: {fileID: 8083547492350433764, guid: c280bb0b02aa56d4a8bd88a1cfa5a516, type: 3}
+    - <Type>k__BackingField: 1
+      <Prefab>k__BackingField: {fileID: 5824488571414146565, guid: 2d7ce53e5df36d24ba0d5d424f12a08e, type: 3}
+    - <Type>k__BackingField: 2
+      <Prefab>k__BackingField: {fileID: 5299971285641438038, guid: 434e5f41df5b0ef438a288e3750d27cd, type: 3}
 --- !u!114 &8634442239832702567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +173,8 @@ MonoBehaviour:
     catalogs:
     - <Type>k__BackingField: 0
       <Prefab>k__BackingField: {fileID: 3002472621197512731, guid: 4dcff5431113ae84b87a02088c1d1794, type: 3}
+    - <Type>k__BackingField: 1
+      <Prefab>k__BackingField: {fileID: 8140878489869426467, guid: dc32604c71aad874aabe565390bc0145, type: 3}
 --- !u!114 &7873089516612011846
 MonoBehaviour:
   m_ObjectHideFlags: 0

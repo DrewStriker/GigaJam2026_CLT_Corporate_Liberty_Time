@@ -103,6 +103,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.14521362
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7574098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.009911686
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.63651013
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
