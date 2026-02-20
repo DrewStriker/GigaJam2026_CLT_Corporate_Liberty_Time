@@ -49,6 +49,21 @@ namespace Game.CollectableSystem
             collector.Collect(this);
         }
 
+        public void UnCollect()
+        {
+            GetComponent<Collider>().enabled = false;
+
+            transform.SetParent(null);
+            renderer.DoColor(ShaderProperties.OverlayColor, Color.black, 0);
+            transform.DOLocalRotate(Vector3.one * 360, 0.2f)
+                .SetLoops(-1, LoopType.Incremental);
+            transform.DOLocalMoveY(10, 0.6f)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => { gameObject.SetActive(false); });
+            // transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            // StartEffect();
+        }
+
 
         private void StartEffect()
         {

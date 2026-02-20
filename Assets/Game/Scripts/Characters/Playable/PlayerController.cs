@@ -16,6 +16,7 @@ namespace Game.Characters
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public IDamager Damager { get; private set; }
+        public ICollectable<WeaponType> weaponEquipped;
 
         protected override void Awake()
         {
@@ -52,6 +53,13 @@ namespace Game.Characters
 
         public void Collect(ICollectable<WeaponType> item)
         {
+            if (weaponEquipped != null)
+            {
+                weaponEquipped.UnCollect();
+                print("n]ão era null");
+            }
+
+            weaponEquipped = item;
             item.SetParent(handTransform);
             item.BuffData.ApplyBuffTo(characterStats);
         }
