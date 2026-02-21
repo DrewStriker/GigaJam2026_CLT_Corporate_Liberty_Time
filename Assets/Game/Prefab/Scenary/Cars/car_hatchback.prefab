@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7628152940223112358}
   - component: {fileID: 2619697211050257713}
   - component: {fileID: 8616471686059763073}
+  - component: {fileID: 6906379995566795817}
   m_Layer: 0
   m_Name: car_hatchback
   m_TagString: Untagged
@@ -113,3 +114,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6424811001468162581, guid: 1fa4ab196cf642c42abf858d58ed5841, type: 3}
+--- !u!208 &6906379995566795817
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396530080504821540}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.209, y: 0.16100001, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.10300001, z: 0.012}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3524512565805820458}
   - component: {fileID: 8035564418045971642}
   - component: {fileID: 6936951443025981355}
+  - component: {fileID: 3563158743478612909}
   m_Layer: 0
   m_Name: car_uno
   m_TagString: Untagged
@@ -113,3 +114,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8673608975366126845, guid: 1fa4ab196cf642c42abf858d58ed5841, type: 3}
+--- !u!208 &3563158743478612909
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442789064742621892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.209, y: 0.18900001, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.13100001, z: 0.012}
+  m_TimeToStationary: 0.5
