@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1666955343684217183}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.14521362
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7574098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.009911686
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066477732531750634, guid: 815afe508149a9c4db229aeca481da8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.63651013
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -156,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95531d05e29048148fa8ab0d09463639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DamageSystem::DamageSystem.Damager
-  bounds:
-    m_Center: {x: 0, y: 0.81, z: 0.35}
-    m_Extent: {x: 1, y: 0.78, z: 0.99}
+  <Bounds>k__BackingField:
+    m_Center: {x: 0, y: 1, z: 1}
+    m_Extent: {x: 1, y: 1, z: 1}
 --- !u!54 &6631488542055171551
 Rigidbody:
   m_ObjectHideFlags: 0

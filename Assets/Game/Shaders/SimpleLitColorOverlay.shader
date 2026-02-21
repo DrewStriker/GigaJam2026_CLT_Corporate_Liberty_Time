@@ -21,7 +21,10 @@ Shader "Custom/SimpleLitColorOverlay"
         Pass
         {
             Name "ForwardLit"
-            Tags { "LightMode"="UniversalForward" }
+            Tags
+            {
+                "LightMode"="UniversalForward"
+            }
 
             Cull Back
             ZWrite On
@@ -33,12 +36,12 @@ Shader "Custom/SimpleLitColorOverlay"
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _SHADOWS_SOFT
             #pragma multi_compile_instancing
-
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-            TEXTURE2D(_BaseMap);
-            SAMPLER(sampler_BaseMap);
+            TEXTURE2D (_BaseMap);
+            SAMPLER (sampler_BaseMap);
 
             float4 _BaseMap_ST;
             float4 _BaseColor;
@@ -47,16 +50,16 @@ Shader "Custom/SimpleLitColorOverlay"
             struct Attributes
             {
                 float4 positionOS : POSITION;
-                float3 normalOS   : NORMAL;
-                float2 uv         : TEXCOORD0;
+                float3 normalOS : NORMAL;
+                float2 uv : TEXCOORD0;
             };
 
             struct Varyings
             {
                 float4 positionHCS : SV_POSITION;
-                float2 uv          : TEXCOORD0;
-                float3 normalWS    : TEXCOORD1;
-                float3 positionWS  : TEXCOORD2;
+                float2 uv : TEXCOORD0;
+                float3 normalWS : TEXCOORD1;
+                float3 positionWS : TEXCOORD2;
             };
 
             Varyings vert(Attributes IN)
@@ -97,7 +100,6 @@ Shader "Custom/SimpleLitColorOverlay"
 
                 return half4(finalColor, 1);
             }
-
             ENDHLSL
         }
 
@@ -105,7 +107,10 @@ Shader "Custom/SimpleLitColorOverlay"
         Pass
         {
             Name "ShadowCaster"
-            Tags { "LightMode"="ShadowCaster" }
+            Tags
+            {
+                "LightMode"="ShadowCaster"
+            }
 
             ZWrite On
             Cull Back

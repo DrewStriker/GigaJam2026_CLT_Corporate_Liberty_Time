@@ -2,6 +2,8 @@
 {
     public enum WeaponType
     {
-        Wood
+        Wood,
+        BaseballBat,
+        TrafficCone
     }
 }

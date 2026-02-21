@@ -9,7 +9,9 @@ namespace Game.CollectableSystem
         public BuffDataSO BuffData { get; }
         Transform Transform { get; }
 
-        // T Type { get; }
+        T Type { get; }
         void Collect(ICollector<T> collector);
+        void UnCollect();
+        public void SetParent(Transform parent);
     }
 }

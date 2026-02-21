@@ -14,5 +14,10 @@ namespace Game.core
         {
             return target.position - transform.position;
         }
+
+        public static void RandomRotationY(this Transform transform, float min, float max)
+        {
+            transform.rotation = Quaternion.Euler(0, Random.Range(min, max), 0);
+        }
     }
 }

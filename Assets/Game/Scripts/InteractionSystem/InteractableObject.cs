@@ -1,74 +1,92 @@
 ﻿using System;
+using DamageSystem;
 using DG.Tweening;
 using Game.Core;
 using Game.Input;
+using Game.Scripts.Core;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Game.InteractionSystem
 {
-    public class InteractableObject : MonoBehaviour, IInteractable
+    //Do Damage to Enemies (followers and NPCs) when, behaviour is active
+    public abstract class InteractableObject : MonoBehaviour, IInteractable
     {
-        [SerializeField] private Collider collider;
-        [Inject] private PlayerInputController playerInputController;
-        protected new Renderer renderer;
-
+        [SerializeField] private int damage = 1;
+        [SerializeField] private InteractionBehaviourSO behaviour;
+        private DamageData damageData = new();
         private Tween colorTween;
-        private InputAction InteractInput;
+        private NavMeshObstacle navMeshObstacle;
+        public Renderer Renderer { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
+        protected bool IsMoving { get; private set; } = false;
+        public Transform Transform => transform;
+        public abstract bool IsDamageValid();
 
         private void Awake()
         {
-            renderer = GetComponentInChildren<Renderer>();
+            navMeshObstacle = GetComponent<NavMeshObstacle>();
+            Renderer = GetComponentInChildren<Renderer>();
+            Rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnEnable()
+        protected virtual void FixedUpdate()
         {
-            InteractInput = playerInputController.Interact;
+            if (IsMoving && Rigidbody.IsSleeping())
+            {
+                IsMoving = false;
+                navMeshObstacle.enabled = true;
+            }
         }
 
 
-        public virtual void Interact()
+        protected virtual void OnTriggerEnter(Collider other)
         {
-            print("interecting");
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag(Tags.Player))
-                StartEffect();
+            if (IsDamageValid()) TryDamageEnemy(other);
+            if (other.gameObject.CompareTag(Tags.Player)) StartEffect();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.CompareTag(Tags.Player))
-                StopEffect();
+            if (IsMoving) return;
+            if (!other.gameObject.CompareTag(Tags.Player)) return;
+            StopEffect();
         }
 
-        private void OnTriggerStay(Collider other)
+        public virtual void Interact()
         {
-            if (other.gameObject.CompareTag(Tags.Player))
-                if (InteractInput.WasPressedThisFrame())
-                    Interact();
+            StopEffect();
+
+            behaviour.Execute(this);
+            IsMoving = true;
+            navMeshObstacle.enabled = false;
         }
 
 
         private void StartEffect()
         {
-            colorTween = renderer.DoColor(
+            colorTween = Renderer.DoColor(
                 ShaderProperties.OverlayColor,
-                new Color(1, 1, 1, 0.3f),
+                GameColors.InteractionOn,
                 0);
-            // .SetLoops(-1, LoopType.Yoyo)
-            // .SetEase(Ease.Linear);
         }
 
         private void StopEffect()
         {
             colorTween?.Kill();
-            renderer.DoColor(ShaderProperties.OverlayColor,
-                new Color(1, 1, 1, 0),
+            Renderer.DoColor(ShaderProperties.OverlayColor,
+                GameColors.Transparent,
                 0);
+        }
+
+        protected void TryDamageEnemy(Collider other)
+        {
+            if (!other.CompareTag(Tags.Enemy)) return;
+            if (!other.TryGetComponent(out IDamageable damageable)) return;
+            damageData.Configure(damage, transform.position);
+            damageable.TakeDamage(damageData);
         }
     }
 }
