@@ -5,6 +5,7 @@ namespace Game.SpawnSystem
     [CreateAssetMenu(fileName = "SpawnConfig", menuName = "Game/Spawn/SpawnConfig")]
     public class SpawnConfig : ScriptableObject
     {
+        [field:SerializeField] public float OutsideCameraSpawnOffset { get; private set; }
         [field: SerializeField] public RankConfig Rank0Config { get; private set; }
         [field: SerializeField] public RankConfig Rank1Config { get; private set; }
         [field: SerializeField] public RankConfig Rank2Config { get; private set; }
