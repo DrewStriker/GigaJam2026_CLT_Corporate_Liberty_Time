@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Throw forward lightstreet
   m_EditorClassIdentifier: InteractionSystem::Game.InteractionSystem.ThrowForwardBehaviourSO
   applyrotation: 0
-  throwForce: 8
+  throwForce: 3
