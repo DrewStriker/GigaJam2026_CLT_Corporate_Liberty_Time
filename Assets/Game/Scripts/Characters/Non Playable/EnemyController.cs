@@ -37,7 +37,7 @@ namespace Game.Characters
             behaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
         }
 
-        private void OnCollisionEnter(Collision other)
+        protected virtual void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.CompareTag(Tags.Player))
                 if (other.gameObject.TryGetComponent(out IDamageable damageable))

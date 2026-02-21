@@ -1,31 +1,41 @@
 ﻿using System;
 using Game.Scripts.Core;
-using Unity.Behavior;
+using UnityEngine;
 
 namespace Game.Characters
 {
     public class NpcController : EnemyController
     {
         public event Action<NpcDecitionType> Decision;
+        private bool canDamagePlayer;
 
         protected override void Start()
         {
-            characterStats.HealthChanged += OnDamage;
+            Rigidbody.isKinematic = true;
+            //characterStats.HealthChanged += OnDamage;
+            characterStats.ArmorChanged += OnArmorDamage;
             base.Start();
             behaviorAgent.SetVariableValue("NpcController", this);
         }
 
-        protected void OnDestroy()
+        protected override void OnCollisionEnter(Collision other)
         {
-            characterStats.HealthChanged -= OnDamage;
+            if (canDamagePlayer) base.OnCollisionEnter(other);
         }
 
-        private void OnDamage(int obj)
+        // Mudar para um evento de Armor Break ao invés de apenas OnDamage, talvez?
+        private void OnArmorDamage(int obj)
         {
             var randDecision = EnumExtensions.GetRandomEnum<NpcDecitionType>();
             behaviorAgent.SetVariableValue("decision", randDecision);
             Decision?.Invoke(randDecision);
-            characterStats.HealthChanged -= OnDamage;
+            //characterStats.HealthChanged -= OnArmorDamage;
+            characterStats.ArmorChanged -= OnArmorDamage;
+        }
+
+        public void EnableDamage()
+        {
+            canDamagePlayer = true;
         }
     }
 }

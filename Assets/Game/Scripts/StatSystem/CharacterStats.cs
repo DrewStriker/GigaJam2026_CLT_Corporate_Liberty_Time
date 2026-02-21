@@ -8,18 +8,21 @@ namespace Game.StatsSystem
         public CharacterStats(CharacterStatsSO characterStatSo)
         {
             MaxHealth = characterStatSo.Heatlh;
+            Armor = characterStatSo.Armor;
             CurrentHealth = MaxHealth;
             MoveSpeed = characterStatSo.Speed;
             JumpForce = characterStatSo.JumpForce;
         }
 
         public int MaxHealth { get; }
+        public int Armor { get; private set; }
         public int Damage { get; private set; } = 1;
         public int CurrentHealth { get; private set; }
         public float MoveSpeed { get; private set; }
         public float JumpForce { get; private set; }
 
         public event Action<int> HealthChanged;
+        public event Action<int> ArmorChanged;
         public event Action<float> MoveSpeedChanged;
         public event Action<int> DamageChanged;
 
@@ -37,6 +40,25 @@ namespace Game.StatsSystem
         public void DecreaseHealth(int amount)
         {
             IncreaseHealth(-amount);
+        }
+
+        public void IncreaseArmor(int amount)
+        {
+            Armor += amount;
+            ArmorChanged?.Invoke(Armor);
+        }
+
+        public bool DecreaseArmor(int amount)
+        {
+            if (Armor > 0)
+            {
+                Armor -= amount;
+                if (Armor <= 0) Armor = 0;
+                ArmorChanged?.Invoke(Armor);
+                return true;
+            }
+
+            else return false;
         }
 
         public void IncreaseMoveSpeed(float amount)

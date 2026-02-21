@@ -20,13 +20,46 @@ MonoBehaviour:
   - rid: 4980745179920859172
   - rid: 4980745179920859366
   - rid: 4980745180881355147
-  m_VersionTimestamp: 639068838753635282
+  - rid: 2932758594144960624
+  - rid: 2932758594144960718
+  - rid: 2932758594144960804
+  m_VersionTimestamp: 639071052749532559
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 1665628486093404825}
   references:
     version: 2
     RefIds:
+    - rid: 2932758594144960624
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2438849274637218558
+          m_Value1: 11094608655909561446
+        Name: fleeSpeed
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 3
+    - rid: 2932758594144960718
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 14570260428788210252
+          m_Value1: 9016319143289803983
+        Name: angularVelocity
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 2932758594144960804
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1164173731070613346
+          m_Value1: 7753467928653311583
+        Name: acceleration
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
     - rid: 4980745178521272355
       type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -102,7 +135,7 @@ MonoBehaviour:
         - rid: 4980745180881355348
         Root:
           rid: 4980745180881355349
-        m_VersionTimestamp: 639068838870618740
+        m_VersionTimestamp: 639071052751458660
     - rid: 4980745178521272357
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -686,7 +719,7 @@ MonoBehaviour:
   - rid: 4980745180401893413
   - rid: 4980745180401893501
   - rid: 4980745180401893618
-  m_VersionTimestamp: 639068838870618740
+  m_VersionTimestamp: 639071052751458660
   m_SerializedVersion: 2
   m_DebugInfo: {fileID: 4850686461263039912}
   m_RuntimeGraph: {fileID: -2476062091238150326}

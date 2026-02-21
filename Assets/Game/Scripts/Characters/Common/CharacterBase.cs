@@ -32,7 +32,7 @@ namespace Game.Characters
         public virtual void TakeDamage(DamageData damageData)
         {
             if (!IsDamageActive) return;
-            characterStats.DecreaseHealth(damageData.Damage);
+            if (!characterStats.DecreaseArmor(damageData.ArmorDamage)) characterStats.DecreaseHealth(damageData.Damage);
             HurtBlink();
             if (characterStats.CurrentHealth == 0) Death?.Invoke();
         }
