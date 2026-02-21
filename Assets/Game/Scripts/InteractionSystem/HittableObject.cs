@@ -14,9 +14,12 @@ namespace Game.InteractionSystem
         private bool hasBeenHit;
         public bool IsDamageActive { get; }
 
+        //damage rule to apply damage to enemies,
+        //only when the object is moving,
+        //and not being held by the player
         public override bool IsDamageValid()
         {
-            return IsMoving && !hasBeenHit;
+            return IsMoving;
         }
 
 
