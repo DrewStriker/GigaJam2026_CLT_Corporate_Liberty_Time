@@ -11,7 +11,6 @@ using Zenject;
 
 namespace Game.InteractionSystem
 {
-    
     //Do Damage to Enemies (followers and NPCs) when, behaviour is active
     public abstract class InteractableObject : MonoBehaviour, IInteractable
     {
@@ -35,31 +34,23 @@ namespace Game.InteractionSystem
 
         protected virtual void FixedUpdate()
         {
-
-            if(IsMoving && Rigidbody.IsSleeping())
+            if (IsMoving && Rigidbody.IsSleeping())
             {
                 IsMoving = false;
                 navMeshObstacle.enabled = true;
             }
         }
-        
 
-        
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if(IsDamageValid()) TryDamageEnemy(other);
-            if (other.gameObject.CompareTag(Tags.Player))
-            {
-                StartEffect();
-                
-            }
-            
+            if (IsDamageValid()) TryDamageEnemy(other);
+            if (other.gameObject.CompareTag(Tags.Player)) StartEffect();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if(IsMoving) return;
+            if (IsMoving) return;
             if (!other.gameObject.CompareTag(Tags.Player)) return;
             StopEffect();
         }
@@ -67,11 +58,10 @@ namespace Game.InteractionSystem
         public virtual void Interact()
         {
             StopEffect();
-            
+
             behaviour.Execute(this);
             IsMoving = true;
             navMeshObstacle.enabled = false;
-
         }
 
 
@@ -81,7 +71,6 @@ namespace Game.InteractionSystem
                 ShaderProperties.OverlayColor,
                 GameColors.InteractionOn,
                 0);
-
         }
 
         private void StopEffect()
@@ -96,12 +85,8 @@ namespace Game.InteractionSystem
         {
             if (!other.CompareTag(Tags.Enemy)) return;
             if (!other.TryGetComponent(out IDamageable damageable)) return;
-            damageData.Configure(damage,transform.position);
+            damageData.Configure(damage, transform.position);
             damageable.TakeDamage(damageData);
-            
-            
         }
-
-   
     }
 }

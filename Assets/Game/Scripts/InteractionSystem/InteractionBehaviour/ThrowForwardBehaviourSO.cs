@@ -6,15 +6,14 @@ namespace Game.InteractionSystem
     public class ThrowForwardBehaviourSO : InteractionBehaviourSO
     {
         [SerializeField] private bool applyrotation = false;
-        [SerializeField, Min(1)] private float throwForce = 1; 
-        
+        [SerializeField] [Min(1)] private float throwForce = 1;
+
         public override void Execute(IInteractable interactable)
         {
-            
-            Vector3 forwardDirection = interactable.Transform.forward;
+            var forwardDirection = interactable.Transform.forward;
             forwardDirection.y = 0;
             interactable.Rigidbody.AddForce(throwForce * forwardDirection, ForceMode.Impulse);
-           if(applyrotation)  interactable.Rigidbody.AddTorque(Vector3.one*10, ForceMode.Impulse);
+            if (applyrotation) interactable.Rigidbody.AddTorque(Vector3.one * 10, ForceMode.Impulse);
         }
     }
 }
