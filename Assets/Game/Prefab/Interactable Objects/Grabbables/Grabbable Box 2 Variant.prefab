@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2456351009032733584, guid: 65f9a5d9c99c9a34082f85403f290e37, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5129339188203601822, guid: 122f5cd66d65fc146ab94f7b130608a3, type: 3}
+      objectReference: {fileID: 5129339188203601822, guid: 1fa4ab196cf642c42abf858d58ed5841, type: 3}
     - target: {fileID: 2486171008887629251, guid: 65f9a5d9c99c9a34082f85403f290e37, type: 3}
       propertyPath: m_Extents.x
       value: 0.145
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914459611521262345, guid: 65f9a5d9c99c9a34082f85403f290e37, type: 3}
       propertyPath: m_Name
-      value: Interactable Box 2 Variant
+      value: Grabbable Box 2 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

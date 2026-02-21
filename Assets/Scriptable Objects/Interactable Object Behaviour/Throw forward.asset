@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5a3a7eab5f4b099aeb3b53d1a0c4ba, type: 3}
   m_Name: Throw forward
   m_EditorClassIdentifier: InteractionSystem::Game.InteractionSystem.ThrowForwardBehaviourSO
-  throwForce: 15
+  applyrotation: 0
+  throwForce: 20

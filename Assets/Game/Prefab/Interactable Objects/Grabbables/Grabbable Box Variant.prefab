@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: behaviour
       value: 
       objectReference: {fileID: 11400000, guid: 38931eb04be1068489542dca6859d20e, type: 2}
+    - target: {fileID: 1372663277268871848, guid: dc1e055b5462e8a47beada461bdc40b7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 8609205042662090224, guid: 1fa4ab196cf642c42abf858d58ed5841, type: 3}
     - target: {fileID: 7739201497826024940, guid: dc1e055b5462e8a47beada461bdc40b7, type: 3}
       propertyPath: m_Radius
       value: 0.33658755
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7993611857829464625, guid: dc1e055b5462e8a47beada461bdc40b7, type: 3}
       propertyPath: m_Name
-      value: Interactable Box Variant
+      value: Grabbable Box Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
