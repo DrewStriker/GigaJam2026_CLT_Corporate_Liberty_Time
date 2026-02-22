@@ -11,9 +11,10 @@ namespace Game.UI
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private TextMeshProUGUI extraTimeText;
         [SerializeField] private Image imageClockFill;
+        [SerializeField] private int startHour = 9;
         [Inject] private ITimerManager timerManager;
 
-        private float totalGameMinutes = 17f * 60f;
+        private float totalGameMinutes = 8f * 60f;
 
         private void Start()
         {
@@ -53,7 +54,8 @@ namespace Game.UI
 
         private string GetFormattedTime()
         {
-            var currentMinutes = timerManager.AbsNormalizedTime * totalGameMinutes;
+            float startHourOffset = startHour * 60f;
+            var currentMinutes = startHourOffset + (timerManager.AbsNormalizedTime * totalGameMinutes);
 
             var hours = Mathf.FloorToInt(currentMinutes / 60f);
             var minutes = Mathf.FloorToInt(currentMinutes % 60f);
