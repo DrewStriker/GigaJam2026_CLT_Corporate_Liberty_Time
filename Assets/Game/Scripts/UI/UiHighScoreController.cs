@@ -6,7 +6,7 @@ using Game.TimeSystem;
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace Game.UI
 {
     public class UiHighScoreController : MonoBehaviour
     {
