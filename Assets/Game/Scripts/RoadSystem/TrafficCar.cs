@@ -56,16 +56,16 @@ namespace Game.RoadSystem
         private async void ControlTagetBehaviour(Collider collider)
         {
             if (!collider.TryGetComponent(out CharacterBase character)) return;
+            if (character.characterStats.CurrentHealth <= 0) return;
             character.enabled = false;
 
             var rb = character.Rigidbody;
             rb.linearVelocity = Vector3.zero;
-            var direction = (collider.transform.position - transform.position).normalized;
-            rb.AddForce(direction * 5, ForceMode.Impulse);
+            // var direction = (collider.transform.position - transform.position).normalized;
+            // rb.AddForce(direction * 5, ForceMode.Impulse);
 
             character.AnimationController.Animator.Play(Animator.StringToHash("Death"));
             await UniTask.Delay(1000);
-            if (character.characterStats.CurrentHealth <= 0) return;
             character.AnimationController.Animator.SetTrigger(Animator.StringToHash("wakeUp"));
             await UniTask.Delay(200);
             character.enabled = true;
