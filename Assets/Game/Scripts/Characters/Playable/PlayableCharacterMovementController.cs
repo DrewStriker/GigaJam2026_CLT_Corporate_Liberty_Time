@@ -33,7 +33,7 @@ namespace Game.Characters
             right.y = 0;
             var moveDirection = forward * movementInfo.Direction.y + right * movementInfo.Direction.x;
 
-            var horizontalVelocity = moveDirection * (baseVelocity * Time.fixedDeltaTime);
+            var horizontalVelocity = moveDirection.normalized * (baseVelocity * Time.fixedDeltaTime);
             horizontalVelocity.z = horizontalVelocity.z;
             horizontalVelocity.y = rigidbody.linearVelocity.y;
 
