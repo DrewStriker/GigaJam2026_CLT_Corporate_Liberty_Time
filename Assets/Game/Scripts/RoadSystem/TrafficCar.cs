@@ -2,8 +2,11 @@
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using DG.Tweening;
+using Game.CameraSystem;
 using Game.Characters;
+using Game.Core;
 using UnityEngine;
+using Zenject;
 using Animation = Game.Characters.Animation;
 
 namespace Game.RoadSystem
@@ -18,6 +21,7 @@ namespace Game.RoadSystem
         private Tween moveTween;
 
         private Damager Damager;
+        [Inject] private ICameraShakeService CameraShakeService { get; set; }
 
         private void Awake()
         {
@@ -45,6 +49,7 @@ namespace Game.RoadSystem
 
         private async void OnHit(Collider collider)
         {
+            if (collider.CompareTag(Tags.Player)) CameraShakeService.Shake(3, 10, 0.3f).Forget();
             Damager.enabled = false;
             ControlTagetBehaviour(collider);
             sequence.Pause();

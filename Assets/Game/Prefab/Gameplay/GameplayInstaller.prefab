@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7873089516612011846}
   - component: {fileID: 8473487973162150286}
   - component: {fileID: 6436915901260912588}
+  - component: {fileID: 4843609226255597090}
   m_Layer: 0
   m_Name: GameplayInstaller
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MonoBehaviour:
   - {fileID: 7873089516612011846}
   - {fileID: 8473487973162150286}
   - {fileID: 6436915901260912588}
+  - {fileID: 4843609226255597090}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -240,3 +242,16 @@ MonoBehaviour:
       <Prefab>k__BackingField: {fileID: -9114622343625502629, guid: 52b2f44b946bef34d9143312d3eca8f5, type: 3}
     - <Type>k__BackingField: 1
       <Prefab>k__BackingField: {fileID: -3271370468410584092, guid: 62bb141389ed3654aa1d31c61325eee8, type: 3}
+--- !u!114 &4843609226255597090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8605716223f2489a86ca835323049b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CameraSystem::Game.CameraSystem.CameraInstaller
+  cinemachineNoise: {fileID: 0}
