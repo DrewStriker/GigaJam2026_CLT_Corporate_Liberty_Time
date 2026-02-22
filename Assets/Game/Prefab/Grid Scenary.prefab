@@ -1123,6 +1123,7 @@ MonoBehaviour:
   - {fileID: 7217203303444042434, guid: 00aad32cb3079964bacf6dcd311e1628, type: 3}
   - {fileID: 8829582240279267788, guid: a2a4fe8fb670b7c45985d03f277ca397, type: 3}
   - {fileID: 7317167573922201723, guid: 4be1f39a7a4191d409314ea2b26507c6, type: 3}
+  initializeOnAwake: 1
 --- !u!1 &3014681633444167177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,6 +2012,7 @@ MonoBehaviour:
   - {fileID: 179425292766434675, guid: bc2ca9c2d70c1a4449f2a7f95652cafa, type: 3}
   - {fileID: 7220583704998477638, guid: 2b5b60c50960f1944a7dfcac67035745, type: 3}
   - {fileID: 1174608368337667380, guid: a4dad0c70e7e8884789390dc5d5fc718, type: 3}
+  initializeOnAwake: 0
 --- !u!1001 &11267210376596118
 PrefabInstance:
   m_ObjectHideFlags: 0

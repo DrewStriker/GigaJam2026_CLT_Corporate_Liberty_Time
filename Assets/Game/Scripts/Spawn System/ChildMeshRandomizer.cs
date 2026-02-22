@@ -10,12 +10,17 @@ namespace Game.SpawnSystem
     {
         [SerializeField, Range(0, 100)] private int hideObjectChance = 10;
         [SerializeField] private GameObject[] prefabs;
+        [SerializeField] private bool initializeOnAwake;
         private MeshFilter[] childrenMeshFilters;
         private Random random = new Random();
         private List<Mesh> meshes = new List<Mesh>();
         private Dictionary<Mesh, ItemSpawner> itemSpawnersDictionary;
         public List<ItemSpawner> ItemSpawners { get; private set; }
 
+        private void Awake()
+        {
+            if (initializeOnAwake) Initialize();
+        }
         public void Initialize()
         {
             ItemSpawners = new List<ItemSpawner>();
