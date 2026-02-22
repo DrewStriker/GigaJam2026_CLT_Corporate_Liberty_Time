@@ -10,7 +10,7 @@ namespace Game.UI
 {
     public class UiHighScoreController : MonoBehaviour
     {
-        public static string HighScoreKey = "HighScore";
+        public const string HighScoreKey = "HighScore";
         [SerializeField] private RankManager rankManager;
         [SerializeField] private TimerManager TimerManager;
         [SerializeField] private TMP_Text hgihScoreText;
