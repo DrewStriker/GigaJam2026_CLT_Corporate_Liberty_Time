@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95531d05e29048148fa8ab0d09463639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DamageSystem::DamageSystem.Damager
+  vfxType: 4
   autoDamage: 1
   targetLayers:
     serializedVersion: 2

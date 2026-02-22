@@ -8,6 +8,7 @@ namespace DamageSystem
 {
     public class Damager : MonoBehaviour, IDamager
     {
+        [SerializeField] private VfxType vfxType;
         [field: SerializeField] private bool autoDamage = false;
         private float tick = 0.3f;
         private float releaseTime = 0;

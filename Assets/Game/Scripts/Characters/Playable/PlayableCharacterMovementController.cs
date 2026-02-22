@@ -39,18 +39,19 @@ namespace Game.Characters
 
             rigidbody.linearVelocity = horizontalVelocity;
 
-            UpdateRotation();
+            UpdateRotation(forward);
         }
 
-        private void UpdateRotation()
+        private void UpdateRotation(Vector3 forward)
         {
             var rotationSpeed = 15f;
-            var velocity = rigidbody.linearVelocity;
-            var horizontal = velocity;
+            // var velocity = rigidbody.linearVelocity;
+            // var horizontal = velocity;
+            var horizontal = forward;
             horizontal.y = 0;
             if (horizontal.sqrMagnitude > 0.01f)
             {
-                var targetRotation = Quaternion.LookRotation(horizontal);
+                var targetRotation = Quaternion.LookRotation(forward);
                 var smooth = Quaternion.Slerp(
                     rigidbody.rotation,
                     targetRotation,

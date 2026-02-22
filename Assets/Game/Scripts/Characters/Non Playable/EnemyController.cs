@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using Game.Core;
+using Game.Core.SimplePool.VfxPool;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,11 +19,12 @@ namespace Game.Characters
     public class EnemyController : CharacterBase, IEnemyCharacter
     {
         [Inject] protected PlayerController playerTarget;
-
+        [SerializeField] private VfxType hitVfxType;
         public NavMeshAgent NavMeshAgent { get; private set; }
         public DamageData damageData { get; private set; } = new();
         protected BehaviorGraphAgent behaviorAgent;
         public static event Action<int> LostAllHealth;
+        [Inject] private VfxPoolFacade vfxPoolFacade;
 
         protected override void Awake()
         {
@@ -43,6 +45,8 @@ namespace Game.Characters
             if (other.gameObject.CompareTag(Tags.Player))
                 if (other.gameObject.TryGetComponent(out IDamageable damageable))
                 {
+                    var hitPoint = other.collider.ClosestPoint(transform.position);
+                    vfxPoolFacade.Spawn(hitVfxType, hitPoint);
                     damageData.Configure(1, transform.position);
                     damageable.TakeDamage(damageData);
                 }
