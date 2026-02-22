@@ -11,21 +11,30 @@ namespace Game.Characters
         private readonly IMovementInfo movementInfo;
         private readonly Rigidbody rigidbody;
 
+        private Transform cameraTransform;
+        private float jumpForce => characterStats.JumpForce;
+        private float baseVelocity => characterStats.MoveSpeed;
+
         public PlayableCharacterMovementController(Rigidbody rigidbody, CharacterStats characterStats,
             IMovementInfo movementInfo)
         {
             this.characterStats = characterStats;
             this.rigidbody = rigidbody;
             this.movementInfo = movementInfo;
+            cameraTransform = Camera.main.transform;
         }
 
-        private float jumpForce => characterStats.JumpForce;
-        private float baseVelocity => characterStats.MoveSpeed;
 
         public void UpdateMovement()
         {
-            Vector3 horizontalVelocity = movementInfo.Direction * (baseVelocity * Time.fixedDeltaTime);
-            horizontalVelocity.z = horizontalVelocity.y;
+            var forward = cameraTransform.forward.normalized;
+            var right = cameraTransform.right.normalized;
+            forward.y = 0;
+            right.y = 0;
+            var moveDirection = forward * movementInfo.Direction.y + right * movementInfo.Direction.x;
+
+            var horizontalVelocity = moveDirection * (baseVelocity * Time.fixedDeltaTime);
+            horizontalVelocity.z = horizontalVelocity.z;
             horizontalVelocity.y = rigidbody.linearVelocity.y;
 
             rigidbody.linearVelocity = horizontalVelocity;
