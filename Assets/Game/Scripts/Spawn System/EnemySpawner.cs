@@ -66,7 +66,6 @@ namespace Game.SpawnSystem
                 }
             }
         }
-
         private Vector3 SortRandomPosition()
         {
             Ray ray = camera.ViewportPointToRay(GetRandomViewportPoint());
