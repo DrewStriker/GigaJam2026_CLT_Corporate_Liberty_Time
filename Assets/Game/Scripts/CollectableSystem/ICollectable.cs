@@ -6,6 +6,7 @@ namespace Game.CollectableSystem
 {
     public interface ICollectable<T> where T : Enum
     {
+        public event Action<ICollectable<T>> OnCollected;
         public BuffDataSO BuffData { get; }
         Transform Transform { get; }
 

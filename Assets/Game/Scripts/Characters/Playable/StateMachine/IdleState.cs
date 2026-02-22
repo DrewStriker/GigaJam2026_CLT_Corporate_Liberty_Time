@@ -12,7 +12,6 @@ namespace Game.Characters
         {
             character.MovementController.ZeroLinearVelocity();
             AnimationController.Play(Animation.Idle);
-            UnityEngine.Debug.Log("IDLE State");
         }
 
         public override void OnStateExit()

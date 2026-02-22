@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using Game.core;
 using Game.Core;
@@ -20,6 +21,7 @@ namespace Game.CollectableSystem
         public ParticleSystem CollectEffect { get; private set; }
         [field: SerializeField] public BuffDataSO BuffData { get; private set; }
         public Transform Transform => transform;
+        public event Action<ICollectable<T>> OnCollected;
 
         private void Awake()
         {
@@ -50,6 +52,7 @@ namespace Game.CollectableSystem
         {
             StopEffect();
             collector.Collect(this);
+            OnCollected?.Invoke(this);
         }
 
         public void UnCollect()

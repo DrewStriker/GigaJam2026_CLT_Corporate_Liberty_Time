@@ -12,7 +12,6 @@ namespace Game.Characters
         {            
             AnimationController.Play(Animation.Hurt, 0.1f, 1);
             WaitToReturn().Forget();
-            Debug.Log("HURT ENTER");
         }
         public override void Update()
         {
@@ -27,7 +26,6 @@ namespace Game.Characters
 
         public override void OnStateExit()
         {
-            Debug.Log("HURT EXIT");
         }
 
 
