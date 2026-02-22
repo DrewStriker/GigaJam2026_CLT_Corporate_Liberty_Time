@@ -29,12 +29,13 @@ namespace Game.Characters
             base.Awake();
             NavMeshAgent = GetComponent<NavMeshAgent>();
             behaviorAgent = GetComponent<BehaviorGraphAgent>();
-        }
-
-        protected virtual void Start()
-        {
             behaviorAgent.SetVariableValue("PlayerController", playerTarget);
             behaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
+        }
+
+        private void OnEnable()
+        {
+            behaviorAgent.Restart();
         }
 
         protected virtual void OnCollisionEnter(Collision other)
@@ -59,7 +60,7 @@ namespace Game.Characters
         protected async void Die()
         {
             LostAllHealth?.Invoke(characterStats.MaxHealth);
-            behaviorAgent.Restart();
+
             behaviorAgent.enabled = false;
             NavMeshAgent.enabled = false;
             Rigidbody.isKinematic = true;

@@ -6,7 +6,5 @@ namespace Game.RoadSystem
 {
     public interface ITrafficCar
     {
-        public GameObject CarInstance { get; }
-        public Spline spline { get; }
     }
 }

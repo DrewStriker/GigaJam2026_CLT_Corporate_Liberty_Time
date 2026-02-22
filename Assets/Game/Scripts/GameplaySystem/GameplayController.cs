@@ -46,7 +46,7 @@ namespace Game.Scripts.GameplaySystem
             timerManager.ExtraTimeExpired -= OnTimerEnd;
             winConditionEvent.WinConditionMet -= TestWinCondition;
 
-            Addressables.UnloadSceneAsync(gameOverSceneHandle);
+            var h = Addressables.UnloadSceneAsync(gameOverSceneHandle);
 
             if (gameOverSceneHandle.IsValid())
                 Addressables.UnloadSceneAsync(gameOverSceneHandle);
@@ -91,6 +91,5 @@ namespace Game.Scripts.GameplaySystem
             gameplayState.SetState(StateType.End);
             winConditionEvent.InvokeWinCondition(true);
         }
-
     }
 }

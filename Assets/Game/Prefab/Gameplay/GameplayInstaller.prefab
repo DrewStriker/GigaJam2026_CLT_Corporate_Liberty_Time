@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8634442239832702567}
   - component: {fileID: 7873089516612011846}
   - component: {fileID: 8473487973162150286}
+  - component: {fileID: 6436915901260912588}
   m_Layer: 0
   m_Name: GameplayInstaller
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MonoBehaviour:
   - {fileID: 8634442239832702567}
   - {fileID: 7873089516612011846}
   - {fileID: 8473487973162150286}
+  - {fileID: 6436915901260912588}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -208,3 +210,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f676533150c354f8c0d4550b0115f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TimeSystem::TimerManagerInstaller
+--- !u!114 &6436915901260912588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60c29e5e31f4ab2aa0b8bc054fa89ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RoadSystem::Game.RoadSystem.TrafficCarInstaller
+  registry:
+    catalogs:
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: -9114622343625502629, guid: 52b2f44b946bef34d9143312d3eca8f5, type: 3}
+    - <Type>k__BackingField: 1
+      <Prefab>k__BackingField: {fileID: -3271370468410584092, guid: 62bb141389ed3654aa1d31c61325eee8, type: 3}

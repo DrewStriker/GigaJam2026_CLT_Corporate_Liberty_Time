@@ -9,12 +9,11 @@ namespace Game.Characters
         public event Action<NpcDecitionType> Decision;
         private bool canDamagePlayer;
 
-        protected override void Start()
+        protected void Start()
         {
             Rigidbody.isKinematic = true;
             //characterStats.HealthChanged += OnDamage;
             characterStats.ArmorChanged += OnArmorDamage;
-            base.Start();
             behaviorAgent.SetVariableValue("NpcController", this);
         }
 

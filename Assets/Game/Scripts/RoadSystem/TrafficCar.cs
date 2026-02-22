@@ -1,66 +1,113 @@
 ﻿using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using DamageSystem;
 using DG.Tweening;
+using Game.Characters;
 using UnityEngine;
-using UnityEngine.Splines;
+using Animation = Game.Characters.Animation;
 
 namespace Game.RoadSystem
 {
-    public class TrafficCar : ITrafficCar
+    public class TrafficCar : MonoBehaviour
     {
-        private Vector3 position;
-        private float speed;
+        [SerializeField] private int speed;
         private int indexCounter = -1;
+        private Vector3[] points;
         private Vector3 CurrentPoint;
         private Vector3 NextPoint;
-        private Transform transform => CarInstance.transform;
-        public GameObject CarInstance { get; private set; }
-        public Spline spline { get; private set; }
+        private Tween moveTween;
 
-        private Vector3 NextDirection => (NextPoint - transform.position).normalized;
-        private SplineContainer _splineContainer;
+        private Damager Damager;
 
-        private Sequence behaviourSequence = DOTween.Sequence();
-
-        public TrafficCar(GameObject carInstance, float carSpeed, SplineContainer splineContainer, Spline spline)
+        private void Awake()
         {
-            _splineContainer = splineContainer;
-            CarInstance = carInstance;
-            speed = carSpeed;
-            this.spline = spline;
-            transform.position = splineContainer.transform.TransformPoint(spline[0].Position);
+            Damager = GetComponent<Damager>();
+        }
+
+        public void Initialize(Vector3[] points)
+        {
+            this.points = points;
+            transform.position = this.points[0];
+            transform.LookAt(NextPoint);
+
             StartBehaviour();
-            // StartMoveSequence();
+        }
+
+        private void OnEnable()
+        {
+            Damager.OnHit += OnHit;
+        }
+
+        private void OnDisable()
+        {
+            Damager.OnHit -= OnHit;
+        }
+
+        private async void OnHit(Collider collider)
+        {
+            Damager.enabled = false;
+            ControlTagetBehaviour(collider);
+            sequence.Pause();
+            await UniTask.Delay(3000);
+            sequence.Play();
+            Damager.enabled = true;
+        }
+
+        private async void ControlTagetBehaviour(Collider collider)
+        {
+            if (!collider.TryGetComponent(out CharacterBase character)) return;
+            character.enabled = false;
+
+            var rb = character.Rigidbody;
+            rb.linearVelocity = Vector3.zero;
+            var direction = (collider.transform.position - transform.position).normalized;
+            rb.AddForce(direction * 5, ForceMode.Impulse);
+
+            character.AnimationController.Animator.Play(Animator.StringToHash("Death"));
+            await UniTask.Delay(1000);
+            if (character.characterStats.CurrentHealth <= 0) return;
+            character.AnimationController.Animator.SetTrigger(Animator.StringToHash("wakeUp"));
+            await UniTask.Delay(200);
+            character.enabled = true;
         }
 
 
-        public Tween UpdatePoints()
+        private void StartBehaviour()
         {
-            indexCounter++;
-            var currentPoint = spline[indexCounter % spline.Count].Position;
-            var nextPoint = spline[(indexCounter + 1) % spline.Count].Position;
-            CurrentPoint = _splineContainer.transform.TransformPoint(currentPoint);
-            NextPoint = _splineContainer.transform.TransformPoint(nextPoint);
-            return DOVirtual.DelayedCall(0f, () => { });
+            StartSequence();
         }
 
         private Tween UpdateRotation()
         {
-            return transform.DOLookAt(NextPoint, 0.5f).SetEase(Ease.InOutQuad);
+            return transform.DOLookAt(NextPoint, 0.3f).SetEase(Ease.InOutQuad);
         }
 
-        private void StartBehaviour()
+
+        public Tween UpdatePosition()
         {
-            UpdatePosition();
+            indexCounter++;
+            var count = points.Length;
+            CurrentPoint = points[indexCounter % count];
+            NextPoint = points[(indexCounter + 1) % count];
+
+            var distance = Vector3.Distance(CurrentPoint, NextPoint);
+            var duration = distance / speed;
+            return transform.DOMove(NextPoint, duration)
+                .SetEase(Ease.Linear);
         }
 
-        public void UpdatePosition()
+        private Sequence sequence;
+
+        public void StartSequence()
         {
-            UpdatePoints();
-            UpdateRotation();
-            transform.DOMove(NextPoint, speed)
-                .SetSpeedBased(true)
-                .SetEase(Ease.InOutQuad).OnComplete(UpdatePosition);
+            sequence = DOTween.Sequence();
+            for (var i = 0; i < points.Length; i++)
+            {
+                sequence.Append(UpdatePosition());
+                sequence.Join(UpdateRotation());
+            }
+
+            sequence.SetLoops(-1, LoopType.Restart);
         }
     }
 }

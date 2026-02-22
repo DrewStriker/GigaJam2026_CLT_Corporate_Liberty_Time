@@ -8,12 +8,16 @@ namespace DamageSystem
 {
     public class Damager : MonoBehaviour, IDamager
     {
-        [SerializeField] private LayerMask targetLayers; 
+        [field: SerializeField] private bool autoDamage = false;
+        private float tick = 0.3f;
+        private float releaseTime = 0;
+        [SerializeField] private LayerMask targetLayers;
         [field: SerializeField] public Bounds Bounds { get; set; } = new(Vector3.up, Vector3.one);
         private readonly DamageData damageData = new();
         private readonly Collider[] hits = new Collider[16];
         [Inject] private SfxPoolFacade sfxPoolFacade;
         [Inject] private VfxPoolFacade vfxPoolFacade;
+        public event Action<Collider> OnHit = delegate { };
 
         private void OnDrawGizmosSelected()
         {
@@ -50,16 +54,31 @@ namespace DamageSystem
                 vfxPoolFacade.Spawn(VfxType.Hit, damageData.AttackerPosition);
                 sfxPoolFacade.Play(SfxType.Hit, damageData.AttackerPosition, 1, true);
                 damageable.TakeDamage(damageData);
+
                 OnHit.Invoke(hits[i]);
             }
         }
 
-        public event Action<Collider> OnHit = delegate { };
 
         private void ConfiguraDamageData(Collider collider, int damage)
         {
             var position = collider.ClosestPoint(Bounds.center);
             damageData.Configure(damage, position);
+        }
+
+        private void Update()
+        {
+            if (!autoDamage) return;
+            releaseTime += Time.deltaTime;
+            if (releaseTime < tick)
+            {
+                releaseTime += Time.deltaTime;
+            }
+            else
+            {
+                releaseTime = 0;
+                if (autoDamage) DoDamage(1);
+            }
         }
     }
 }

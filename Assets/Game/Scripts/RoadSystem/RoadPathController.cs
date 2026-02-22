@@ -1,28 +1,44 @@
-using System;
+using Game.Scripts.Core;
 using UnityEngine;
 using UnityEngine.Splines;
+using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Game.RoadSystem
 {
     [RequireComponent(typeof(SplineContainer))]
     public class RoadPathController : MonoBehaviour
     {
-        [SerializeField] [Range(0, 10)] private float carSpeed = 10;
-        [SerializeField] private GameObject[] CarPrefabs;
+        [SerializeField] private int carSpeed = 10;
+        [SerializeField] private TrafficCar[] CarPrefabs;
         private SplineContainer splineContainer;
-        private ITrafficCar[] trafficCars;
+        [Inject] private PlaceholderFactory<CarType, TrafficCar> carFactory;
 
         private void Awake()
         {
             splineContainer = GetComponent<SplineContainer>();
-            trafficCars = new ITrafficCar[splineContainer.Splines.Count];
             for (var i = 0; i < splineContainer.Splines.Count; i++)
             {
                 var spline = splineContainer.Splines[i];
-                var carInstance = Instantiate(
-                    CarPrefabs[UnityEngine.Random.Range(0, CarPrefabs.Length)], transform);
-                trafficCars[i] = new TrafficCar(carInstance, carSpeed, splineContainer, spline);
+                var points = GetSplinePointsLocal(spline);
+                var prefab = CarPrefabs[Random.Range(0, CarPrefabs.Length)];
+                var randomCar = EnumExtensions.GetRandomEnum<CarType>();
+                var carInstance = carFactory.Create(randomCar);
+                carInstance.Initialize(points);
             }
+        }
+
+        private Vector3[] GetSplinePointsLocal(Spline spline)
+        {
+            var points = new Vector3[spline.Count];
+
+            for (var i = 0; i < spline.Count; i++)
+            {
+                var position = spline[i].Position;
+                points[i] = splineContainer.transform.TransformPoint(position);
+            }
+
+            return points;
         }
 
         [ContextMenu("Linearise Knots")]
