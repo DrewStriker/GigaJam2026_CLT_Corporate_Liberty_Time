@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48fcaa9c26939e438d7c77b80d90deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.ItemSpawner
-  testString: BBBB
+  <ItemType>k__BackingField: 0
+  itemSpawnInterval: 2

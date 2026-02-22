@@ -13,14 +13,17 @@ namespace Game.SpawnSystem
         private MeshFilter[] childrenMeshFilters;
         private Random random = new Random();
         private List<Mesh> meshes = new List<Mesh>();
-        private Dictionary<Mesh, ItemSpawner> itemSpawners;
+        private Dictionary<Mesh, ItemSpawner> itemSpawnersDictionary;
+        public List<ItemSpawner> ItemSpawners { get; private set; }
 
-        private void Awake()
+        public void Initialize()
         {
+            ItemSpawners = new List<ItemSpawner>();
             childrenMeshFilters = GetComponentsInChildren<MeshFilter>();
             GetMeshFromPrefabs();
             RandomizeMeshes();
         }
+
 
         private void RandomizeMeshes()
         {
@@ -40,13 +43,13 @@ namespace Game.SpawnSystem
 
         private void GetMeshFromPrefabs()
         {
-            itemSpawners = new Dictionary<Mesh, ItemSpawner>();
+            itemSpawnersDictionary = new Dictionary<Mesh, ItemSpawner>();
             foreach (var prefab in prefabs)
             {
                 Mesh mesh = prefab.GetComponent<MeshFilter>().sharedMesh;
                 if (prefab.TryGetComponent(out ItemSpawner spawner))
                 {
-                    itemSpawners.Add(mesh, spawner);
+                    itemSpawnersDictionary.Add(mesh, spawner);
                 }
                 meshes.Add(mesh);
             }
@@ -57,9 +60,9 @@ namespace Game.SpawnSystem
             int index = random.Next(meshes.Count);
             meshFilter.mesh = meshes[index];
 
-            if (itemSpawners.ContainsKey(meshes[index]))
+            if (itemSpawnersDictionary.ContainsKey(meshes[index]))
             {
-                ComponentExtensions.CopyComponent(itemSpawners[meshes[index]], meshFilter.gameObject);
+                ItemSpawners.Add(ComponentExtensions.CopyComponent(itemSpawnersDictionary[meshes[index]], meshFilter.gameObject));
             }
 
         }

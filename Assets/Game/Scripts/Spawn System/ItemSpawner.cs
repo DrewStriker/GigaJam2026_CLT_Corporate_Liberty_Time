@@ -1,21 +1,36 @@
 using Game.ItemSystem;
+using Game.TimeSystem;
 using UnityEngine;
-using Zenject;
-
+using System;
 namespace Game.SpawnSystem
 {
     public class ItemSpawner : MonoBehaviour
     {
-        [SerializeField] private ItemType itemType;
-        [Inject] private PlaceholderFactory<ItemType, ItemCollectable> itemFactory;
+        [field: SerializeField] public ItemType ItemType { get; private set; }
+        [SerializeField] private float itemSpawnInterval;
+        private Timer timer;
+        public event Action<ItemSpawner> OnTimerCompleted;
         void Start()
         {
-            SpawnItem();
+            timer = new Timer(TimerMode.CountDown);
+            timer.Start(itemSpawnInterval);
+            timer.OnTimerCompleted += () => OnTimerCompleted?.Invoke(this);
         }
 
-        private void SpawnItem()
+        public void ResetSpawnCooldown()
         {
-            itemFactory.Create(itemType).transform.position = transform.position + transform.forward * 2f;
+            timer.Stop();
+            timer.Start(itemSpawnInterval);
+        }
+
+        private void Update()
+        {
+            timer.UpdateTimer(Time.deltaTime);
+        }
+
+        private void OnDestroy()
+        {
+            timer.OnTimerCompleted -= () => OnTimerCompleted?.Invoke(this);
         }
     }
 }
