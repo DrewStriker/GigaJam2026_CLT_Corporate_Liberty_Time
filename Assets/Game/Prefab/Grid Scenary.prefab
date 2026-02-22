@@ -1336,8 +1336,8 @@ Transform:
   m_GameObject: {fileID: 3936682969337596869}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.281, z: -0.091413215}
-  m_LocalScale: {x: 324.87, y: 324.87, z: 324.87}
+  m_LocalPosition: {x: 32.6076, y: 0.281, z: 11.79}
+  m_LocalScale: {x: 223.8772, y: 158.1801, z: 265.1459}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 206361848073402113}
@@ -2005,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74c18eedfbed0440aeec0926c53bba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Core::ChildMeshRandomizer
-  hideObjectChance: 10
+  hideObjectChance: 0
   prefabs:
   - {fileID: 8580424472770012855, guid: 0c5f123e62fb7b34b8107a5f524e74f4, type: 3}
   - {fileID: 179425292766434675, guid: bc2ca9c2d70c1a4449f2a7f95652cafa, type: 3}

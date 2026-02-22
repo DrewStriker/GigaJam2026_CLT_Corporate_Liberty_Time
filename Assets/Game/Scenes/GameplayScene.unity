@@ -771,29 +771,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 808898351691462260, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
-      propertyPath: hideObjectChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2492889311153802371, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3753508970823089985, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
       propertyPath: m_Name
       value: Grid Scenary
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592036585182993556, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
-      propertyPath: hideObjectChance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5769606949404444197, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669572037631490301, guid: 972e0099df7be2843a0d7e44a19ce791, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -975,6 +955,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 157649767834920801, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 157649767834920801, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 157649767834920801, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 157649767834920801, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2054494215842007822, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.3935
@@ -1015,10 +1011,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2650444160972524119, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.5935
+      objectReference: {fileID: 0}
     - target: {fileID: 3669905538224319832, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1658728487}
+    - target: {fileID: 5316259044840756386, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.5935
+      objectReference: {fileID: 0}
     - target: {fileID: 6739540638545025302, guid: 031d6c66f2876af40a02ad5922d88306, type: 3}
       propertyPath: m_Name
       value: CameraSystem
