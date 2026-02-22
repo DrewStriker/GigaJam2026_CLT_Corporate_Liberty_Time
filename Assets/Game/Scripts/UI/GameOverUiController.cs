@@ -1,14 +1,14 @@
 using SceneLoadSystem;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
+// using UnityEngine.AddressableAssets;
+// using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Game.UI
 {
     public class GameOverUiController : MonoBehaviour
     {
-        [SerializeField] private AssetReference gameplaySceneReference;
+        // [SerializeField] private AssetReference gameplaySceneReference;
         [Inject] private ISceneLoader sceneLoader;
 
 

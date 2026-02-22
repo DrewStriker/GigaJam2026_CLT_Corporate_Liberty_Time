@@ -4,8 +4,8 @@ using Game.GameplaySystem;
 using Game.TimeSystem;
 using SceneLoadSystem;
 using UnityEngine;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
+// using UnityEngine.ResourceManagement.AsyncOperations;
+// using UnityEngine.ResourceManagement.ResourceProviders;
 using Zenject;
 
 namespace Game.Scripts.GameplaySystem
@@ -19,7 +19,7 @@ namespace Game.Scripts.GameplaySystem
         [Inject] private ITimerManager timerManager;
         [Inject] private IWinConditionEvent winConditionEvent;
 
-        private AsyncOperationHandle<SceneInstance> hudSceneHandle;
+        // private AsyncOperationHandle<SceneInstance> hudSceneHandle;
 
         // private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
         // private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
