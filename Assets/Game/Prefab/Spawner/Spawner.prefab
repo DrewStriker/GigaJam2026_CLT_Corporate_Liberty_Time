@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6424166494478916032}
   - component: {fileID: 7372329411891500576}
   - component: {fileID: 5979053230171206010}
+  - component: {fileID: 5573517024706054044}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -59,3 +60,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.ItemSpawnerController
   childMeshRandomizer: {fileID: 0}
+--- !u!114 &5573517024706054044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744658034566671041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aaf7a95f50f7e54c8782a455234e84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SpawnSystem::Game.SpawnSystem.WeaponSpawner
+  spawningArea: {x: 169.7, y: 114.7}
+  maxWeapons: 10
+  maxGrabbables: 10
+  spawningChance: 80

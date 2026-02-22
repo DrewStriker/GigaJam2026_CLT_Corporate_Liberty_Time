@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.InteractionSystem
 {
-
+    public enum GrabbableType { Box1, Box2 }
     public class GrabbableObject : InteractableObject, IGrabbable
     {
         public Transform Holder { get; private set; }
