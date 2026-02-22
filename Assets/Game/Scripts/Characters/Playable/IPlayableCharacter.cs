@@ -16,5 +16,6 @@ namespace Game.Characters
         public PlayerStateMachine StateMachine { get; }
         public IDamager Damager { get; }
         public void UpdateBaseAnimation();
+        public ICollectable<WeaponType> WeaponEquipped { get; }
     }
 }

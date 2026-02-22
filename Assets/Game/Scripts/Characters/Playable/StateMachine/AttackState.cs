@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using Game.CollectableSystem;
+using Game.WeaponSystem;
 using UnityEngine;
 
 namespace Game.Characters
@@ -7,6 +9,7 @@ namespace Game.Characters
     {
         private const int MaxAtkIndex = 2;
         private int attackIndex;
+        private ICollectable<WeaponType> WeaponEquipped => character.WeaponEquipped;
 
         public AttackState(PlayerStateMachine stateMachine, IPlayableCharacter character) : base(stateMachine,
             character)
@@ -21,12 +24,14 @@ namespace Game.Characters
 
         public override void OnStateEnter()
         {
+            WeaponEquipped?.CollectEffect?.Play();
             PlayCurrentAnimation();
             WaitToReturn().Forget();
         }
 
         public override void OnStateExit()
         {
+            WeaponEquipped?.CollectEffect?.Stop();
         }
 
         public override void FixedUpdate()

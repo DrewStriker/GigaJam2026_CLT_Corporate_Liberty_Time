@@ -22,7 +22,7 @@ namespace Game.Characters
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public IDamager Damager { get; private set; }
-        private ICollectable<WeaponType> weaponEquipped;
+        public ICollectable<WeaponType> WeaponEquipped { get; private set; }
 
         protected override void Awake()
         {
@@ -38,56 +38,45 @@ namespace Game.Characters
             StateMachine.Update();
 
             if (grabbedObject == null) return;
-            if (InputController.Interact.WasPerformedThisFrame())
-            {
-                grabbedObject.Grab(transform);
-            }
+            if (InputController.Interact.WasPerformedThisFrame()) grabbedObject.Grab(transform);
 
-            if (InputController.Interact.WasReleasedThisFrame())
-            {
-                grabbedObject.Release();
-            }
-            
+            if (InputController.Interact.WasReleasedThisFrame()) grabbedObject.Release();
         }
 
         //TODO: Refact Latter
         private IGrabbable grabbedObject;
-        
-        
+
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag(Tags.Grabbable)) return;
-            if(!other.TryGetComponent(out IGrabbable interactable)) return;
+            if (!other.TryGetComponent(out IGrabbable interactable)) return;
             if (grabbedObject == null)
             {
                 grabbedObject = interactable;
                 return;
             }
-            if(!IsNearThanActual(other.transform)) return;
+
+            if (!IsNearThanActual(other.transform)) return;
             grabbedObject = interactable;
         }
 
-        bool IsNearThanActual(Transform other)
+        private bool IsNearThanActual(Transform other)
         {
-           var newDistance = Vector3.Distance(transform.position, other.transform.position);
-           var previousObjDistance = Vector3.Distance(transform.position, grabbedObject.Transform.position);
-           return  newDistance < previousObjDistance;
+            var newDistance = Vector3.Distance(transform.position, other.transform.position);
+            var previousObjDistance = Vector3.Distance(transform.position, grabbedObject.Transform.position);
+            return newDistance < previousObjDistance;
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (!other.CompareTag(Tags.Grabbable)) return;
             if (other.TryGetComponent(out IInteractable interactable))
-            {
                 if (interactable == grabbedObject)
-                {
                     grabbedObject = null;
-                }
-            }
-            
         }
 
-        
+
         private void FixedUpdate()
         {
             StateMachine.FixedUpdate();
@@ -108,8 +97,8 @@ namespace Game.Characters
 
         public void Collect(ICollectable<WeaponType> item)
         {
-            if (weaponEquipped != null) weaponEquipped.UnCollect();
-            weaponEquipped = item;
+            if (WeaponEquipped != null) WeaponEquipped.UnCollect();
+            WeaponEquipped = item;
             item.SetParent(handTransform);
             item.BuffData.ApplyBuffTo(characterStats);
         }

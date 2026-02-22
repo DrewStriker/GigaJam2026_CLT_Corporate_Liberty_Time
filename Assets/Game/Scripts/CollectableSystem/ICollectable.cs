@@ -13,5 +13,6 @@ namespace Game.CollectableSystem
         void Collect(ICollector<T> collector);
         void UnCollect();
         public void SetParent(Transform parent);
+        public ParticleSystem CollectEffect { get; }
     }
 }

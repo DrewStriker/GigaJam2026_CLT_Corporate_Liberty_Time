@@ -17,12 +17,14 @@ namespace Game.CollectableSystem
         private Tween colorTween;
         private Tween moveTween;
         private new Renderer renderer;
+        public ParticleSystem CollectEffect { get; private set; }
         [field: SerializeField] public BuffDataSO BuffData { get; private set; }
         public Transform Transform => transform;
 
         private void Awake()
         {
             renderer = GetComponentInChildren<Renderer>();
+            CollectEffect = GetComponentInChildren<ParticleSystem>();
         }
 
         private void OnEnable()
