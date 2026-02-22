@@ -354,6 +354,17 @@ namespace Game.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1d547d52-07f9-4002-be11-33c3255b07f2"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c4d25dad-a8a5-40e6-b7e7-4cbeea47489b"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -378,6 +389,17 @@ namespace Game.Input
                     ""name"": """",
                     ""id"": ""b62e8979-d8c2-4b85-a0b0-55cb877617ad"",
                     ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cad2447-ca21-4dfe-9645-465e04936548"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -25,6 +25,8 @@ namespace Game.Scripts.GameplaySystem
 
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             test.Initialize(gameplayState, sceneLoader);
             gameplayState.StateChanged += OnStateChanged;
             playableCharacter.Death += OnPlayerDeath;
