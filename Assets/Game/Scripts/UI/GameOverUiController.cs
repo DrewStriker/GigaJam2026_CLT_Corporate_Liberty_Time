@@ -14,7 +14,7 @@ namespace Game.UI
 
         public void ReloadGameplayScene()
         {
-            sceneLoader.LoadAsync(gameplaySceneReference, LoadSceneMode.Single);
+            sceneLoader.LoadSceneAsync(Scenes.GameplayScene);
         }
     }
 }

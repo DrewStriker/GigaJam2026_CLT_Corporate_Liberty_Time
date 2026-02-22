@@ -129,6 +129,24 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pointer"",
+                    ""type"": ""Button"",
+                    ""id"": ""aac4a82e-637b-4595-8ac0-43dc8991b3e5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""265ffbd2-82da-439f-b53e-f0864541eada"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -406,6 +424,28 @@ namespace Game.Input
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6fea970-4430-4f73-a611-838c7d53ddc2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pointer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70c15d7c-9f19-453a-852a-aff4d046568a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -446,6 +486,8 @@ namespace Game.Input
             m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
             m_InGame_Attack = m_InGame.FindAction("Attack", throwIfNotFound: true);
             m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
+            m_InGame_Pointer = m_InGame.FindAction("Pointer", throwIfNotFound: true);
+            m_InGame_Click = m_InGame.FindAction("Click", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -534,6 +576,8 @@ namespace Game.Input
         private readonly InputAction m_InGame_Jump;
         private readonly InputAction m_InGame_Attack;
         private readonly InputAction m_InGame_Interact;
+        private readonly InputAction m_InGame_Pointer;
+        private readonly InputAction m_InGame_Click;
         /// <summary>
         /// Provides access to input actions defined in input action map "InGame".
         /// </summary>
@@ -561,6 +605,14 @@ namespace Game.Input
             /// Provides access to the underlying input action "InGame/Interact".
             /// </summary>
             public InputAction @Interact => m_Wrapper.m_InGame_Interact;
+            /// <summary>
+            /// Provides access to the underlying input action "InGame/Pointer".
+            /// </summary>
+            public InputAction @Pointer => m_Wrapper.m_InGame_Pointer;
+            /// <summary>
+            /// Provides access to the underlying input action "InGame/Click".
+            /// </summary>
+            public InputAction @Click => m_Wrapper.m_InGame_Click;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -599,6 +651,12 @@ namespace Game.Input
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pointer.started += instance.OnPointer;
+                @Pointer.performed += instance.OnPointer;
+                @Pointer.canceled += instance.OnPointer;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
             }
 
             /// <summary>
@@ -622,6 +680,12 @@ namespace Game.Input
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @Pointer.started -= instance.OnPointer;
+                @Pointer.performed -= instance.OnPointer;
+                @Pointer.canceled -= instance.OnPointer;
+                @Click.started -= instance.OnClick;
+                @Click.performed -= instance.OnClick;
+                @Click.canceled -= instance.OnClick;
             }
 
             /// <summary>
@@ -786,6 +850,20 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pointer" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPointer(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnClick(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

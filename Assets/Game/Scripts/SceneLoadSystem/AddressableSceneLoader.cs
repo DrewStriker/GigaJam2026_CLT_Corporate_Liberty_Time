@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace SceneLoadSystem
 {
@@ -12,6 +13,11 @@ namespace SceneLoadSystem
     public sealed class AddressableSceneLoader : ISceneLoader
     {
         private readonly Dictionary<AssetReference, AsyncOperationHandle<SceneInstance>> _handles = new();
+
+        public AsyncOperation LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
+        {
+            return SceneManager.LoadSceneAsync(sceneName, mode);
+        }
 
         public async Task LoadAsync(AssetReference scene, LoadSceneMode mode = LoadSceneMode.Additive)
         {

@@ -1,9 +1,9 @@
-﻿using Game.Characters;
+﻿using DG.Tweening;
+using Game.Characters;
 using Game.GameplaySystem;
 using Game.TimeSystem;
 using SceneLoadSystem;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using Zenject;
@@ -20,38 +20,34 @@ namespace Game.Scripts.GameplaySystem
         [Inject] private IWinConditionEvent winConditionEvent;
 
         private AsyncOperationHandle<SceneInstance> hudSceneHandle;
-        private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
+
+        // private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
+        // private AsyncOperationHandle<SceneInstance> gameOverSceneHandle;
 
 
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            test.Initialize(gameplayState, sceneLoader);
             gameplayState.StateChanged += OnStateChanged;
             playableCharacter.Death += OnPlayerDeath;
             timerManager.ExtraTimeExpired += OnTimerEnd;
-            winConditionEvent.WinConditionMet += TestWinCondition;
             gameplayState.SetState(StateType.Intro);
+            test.Initialize(gameplayState, winConditionEvent, sceneLoader);
+            Time.timeScale = 1;
         }
 
-        private void TestWinCondition(bool conditionMet)
-        {
-            if (conditionMet) Debug.Log("You Won!");
-            else Debug.Log("You Lose!");
-        }
 
         private void OnDestroy()
         {
             playableCharacter.Death -= OnPlayerDeath;
             gameplayState.StateChanged -= OnStateChanged;
             timerManager.ExtraTimeExpired -= OnTimerEnd;
-            winConditionEvent.WinConditionMet -= TestWinCondition;
 
-            var h = Addressables.UnloadSceneAsync(gameOverSceneHandle);
-
-            if (gameOverSceneHandle.IsValid())
-                Addressables.UnloadSceneAsync(gameOverSceneHandle);
+            // var h = Addressables.UnloadSceneAsync(gameOverSceneHandle);
+            //
+            // if (gameOverSceneHandle.IsValid())
+            //     Addressables.UnloadSceneAsync(gameOverSceneHandle);
         }
 
         private void OnStateChanged(StateType state)
@@ -72,6 +68,9 @@ namespace Game.Scripts.GameplaySystem
 
         private void OnGameplayEnd()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.5f).SetUpdate(true);
         }
 
         private void OnGameplayCombat()

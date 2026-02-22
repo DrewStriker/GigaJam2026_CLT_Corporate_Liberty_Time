@@ -39,11 +39,11 @@ namespace Game.RankSystem
             EnemyController.LostAllHealth -= OnEnemyLostAllHealth;
         }
 
-        private void OnGUI()
-        {
-            if (GUI.Button(new Rect(20, 20, 100, 50), "Add Points"))
-                IncreasePoints(100);
-        }
+        // private void OnGUI()
+        // {
+        //     if (GUI.Button(new Rect(20, 20, 100, 50), "Add Points"))
+        //         IncreasePoints(100);
+        // }
 
         public void IncreasePoints(int value)
         {
@@ -66,6 +66,7 @@ namespace Game.RankSystem
 
             CurrentRank++;
             if (pointsRequirementQueue.TryDequeue(out var result)) pointsToRankUp = result;
+
             RankProgress = Mathf.InverseLerp(0f, pointsToRankUp, currentScore);
             OnRankChanged?.Invoke();
             Debug.Log($"Rank Up!\nCurrent Rank: {CurrentRank}\nRank Progress: {RankProgress}" +

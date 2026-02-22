@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Game.RankSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+
 namespace Game.UI
 {
     public class UIScoreController : MonoBehaviour
@@ -18,11 +20,14 @@ namespace Game.UI
         [SerializeField] private TextMeshProUGUI scoreText;
         [Inject] private RankManager rankManager;
         private Queue<Image> stars;
+        private Transform previousStarParent;
 
         private void Start()
         {
             Initialize();
             SubscriveEvents();
+            previousStarParent = starFill1.transform.parent;
+            previousStarParent.DOScale(1.5f, 0.5f).SetEase(Ease.OutBack);
         }
 
         private void Initialize()
@@ -42,6 +47,7 @@ namespace Game.UI
             rankManager.OnScoreChanged += UpdateScore;
             rankManager.OnRankChanged += EnableNextStar;
         }
+
         private void UnsubscriveEvents()
         {
             rankManager.OnScoreChanged -= UpdateScore;
@@ -60,15 +66,21 @@ namespace Game.UI
 
         private void EnableNextStar()
         {
-            if (stars.TryDequeue(out Image fillImage))
+            previousStarParent.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+
+            if (stars.TryDequeue(out var fillImage))
             {
                 fillImage.enabled = true;
+                previousStarParent = fillImage.transform.parent;
             }
+
+            previousStarParent.transform.DOScale(1.5f, 0.5f).SetEase(Ease.OutBack);
         }
+
 
         private void UpdateScore(float score)
         {
-            scoreText.text = score.ToString();
+            scoreText.SetText(score.ToString("0"));
             rankProgressFill.fillAmount = rankManager.RankProgress;
         }
 
