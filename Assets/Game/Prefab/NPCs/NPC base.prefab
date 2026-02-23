@@ -467,7 +467,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 540
@@ -494,6 +494,12 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: eb0f11a8182550d4abb68da76715eb7c, type: 2}
   hitVfxType: 0
   npcMeshCatalog: {fileID: 11400000, guid: 5971fe36c70422d40b929f65bf13e8fa, type: 2}
+  IdleAnimations:
+  - Idle
+  - Idle2
+  - Talk1
+  - Talk2
+  - Panic_idle
 --- !u!54 &1422237315803218282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -559,6 +565,7 @@ MonoBehaviour:
   m_Graph: {fileID: -2476062091238150326, guid: a57ade3573605ba428c0ed4d2b8b812c, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4980745174056698432
+  - rid: 4980745317078269952
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -573,6 +580,14 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
+    - rid: 4980745317078269952
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11296988992133005794
+          m_Value1: 16673210160398048928
+        Name: chaseSpeed
+        m_Value: 6
 --- !u!1 &3181436601487477827
 GameObject:
   m_ObjectHideFlags: 0

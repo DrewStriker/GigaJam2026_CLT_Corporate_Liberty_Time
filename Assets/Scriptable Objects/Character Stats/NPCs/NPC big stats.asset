@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88377fd97f190c540983aface66079f9, type: 3}
   m_Name: NPC big stats
   m_EditorClassIdentifier: Characters::Game.Characters.PlayerConfig
-  <Heatlh>k__BackingField: 3
+  <Heatlh>k__BackingField: 2
   <Armor>k__BackingField: 1
   <Speed>k__BackingField: 2.5
   <JumpForce>k__BackingField: 8

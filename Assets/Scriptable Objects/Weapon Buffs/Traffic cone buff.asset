@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Traffic cone buff
   m_EditorClassIdentifier: BuffSystem::Game.Scripts.BuffSystem.BuffDataSO
   <Duration>k__BackingField: 15
-  <Damage>k__BackingField: 2
+  <Damage>k__BackingField: 3
   <Health>k__BackingField: 0
   <MoveSpeed>k__BackingField: 0
