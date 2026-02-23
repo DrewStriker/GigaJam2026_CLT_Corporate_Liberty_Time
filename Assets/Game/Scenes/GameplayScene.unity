@@ -10950,7 +10950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720388623773889646, guid: 15c5d7d5795bd39489a5bc8b96f1c7af, type: 3}
       propertyPath: gameDuration
-      value: 6.61
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11113,10 +11113,6 @@ PrefabInstance:
     - target: {fileID: 2801290507128602273, guid: 1be0100ecc5b18d47b62797a48a4acf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843609226255597090, guid: 1be0100ecc5b18d47b62797a48a4acf5, type: 3}
-      propertyPath: extension
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4843609226255597090, guid: 1be0100ecc5b18d47b62797a48a4acf5, type: 3}
       propertyPath: cinemachineNoise

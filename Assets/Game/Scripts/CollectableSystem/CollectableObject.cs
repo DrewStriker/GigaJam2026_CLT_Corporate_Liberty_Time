@@ -3,8 +3,10 @@ using System.Runtime.CompilerServices;
 using DG.Tweening;
 using Game.core;
 using Game.Core;
+using Game.Core.SimplePool.SfxPool;
 using Game.Scripts.BuffSystem;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.CollectableSystem
@@ -22,6 +24,7 @@ namespace Game.CollectableSystem
         [field: SerializeField] public BuffDataSO BuffData { get; private set; }
         public Transform Transform => transform;
         public event Action<ICollectable<T>> OnCollected;
+        [Inject] public SfxPoolFacade sfxPoolFacade;
 
         private void Awake()
         {
@@ -52,6 +55,7 @@ namespace Game.CollectableSystem
         {
             StopEffect();
             collector.Collect(this);
+            sfxPoolFacade.Play(SfxType.ItemCollect, transform.position, 1, true);
             OnCollected?.Invoke(this);
         }
 

@@ -1,12 +1,15 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using DamageSystem;
 using Game.Core;
+using Game.Core.SimplePool.SfxPool;
 using Game.Core.SimplePool.VfxPool;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Game.TimeSystem;
 
 namespace Game.Characters
 {
@@ -25,14 +28,36 @@ namespace Game.Characters
         protected BehaviorGraphAgent behaviorAgent;
         public static event Action<int> LostAllHealth;
         [Inject] private VfxPoolFacade vfxPoolFacade;
+        [Inject] public SfxPoolFacade sfxPoolFacade;
+
+        private TimeSystem.Timer gruntTimer;
 
         protected override void Awake()
         {
             base.Awake();
+            gruntTimer = new TimeSystem.Timer(TimerMode.CountDown);
+            gruntTimer.OnTimerCompleted += PlayGrunt;
+            SetRandomTimer();
             NavMeshAgent = GetComponent<NavMeshAgent>();
             behaviorAgent = GetComponent<BehaviorGraphAgent>();
             behaviorAgent.SetVariableValue("PlayerController", playerTarget);
             behaviorAgent.SetVariableValue("EnemyController", GetComponent<EnemyController>());
+        }
+
+        private void Update()
+        {
+            //gruntTimer.UpdateTimer(Time.deltaTime);
+        }
+
+        private void PlayGrunt()
+        {
+            sfxPoolFacade.Play(SfxType.Enemy, transform.position, 1, true);
+            SetRandomTimer();
+        }
+
+        private void SetRandomTimer()
+        {
+            gruntTimer.Start(UnityEngine.Random.Range(5f, 15f));
         }
 
         private void OnEnable()
@@ -74,6 +99,11 @@ namespace Game.Characters
             AnimationController.Play(Animation.Death, 0.1f, 2);
             await UniTask.Delay(2000);
             gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            gruntTimer.OnTimerCompleted -= PlayGrunt;
         }
     }
 }

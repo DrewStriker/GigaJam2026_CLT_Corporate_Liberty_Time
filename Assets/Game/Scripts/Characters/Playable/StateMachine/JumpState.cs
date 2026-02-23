@@ -10,7 +10,7 @@ namespace Game.Characters
         {
             stateMachine.PlayerMovementController.Jump();
             AnimationController.Play(Animation.Jump);
-            UnityEngine.Debug.Log("Jump State");
+            character.SfxPoolFacade.Play(Core.SimplePool.SfxPool.SfxType.Jump, (character as ICharacter).Transform.position, 1, true);
         }
 
         public override void OnStateExit()
