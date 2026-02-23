@@ -5,6 +5,8 @@ using DamageSystem;
 using DG.Tweening;
 using Game.CollectableSystem;
 using Game.Core;
+using Game.Core.SimplePool.SfxPool;
+using Game.Core.SimplePool.VfxPool;
 using Game.Input;
 using Game.InteractionSystem;
 using Game.ItemSystem;
@@ -19,6 +21,7 @@ namespace Game.Characters
         [SerializeField] private Transform handTransform;
 
         [Inject] public PlayerInputController InputController { get; private set; }
+        [Inject] public SfxPoolFacade SfxPoolFacade { get; private set; }
         public PlayableCharacterMovementController MovementController { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public IDamager Damager { get; private set; }
@@ -92,6 +95,7 @@ namespace Game.Characters
         public override void TakeDamage(DamageData damageData)
         {
             base.TakeDamage(damageData);
+            SfxPoolFacade.Play(SfxType.Hurt, transform.position, 1, true);
             Knockback(damageData.AttackerPosition);
         }
 

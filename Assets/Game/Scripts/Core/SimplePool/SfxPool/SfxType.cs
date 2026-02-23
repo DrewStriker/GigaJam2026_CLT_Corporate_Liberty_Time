@@ -3,6 +3,15 @@
     public enum SfxType
     {
         Hit,
-        Explosion
+        Explosion,
+        Jump,
+        Enemy,
+        RankUp,
+        Win,
+        Lose,
+        CarHorn,
+        Attack,
+        Hurt,
+        ItemCollect,
     }
 }

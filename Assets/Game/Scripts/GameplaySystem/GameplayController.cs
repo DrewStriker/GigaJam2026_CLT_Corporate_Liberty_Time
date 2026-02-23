@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Game.Characters;
+using Game.Core.SimplePool.SfxPool;
 using Game.GameplaySystem;
 using Game.TimeSystem;
 using SceneLoadSystem;
@@ -18,6 +19,7 @@ namespace Game.Scripts.GameplaySystem
         [Inject] private ISceneLoader sceneLoader;
         [Inject] private ITimerManager timerManager;
         [Inject] private IWinConditionEvent winConditionEvent;
+        [Inject] public SfxPoolFacade sfxPoolFacade;
 
         // private AsyncOperationHandle<SceneInstance> hudSceneHandle;
 
@@ -84,12 +86,14 @@ namespace Game.Scripts.GameplaySystem
         private void OnPlayerDeath()
         {
             gameplayState.SetState(StateType.End);
+            sfxPoolFacade.Play(SfxType.Lose, transform.position);
             winConditionEvent.InvokeWinCondition(false);
         }
 
         private void OnTimerEnd()
         {
             gameplayState.SetState(StateType.End);
+            sfxPoolFacade.Play(SfxType.Win, transform.position);
             winConditionEvent.InvokeWinCondition(true);
         }
     }

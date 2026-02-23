@@ -212,6 +212,24 @@ MonoBehaviour:
     catalogs:
     - <Type>k__BackingField: 0
       <Prefab>k__BackingField: {fileID: 8300000, guid: 368b7e0bf5ff47f41b57c9e39140865b, type: 3}
+    - <Type>k__BackingField: 2
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 0366eb56bf34258499bb8b0da0d60841, type: 3}
+    - <Type>k__BackingField: 3
+      <Prefab>k__BackingField: {fileID: 8300000, guid: adcf628801ff3a549ac952cc3e6f9206, type: 3}
+    - <Type>k__BackingField: 4
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 54abf6d1f9b5df247939384a01c18f01, type: 3}
+    - <Type>k__BackingField: 5
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 6d0c99e4150d7934aa85e174d061d450, type: 3}
+    - <Type>k__BackingField: 6
+      <Prefab>k__BackingField: {fileID: 8300000, guid: e371200058c5222448b8fc517c524c15, type: 3}
+    - <Type>k__BackingField: 7
+      <Prefab>k__BackingField: {fileID: 8300000, guid: fd044b598f5bc2749a402cbfc5df3525, type: 3}
+    - <Type>k__BackingField: 8
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 0532f5a0f119e7d4f98d2edff871e974, type: 3}
+    - <Type>k__BackingField: 9
+      <Prefab>k__BackingField: {fileID: 8300000, guid: f6c73cc93f361d84e9e634e7c563c576, type: 3}
+    - <Type>k__BackingField: 10
+      <Prefab>k__BackingField: {fileID: 8300000, guid: 757223674e8e1d24eb47f651154b58d8, type: 3}
 --- !u!114 &8473487973162150286
 MonoBehaviour:
   m_ObjectHideFlags: 0
