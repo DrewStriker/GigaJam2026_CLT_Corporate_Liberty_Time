@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2801290507128602273}
   - component: {fileID: 234130634198334231}
+  - component: {fileID: 2409874130876538928}
   - component: {fileID: 6475312043561205969}
   - component: {fileID: 3370606801978690222}
   - component: {fileID: 8395399243216348184}
@@ -66,6 +67,7 @@ MonoBehaviour:
   - {fileID: 8473487973162150286}
   - {fileID: 6436915901260912588}
   - {fileID: 4843609226255597090}
+  - {fileID: 2409874130876538928}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -83,6 +85,30 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 1
   _contractNames: []
   _parentContractNames: []
+--- !u!114 &2409874130876538928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961836753165177990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f32e93b892e844ab2154d2d3f65818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InteractionSystem::Game.InterctionSystem.GrabbableFactoryInstaller
+  registry:
+    catalogs:
+    - <Type>k__BackingField: 0
+      <Prefab>k__BackingField: {fileID: 3958303072396792453, guid: 65f9a5d9c99c9a34082f85403f290e37, type: 3}
+    - <Type>k__BackingField: 1
+      <Prefab>k__BackingField: {fileID: 1300301689896586416, guid: 3c2bcfb3b08113d4680813734cb480ea, type: 3}
+    - <Type>k__BackingField: 2
+      <Prefab>k__BackingField: {fileID: 6624435781103079661, guid: 9f03663e836b32e41a4c53e1cb9df8b8, type: 3}
+    - <Type>k__BackingField: 3
+      <Prefab>k__BackingField: {fileID: 6730278820258413688, guid: b41ca115cb3629b4c9373252c8d4273b, type: 3}
+    - <Type>k__BackingField: 4
+      <Prefab>k__BackingField: {fileID: -8650099403420828739, guid: dc1e055b5462e8a47beada461bdc40b7, type: 3}
 --- !u!114 &6475312043561205969
 MonoBehaviour:
   m_ObjectHideFlags: 0
