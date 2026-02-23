@@ -25,6 +25,7 @@ namespace Game.Characters
         public override void OnStateEnter()
         {
             WeaponEquipped?.CollectEffect?.Play();
+            character.SfxPoolFacade.Play(Core.SimplePool.SfxPool.SfxType.Attack, (character as ICharacter).Transform.position, 1, true);
             PlayCurrentAnimation();
             WaitToReturn().Forget();
         }

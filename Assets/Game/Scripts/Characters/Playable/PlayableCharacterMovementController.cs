@@ -75,7 +75,7 @@ namespace Game.Characters
                 groundHits,
                 Layers.Ground,
                 QueryTriggerInteraction.Ignore);
-            return hitCount > 0 && rigidbody.linearVelocity.y <= 0;
+            return hitCount > 0 && rigidbody.linearVelocity.y <= 0.5f;
         }
 
         public void ZeroLinearVelocity()

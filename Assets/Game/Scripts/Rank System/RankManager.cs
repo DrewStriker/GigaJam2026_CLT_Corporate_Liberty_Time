@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Game.Characters;
+using Game.Core.SimplePool.SfxPool;
 using UnityEngine;
+using Zenject;
 
 namespace Game.RankSystem
 {
@@ -19,6 +21,8 @@ namespace Game.RankSystem
         private Queue<float> pointsRequirementQueue;
         private float pointsToRankUp;
         private float currentScore;
+
+        [Inject] public SfxPoolFacade SfxPoolFacade { get; private set; }
 
         private void Start()
         {
@@ -69,6 +73,7 @@ namespace Game.RankSystem
 
             RankProgress = Mathf.InverseLerp(0f, pointsToRankUp, currentScore);
             OnRankChanged?.Invoke();
+            SfxPoolFacade.Play(SfxType.RankUp, transform.position);
             Debug.Log($"Rank Up!\nCurrent Rank: {CurrentRank}\nRank Progress: {RankProgress}" +
                       $"\nCurrent Points: {currentScore}\nPoints to Rank Up: {pointsToRankUp}");
         }

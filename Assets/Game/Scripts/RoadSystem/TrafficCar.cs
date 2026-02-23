@@ -5,6 +5,7 @@ using DG.Tweening;
 using Game.CameraSystem;
 using Game.Characters;
 using Game.Core;
+using Game.Core.SimplePool.SfxPool;
 using UnityEngine;
 using Zenject;
 using Animation = Game.Characters.Animation;
@@ -22,6 +23,7 @@ namespace Game.RoadSystem
 
         private Damager Damager;
         [Inject] private ICameraShakeService CameraShakeService { get; set; }
+        [Inject] private SfxPoolFacade sfxPoolFacade;
 
         private void Awake()
         {
@@ -50,6 +52,7 @@ namespace Game.RoadSystem
         private async void OnHit(Collider collider)
         {
             if (collider.CompareTag(Tags.Player)) CameraShakeService.Shake(3, 10, 0.3f).Forget();
+            sfxPoolFacade.Play(SfxType.CarHorn, transform.position, 1, true);
             Damager.enabled = false;
             ControlTagetBehaviour(collider);
             sequence.Pause();
