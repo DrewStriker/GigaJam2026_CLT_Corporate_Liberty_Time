@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Compnay Liberty Time
+  m_text: Corporate Liberty Time
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 414ce1dab584a6945ac12b316fef3b00, type: 2}
   m_sharedMaterial: {fileID: -7823004034340434037, guid: 414ce1dab584a6945ac12b316fef3b00, type: 2}
