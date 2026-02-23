@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SceneLoadSystem
 {
@@ -14,6 +15,8 @@ namespace SceneLoadSystem
 
     public interface ISceneLoader
     {
+        public event Action<string> OnSceneLoaded;
+
         AsyncOperation LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single);
         // Task LoadAsync(AssetReference scene, LoadSceneMode mode = LoadSceneMode.Additive);
         // Task UnloadAsync(AssetReference scene);

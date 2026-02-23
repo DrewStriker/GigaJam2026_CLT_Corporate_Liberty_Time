@@ -11,7 +11,7 @@ namespace Game.Core
 
             canvasGroup.interactable = active;
             canvasGroup.blocksRaycasts = active;
-            return canvasGroup.DOFade(fadeValue, duration).SetEase(Ease.OutQuad).SetUpdate(true);
+            return canvasGroup.DOFade(fadeValue, duration).SetEase(Ease.OutQuad).SetUpdate(UpdateType.Normal, true);
         }
     }
 }

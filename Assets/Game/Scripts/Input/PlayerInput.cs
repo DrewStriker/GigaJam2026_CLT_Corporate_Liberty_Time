@@ -461,6 +461,15 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e1d477b-158f-4a5e-b9b9-13a04d36fdf8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -472,6 +481,39 @@ namespace Game.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3998282f-21fb-4ebf-ba8e-f6c572421bf8"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""715ce109-6375-4595-90b4-9a02a7af53fd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65671355-8329-4fc4-a3e2-a55c07e8f635"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -491,6 +533,7 @@ namespace Game.Input
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+            m_UI_Skip = m_UI.FindAction("Skip", throwIfNotFound: true);
         }
 
         ~@PlayerInput()
@@ -724,6 +767,7 @@ namespace Game.Input
         private readonly InputActionMap m_UI;
         private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
         private readonly InputAction m_UI_Newaction;
+        private readonly InputAction m_UI_Skip;
         /// <summary>
         /// Provides access to input actions defined in input action map "UI".
         /// </summary>
@@ -739,6 +783,10 @@ namespace Game.Input
             /// Provides access to the underlying input action "UI/Newaction".
             /// </summary>
             public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Skip".
+            /// </summary>
+            public InputAction @Skip => m_Wrapper.m_UI_Skip;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -768,6 +816,9 @@ namespace Game.Input
                 @Newaction.started += instance.OnNewaction;
                 @Newaction.performed += instance.OnNewaction;
                 @Newaction.canceled += instance.OnNewaction;
+                @Skip.started += instance.OnSkip;
+                @Skip.performed += instance.OnSkip;
+                @Skip.canceled += instance.OnSkip;
             }
 
             /// <summary>
@@ -782,6 +833,9 @@ namespace Game.Input
                 @Newaction.started -= instance.OnNewaction;
                 @Newaction.performed -= instance.OnNewaction;
                 @Newaction.canceled -= instance.OnNewaction;
+                @Skip.started -= instance.OnSkip;
+                @Skip.performed -= instance.OnSkip;
+                @Skip.canceled -= instance.OnSkip;
             }
 
             /// <summary>
@@ -879,6 +933,13 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnNewaction(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Skip" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSkip(InputAction.CallbackContext context);
         }
     }
 }

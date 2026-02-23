@@ -7,6 +7,16 @@
       "dependencies": {},
       "hash": "2f083401d1b44f01b161215402b0e8bb7938034b"
     },
+    "com.simonoliver.inputsystemactionprompts": {
+      "version": "https://github.com/simonoliver/InputSystemActionPrompts.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "2.0.1",
+        "com.unity.inputsystem": "1.5.0"
+      },
+      "hash": "15f13e757adbe25d52a2a3d4fade82f2e5c2381c"
+    },
     "com.unity.2d.tilemap": {
       "version": "1.0.0",
       "depth": 0,
@@ -300,6 +310,14 @@
         "com.unity.settings-manager": "2.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unity.textmeshpro": {
+      "version": "5.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      }
     },
     "com.unity.timeline": {
       "version": "1.8.10",
