@@ -35,7 +35,7 @@ namespace Game.UI
         private void OnExtraTimeExpired()
         {
             _canvasGroup.SetActiveEffect(true, 1).SetDelay(1).SetUpdate(true);
-            transform.GetChild(0).DOScale(1.5f, 1).SetDelay(1).SetLoops(-1).SetUpdate(true);
+            transform.GetChild(0).DOScale(1.5f, 1).SetDelay(1).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
             SetHighScore((int)rankManager.CurrentScore);
         }
 

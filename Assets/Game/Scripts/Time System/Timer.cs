@@ -1,9 +1,13 @@
 using System;
-using PlasticGui.WorkspaceWindow.Locks;
 
 namespace Game.TimeSystem
 {
-    public enum TimerMode { CountUp, CountDown }
+    public enum TimerMode
+    {
+        CountUp,
+        CountDown
+    }
+
     public class Timer
     {
         private bool isRunning;
@@ -66,7 +70,10 @@ namespace Game.TimeSystem
             CheckCompletion();
         }
 
-        public float GetFractionedDuration() => duration / 17;
+        public float GetFractionedDuration()
+        {
+            return duration / 17;
+        }
 
         private void DecreaseTimer(float deltaTime)
         {
@@ -88,4 +95,3 @@ namespace Game.TimeSystem
         }
     }
 }
-
