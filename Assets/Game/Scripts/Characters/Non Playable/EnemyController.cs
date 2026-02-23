@@ -53,11 +53,13 @@ namespace Game.Characters
         }
 
 
-        public override void TakeDamage(DamageData damageData)
+        public override async void TakeDamage(DamageData damageData)
         {
+            NavMeshAgent.enabled = false;
             base.TakeDamage(damageData);
             if (characterStats.CurrentHealth <= 0)
                 Die();
+            await UniTask.Delay(500);
         }
 
 

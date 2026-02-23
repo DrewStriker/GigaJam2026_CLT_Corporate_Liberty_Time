@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75860b27e458f8b429535d232647957a, type: 3}
+  m_Name: NpcMeshCatalogSO
+  m_EditorClassIdentifier: Characters::Game.Characters.NpcMeshCatalogSO
+  <Heads>k__BackingField:
+  - {fileID: 4300000, guid: 0b8640c2d6ebee8488d31df60c784b85, type: 2}
+  - {fileID: 4300000, guid: eeed85aee1ac53f46af953b8913f9806, type: 2}
+  - {fileID: 4300000, guid: ee9835116ea046c47b66f9cf1c2f6494, type: 2}
+  - {fileID: 4300000, guid: b7b5ddd17e96ac44d8b6cd07a9362c01, type: 2}
+  - {fileID: 4300000, guid: 85db5e2827e6c704ca676bafb0664c49, type: 2}
+  - {fileID: 4300000, guid: fcd985772f8cc0041a002b4a33d099d6, type: 2}
+  - {fileID: 4300000, guid: 79ec58af8069e914597280085ae9ca36, type: 2}
+  - {fileID: 4300000, guid: 01c832b058f3aed41b65ea5b5651948e, type: 2}
+  - {fileID: 4300000, guid: ee15345e962228f44942340ae9e09e1b, type: 2}
+  - {fileID: 4300000, guid: 33c18f8c18269cd46ab1c90dbf2cc40b, type: 2}
+  - {fileID: 4300000, guid: 36f751ed1f0336944960f94a6e0127a8, type: 2}
+  - {fileID: 4300000, guid: 5026e10a041499f4a98d7ae62d94fa77, type: 2}
+  - {fileID: 4300000, guid: 02f1cee3be9150a4ea97ebc0ee615f40, type: 2}
+  <Bodies>k__BackingField:
+  - {fileID: 4300000, guid: 5f746b324020b99429ed3ffde0d38d67, type: 2}
+  - {fileID: 4300000, guid: f6f23bafcd9257c4d9e5852a6fedd828, type: 2}
+  - {fileID: 4300000, guid: 7f9add5127faa914a8cd2fbc11bc03e1, type: 2}
+  - {fileID: 4300000, guid: a59d827065eb02a4695dc4db6ca07388, type: 2}
+  - {fileID: 4300000, guid: 297f4c23301caf84a8b3b2fbbf215d4a, type: 2}
+  - {fileID: 4300000, guid: e355eabc811d2f64c9ee29d8ffa4dfca, type: 2}
+  - {fileID: 4300000, guid: e022f7b6056c2f040921870cee78e7bb, type: 2}
+  - {fileID: 4300000, guid: 9762f63cb92c2f1479ebbbff4c6d5838, type: 2}

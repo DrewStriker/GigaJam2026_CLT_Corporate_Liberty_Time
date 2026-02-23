@@ -492,6 +492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Characters::Game.Characters.NpcController
   config: {fileID: 11400000, guid: eb0f11a8182550d4abb68da76715eb7c, type: 2}
+  hitVfxType: 0
+  npcMeshCatalog: {fileID: 11400000, guid: 5971fe36c70422d40b929f65bf13e8fa, type: 2}
 --- !u!54 &1422237315803218282
 Rigidbody:
   m_ObjectHideFlags: 0

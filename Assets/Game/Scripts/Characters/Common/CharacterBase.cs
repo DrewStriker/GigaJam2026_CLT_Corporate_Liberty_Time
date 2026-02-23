@@ -9,7 +9,7 @@ namespace Game.Characters
     public abstract class CharacterBase : MonoBehaviour, ICharacter
     {
         [SerializeField] private CharacterStatsSO config;
-        private Renderer[] Renderers;
+        public Renderer[] Renderers { get; private set; }
         public Collider Collider { get; private set; }
         public event Action Death;
         public Transform Transform => transform;
