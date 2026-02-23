@@ -12,6 +12,8 @@ namespace Game.Scripts.GameplaySystem
 {
     public class GameplayController : MonoBehaviour
     {
+        [SerializeField] private Transform[] playerSpawnPoints;
+        [SerializeField] private Transform playerTransform;
         [SerializeField] private GameplaySceneLoaderTest test;
         [Inject] private IGameplayState gameplayState;
         [Inject] private IPlayableCharacter playableCharacter;
@@ -35,6 +37,9 @@ namespace Game.Scripts.GameplaySystem
             gameplayState.SetState(StateType.Intro);
             test.Initialize(gameplayState, winConditionEvent, sceneLoader);
             Time.timeScale = 1;
+
+            var randomIndex = Random.Range(0, playerSpawnPoints.Length);
+            playerTransform.position = playerSpawnPoints[randomIndex].position;
         }
 
 
